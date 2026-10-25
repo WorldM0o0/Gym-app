@@ -1,0 +1,6 @@
+{
+  "name": "Gym App",
+  "description": "Persönliche All-in-One Fitness-App – Training, Verlauf, Ernährung. Läuft komplett lokal ohne Cloud oder Tracking.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

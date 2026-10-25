@@ -1,0 +1,4 @@
+# Persönliche Fitness-App für den Eigengebrauch — nicht für Suchmaschinen bestimmt.
+# Alle Nutzdaten liegen ohnehin lokal im Browser; indexierbar ist nur die leere App-Hülle.
+User-agent: *
+Disallow: /

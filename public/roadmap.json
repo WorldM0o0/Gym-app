@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "items": [
+    { "id": "cycle-tracking", "status": "planned", "title": "Zyklus-Tracking", "description": "Manuelle Eingabe von Zyklusphase/-länge, mit angepassten Satz-/RIR-Empfehlungen je Phase." },
+    { "id": "accessibility-filter", "status": "shipped", "title": "Filter für dauerhafte Einschränkungen", "description": "Betroffene Muskelgruppen/Übungen im Profil hinterlegen — sie zählen dann in der Fortschritts-Ansicht nicht mehr als \"unterversorgt\"." },
+    { "id": "reminder-expansion", "status": "shipped", "title": "Erweiterte Erinnerungen", "description": "Eigene Kategorien für Nährstoffe/Supplements, Wasserzufuhr, Mahlzeiten und Medikamente." },
+    { "id": "feedback-roadmap", "status": "shipped", "title": "Feedback geben & Roadmap ansehen", "description": "In-App-Formular für Bugs/Wünsche sowie diese Übersicht." },
+    { "id": "guided-tutorial", "status": "shipped", "title": "Geführte Tour durch die App", "description": "Kurze Einführung beim ersten Start, jederzeit über die Einstellungen erneut startbar." },
+    { "id": "onboarding", "status": "shipped", "title": "Persönliches Onboarding", "description": "Kurze Abfrage von Erfahrung, Ziel und Trainingsfrequenz beim allerersten Start." }
+  ]
+}

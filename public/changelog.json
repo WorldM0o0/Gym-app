@@ -1,0 +1,922 @@
+{
+  "format": 1,
+  "entries": [
+    {
+      "version": "13.8.1",
+      "title": "Nur noch ein Hinweis pro Update",
+      "points": [
+        {
+          "text": "Bei einem Update kamen zwei Meldungen mit demselben Inhalt: erst der kleine Balken unten mit den Änderungen, nach dem Neuladen dasselbe nochmal in groß. Der Balken sagt jetzt nur noch, dass eine neue Version bereitliegt — was drin ist, liest du wie gehabt hier im großen Fenster.",
+          "kind": "fix"
+        }
+      ]
+    },
+    {
+      "version": "13.8.0",
+      "title": "Die Übungsliste sortiert sich selbst",
+      "points": [
+        {
+          "text": "Während einer Einheit rutscht die Übung, an der du zuletzt gearbeitet hast, nach oben. Ist sie abgeschlossen, wandert sie stattdessen nach unten zu den erledigten. Alles andere behält die Reihenfolge aus deinem Plan.",
+          "kind": "feature"
+        },
+        {
+          "text": "Es wandert immer nur eine Übung nach oben. Wer zwischen zwei Geräten hin- und herspringt, bekommt sonst bei jedem Satz eine andere Anordnung und findet nichts wieder.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Die Karte, an der du gerade tippst, bleibt dabei an ihrer Stelle auf dem Bildschirm — die Liste ordnet sich um deinen Daumen herum, statt unter ihm wegzuspringen.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.7.0",
+      "title": "Du siehst jetzt, wie weit du bist",
+      "points": [
+        {
+          "text": "Jede Übungskarte zeigt während der Session dauerhaft ihren Stand: ein Statuspunkt vor dem Namen, der Zähler „x/y“ und ein Fortschrittsbalken darunter. Fertige Übungen erkennst du beim Durchscrollen sofort — der Name wird gedämpft, Punkt und Zähler wechseln in die Akzentfarbe.",
+          "kind": "feature"
+        },
+        {
+          "text": "Die Kopfzeile der Session zeigt denselben Fortschritt fürs ganze Training. Aufwärmsätze zählen dabei nicht mit.",
+          "kind": "feature"
+        },
+        {
+          "text": "Die Wisch-Geste an der Satzzeile ist wieder entfernt. Knopf und Geste am selben Element waren zwei Wege zum selben Ziel, und eine Eingabemaske bietet der Geste keine natürliche Fläche zum Anfassen. „Satz bestätigen“ bleibt der eine Weg.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Bugfix: In den Einstellungen musste immer genau ein Abschnitt offen sein — ein Tippen auf den offenen tat nichts. Jetzt schließt er sich.",
+          "kind": "fix"
+        }
+      ]
+    },
+    {
+      "version": "13.6.3",
+      "title": "Die Wisch-Geste funktioniert jetzt wirklich",
+      "points": [
+        {
+          "text": "Bugfix: Am Handy passierte beim Wischen an der Satzzeile gar nichts. Der Browser hielt jede Berührung für einen Scrollversuch und brach sie ab, bevor die App sie sah. Jetzt bekommt die App die waagerechte Richtung, der Browser behält die senkrechte — Scrollen geht unverändert.",
+          "kind": "fix"
+        },
+        {
+          "text": "Bugfix: Die Geste ließ sich fast nirgends starten, weil die Zeile fast vollständig aus Bedienelementen besteht. Jetzt darf der Daumen überall in der Zeile aufsetzen — nur die Zahlenfelder und die scrollbare Satztyp-Reihe behalten ihre eigene Geste. Ein Wisch, der auf einem Knopf beginnt, löst diesen Knopf nicht mehr zusätzlich aus.",
+          "kind": "fix"
+        },
+        {
+          "text": "Am Rechner lässt sich die Geste jetzt auch mit der Maus ausprobieren.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.6.2",
+      "title": "Drei Funde aus dem Gerätetest",
+      "points": [
+        {
+          "text": "Bugfix: Auf einem leeren Bildschirm — etwa im Verlauf, bevor das erste Training drin steht — ließ sich nicht zum nächsten Reiter wischen. Die Wischfläche war nur so hoch wie ihr Inhalt; darunter nahm die App die Geste gar nicht erst an. Jetzt reicht sie immer bis zum unteren Bildschirmrand.",
+          "kind": "fix"
+        },
+        {
+          "text": "Bugfix: Nach dem Einspielen einer Sicherung kam die Einführungstour wieder, und der Nutzungshinweis ebenso. Beides gehört zum Gerät, nicht zu den Trainingsdaten — bereits erteilte Bestätigungen bleiben jetzt bestehen, und der Tour-Stand wird nicht auf eine ältere Sicherung zurückgedreht.",
+          "kind": "fix"
+        },
+        {
+          "text": "Neu: Der Übungsverlauf hat ein Suchfeld. Ab acht Übungen erscheint es über der Liste und filtert sie beim Tippen; die Trefferzahl steht daneben. Das alte Auswahlfeld darüber ist entfallen — es zeigte dieselben Namen ein zweites Mal, ohne sie durchsuchbar zu machen.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "13.6.0",
+      "title": "Mehrere Muskelgruppen je Übung, neue Zusammenfassung",
+      "points": [
+        {
+          "text": "Eigene Übungen können jetzt mehrere Muskelgruppen haben. „Direkt trainiert“ nimmt beliebig viele (Klimmzug = Rücken + Bizeps), „Mittrainiert“ die Synergisten. In der Muskel-Balance zählt jede direkte Gruppe einen vollen Satz, jede mittrainierte einen halben.",
+          "kind": "feature"
+        },
+        {
+          "text": "Nach dem Training kommt eine richtige Zusammenfassung als eigener Bildschirm: Dauer, Volumen, Sätze und Übungen im Gitter, deine neuen Rekorde und die trainierten Muskeln als Balken.",
+          "kind": "feature"
+        },
+        {
+          "text": "Die Übungs-Detailansicht im Verlauf ist ebenfalls ein eigener Bildschirm: Bestwerte im Gitter, aktueller Wert groß, Rekorde und Verlauf als Listen.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Der Ernährungs-Tab lädt schneller: Rezepte, Lebensmittel, Einkauf, Vorrat, Verlauf und Gewicht werden erst beim Öffnen geladen (162 kB → 82 kB).",
+          "kind": "improvement"
+        },
+        {
+          "text": "Bugfix: „Aktuell“ in der Übungs-Detailansicht und der Anlegen-Knopf im Übungsformular standen in der englischen Oberfläche noch auf Deutsch.",
+          "kind": "fix"
+        }
+      ]
+    },
+    {
+      "version": "13.5.0",
+      "title": "Training, Verlauf, Ernährung und Einstellungen im neuen Look",
+      "points": [
+        {
+          "text": "Im laufenden Training kannst du die Eingabezeile jetzt nach rechts wischen, um den Satz mit den vorgeschlagenen Werten zu speichern. Der „Satz bestätigen“-Knopf bleibt genau wie vorher – der Wisch ist eine Abkürzung, kein Ersatz.",
+          "kind": "feature"
+        },
+        {
+          "text": "Die Pause zeigt sich als ganzer Bildschirm mit großem Ring und Restzeit, dazu die Übung, die danach dran ist. Verlängern, verkürzen und Überspringen sitzen unten nebeneinander.",
+          "kind": "feature"
+        },
+        {
+          "text": "Während eines Trainings ist die untere Leiste ausgeblendet – der Bildschirm gehört dem Training. Verlassen wie bisher über „Fertig“ oder „Abbrechen“.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Übungskarten zeigen links ein kleines Statusquadrat: grau = steht noch aus, orange = läuft, grün = Ziel erreicht. Das immer gleiche Hantel-Symbol ist dafür weggefallen.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Plan-Generator, Übungsverwaltung, Vorschläge und Erinnerungen öffnen sich als eigener Bildschirm mit Zurück-Pfeil statt als Blatt von unten. Und: die Zurück-Geste deines Handys schließt ab jetzt jedes geöffnete Blatt, statt den Tab zu verlassen.",
+          "kind": "feature"
+        },
+        {
+          "text": "Der Ernährungs-Tab führt mit der Tagesbilanz als großer Zahl, darunter Eiweiß, Kohlenhydrate und Fett. Mahlzeiten und Trainingsliste im Verlauf sind schlichte Listen mit feinen Trennlinien.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Es erscheint nur noch ein Hinweisbanner gleichzeitig – das dringlichste. Vorher konnten sich bis zu vier übereinander stapeln.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Die App startet spürbar schneller: die nicht benutzte Sprache wird nicht mehr mitgeladen (rund 25 kB weniger). Beim Tabwechsel gibt es keine Schiebe-Animation mehr – der neue Inhalt steht sofort.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Bugfix: ein einzelner fehlender Zeitstempel – etwa aus einer eingespielten Sicherung – konnte den kompletten Trainings-Bildschirm in den Fehlerschirm reißen. Jetzt bleibt an der Stelle einfach das Datum leer.",
+          "kind": "fix"
+        },
+        {
+          "text": "Bugfix: „Dauer“ im laufenden Training und die Tagesart im Ernährungsplan standen in der englischen Oberfläche weiterhin auf Deutsch.",
+          "kind": "fix"
+        }
+      ]
+    },
+    {
+      "version": "13.4.0",
+      "title": "Der Trainings-Tab beginnt jetzt mit heute",
+      "points": [
+        {
+          "text": "Der Tab heißt „Heute“ und öffnet mit einer Karte für das heute geplante Training: Name, Umfang, wie viel du beim letzten Mal bewegt hast, wie lange das her ist – und ein Knopf, der es startet. Ist nichts geplant, steht das dort genauso deutlich.",
+          "kind": "feature"
+        },
+        {
+          "text": "Der Wochenplan und die Routinen sind jetzt schlichte Listen mit feinen Trennlinien statt gestapelter Karten. Eine Zeile antippen öffnet den Tag bzw. die Routine – das Ziel ist damit die ganze Zeilenbreite statt eines kleinen Stiftsymbols.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Vorschläge, Übungen und Erinnerungen liegen zusammengefasst unter „Mehr“, statt als vier gleich laute Knöpfe über den Screen verteilt. „Neue Routine“ steht jetzt bei den Routinen statt als „+“ neben der Überschrift.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Große Zahlen werden mit schmalem Leerzeichen gruppiert (15 360 statt 15.360) und die Einheit steht klein daneben.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.3.0",
+      "title": "Neues Erscheinungsbild — erste Etappe",
+      "points": [
+        {
+          "text": "Die App startet ab jetzt auf Englisch. Deutsch bleibt in den Einstellungen unter „App-Präferenzen“ einen Tipp entfernt, alle Daten bleiben unverändert.",
+          "kind": "feature"
+        },
+        {
+          "text": "Neues Farbbild: ein tiefes, fast schwarzes Grau statt Marineblau, ruhige Haarlinien statt gestapelter grauer Flächen und ein kräftigerer Akzentton. Deine eigene Akzentfarbe und der AMOLED-Schalter funktionieren weiter wie bisher.",
+          "kind": "feature"
+        },
+        {
+          "text": "Zwei neue Schriften: Instrument Sans für Texte, JetBrains Mono für alle Zahlen, Zeiten und Datumsangaben. Beide stecken in der App — es wird nichts nachgeladen, auch offline nicht.",
+          "kind": "feature"
+        },
+        {
+          "text": "Knöpfe sind nicht mehr kapselrund, Filter-Chips füllen sich erst, wenn sie ausgewählt sind, und die untere Leiste zeigt statt vier Symbolen einen kleinen Punkt über dem aktiven Bereich.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Bugfix: in der englischen Oberfläche standen die Wochentage, „Ruhetag“ und zwei Knöpfe im Sicherungs-Hinweis weiterhin auf Deutsch. Und eine frisch installierte App zeigte englische Texte mit deutschem Datumsformat.",
+          "kind": "fix"
+        }
+      ]
+    },
+    {
+      "version": "13.2.0",
+      "title": "Vollständige englische Oberfläche",
+      "points": [
+        {
+          "text": "Bugfix: in der englischen Oberfläche standen an fünf weiteren Stellen noch deutsche Texte — der Titel beim Bearbeiten einer Routine, das Bearbeiten-Symbol im Wochenplan, die Mengenfelder in Vorrat und Rezept-Editor, die Zutaten-Anzeige der Resteverwertung und der Hinweis zur automatisch erkannten Ernährungsform. Alle sind jetzt übersetzt.",
+          "kind": "fix"
+        },
+        {
+          "text": "Unter der Haube: Wartungs- und Stabilitätsarbeiten. An der Bedienung ändert sich für dich nichts.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.1.0",
+      "title": "Gewichtseinheit kg/lbs, korrigierte Trainingszeiten, vollständige Übersetzung",
+      "points": [
+        {
+          "text": "Neu in den Einstellungen (App-Präferenzen): die Gewichtseinheit lässt sich zwischen Kilogramm und Pfund umstellen. Die Wahl gilt app-weit — Eingabefelder, Verlauf, Gewichtsverlauf und Statistik zeigen dieselbe Einheit. Gespeichert wird intern weiterhin in Kilogramm, ein Wechsel ändert also keine Daten.",
+          "kind": "feature"
+        },
+        {
+          "text": "Bugfix: die Plausibilitätsgrenze für Trainingsdauern wirkte bisher nur in der Trainings-Statistik. Jetzt greift sie auch beim Kalorienverbrauch im Ernährungs-Verlauf — eine über Nacht offen gebliebene Einheit verfälscht die Tagesbilanz nicht mehr.",
+          "kind": "fix"
+        },
+        {
+          "text": "Bugfix: wird ein abgeschlossenes Training nachträglich auf ein anderes Datum oder eine andere Dauer gesetzt, wandert jetzt auch der Endzeitpunkt mit. Bisher blieb er stehen, was zu widersprüchlichen Zeitangaben in der Detailansicht führen konnte.",
+          "kind": "fix"
+        },
+        {
+          "text": "Bugfix: in der Datensicherung stand ein Dollarzeichen im Hinweistext. Außerdem erschienen in der englischen Oberfläche an rund zwanzig Stellen noch deutsche Texte — unter anderem in Einkaufsliste, Lebensmitteln, Übungsverwaltung, Vorlagen-Import und in der Pausen-Benachrichtigung. Alle sind jetzt übersetzt.",
+          "kind": "fix"
+        },
+        {
+          "text": "Das Sicherungsformat steigt auf Version 20 — ältere Sicherungen lassen sich weiterhin einlesen. Dazu Wartungsarbeiten unter der Haube, an der Bedienung ändert sich nichts.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.0.0",
+      "title": "Trainingszeit-Bugfix, Kalender-Zeitraum & Rezept-Auto-Import",
+      "points": [
+        {
+          "text": "Bugfix: unrealistisch lange Trainingszeiten (z. B. wenn der Timer über Nacht weiterlief oder eine Einheit nie beendet wurde) werden jetzt erkannt und fließen nicht mehr verzerrt in die Verlaufs-Statistik ein.",
+          "kind": "fix"
+        },
+        {
+          "text": "Neu im Verlauf: Datum, Uhrzeit und Dauer eines abgeschlossenen Trainings lassen sich nachträglich bearbeiten.",
+          "kind": "feature"
+        },
+        {
+          "text": "Neu beim Kalender-Export von Erinnerungen (.ics): vor dem Herunterladen lässt sich jetzt ein Zeitraum wählen (1 Woche/1 Monat/3 Monate/unbegrenzt) — bisher wiederholte sich der Kalendereintrag für immer.",
+          "kind": "feature"
+        },
+        {
+          "text": "Die geführte Tour zeigt jetzt für jeden der sechs Schritte eine eigene Überschrift statt eines einzigen Titels. Der Einstellungen-Schritt erklärt zusätzlich den Kalender-Export und den durchgehend lokalen Datenschutz.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Neu beim Wochenplan-Generator: hast du noch keine eigenen Rezepte, importiert die App automatisch ein paar passende Standard-Rezepte für deine Ernährungsform (vegan/vegetarisch/gemischt), statt mit einer leeren Liste zu starten. Die Vorschläge lassen sich danach wie jedes andere Rezept bearbeiten oder löschen.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "12.39.0",
+      "title": "App-Übersicht zum Zeigen, WhatsApp-Text, Feedback-Adresse sichtbar",
+      "points": [
+        {
+          "text": "Bugfix: die Feedback-Adresse steht jetzt immer im Klartext im Feedback-Formular, mit einem eigenen \"E-Mail-Adresse kopieren\"-Button — bisher schlug der Versand ohne installiertes Mail-Programm ohne erkennbaren Ausweg fehl.",
+          "kind": "fix"
+        },
+        {
+          "text": "Neu in den Einstellungen: \"App-Übersicht\" zeigt die Hauptbereiche der App als Kacheln (Training & Autoregulation, Modulare Ernährung, Erinnerungen, Analyse & Datenschutz) — praktisch für Screenshots oder zum Zeigen an Neulinge.",
+          "kind": "feature"
+        },
+        {
+          "text": "Neu in der App-Übersicht: \"WhatsApp-Übersicht kopieren\" kopiert einen fertigen, sachlichen Vorstellungstext der App mit einem Klick in die Zwischenablage.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "12.38.0",
+      "title": "Profil-Fix, aufgeräumtes Rechtliches, erweiterte Tour",
+      "points": [
+        {
+          "text": "Bugfix: das Körper-Profil in den Einstellungen sprang nach dem Speichern und erneuten Öffnen optisch auf die Standardwerte zurück (Alter 30, Größe 180 …), obwohl deine echten Werte gespeichert waren. Die Felder zeigen jetzt immer den tatsächlich gespeicherten Stand.",
+          "kind": "fix"
+        },
+        {
+          "text": "Die geführte Tour erklärt jetzt auch den Verlauf-Tab und das Körper-Profil, der Ernährungs-Schritt geht auf das anpassbare Menü und den Rezept-Erstimport ein.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Nach einem Update zeigt die Tour nur noch die NEU hinzugekommenen Schritte statt jedes Mal von vorne zu starten.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "12.37.0",
+      "title": "Erinnerungen in den Kalender eintragen",
+      "points": [
+        {
+          "text": "Neu bei jeder Erinnerung: \"In Kalender eintragen\" lädt eine .ics-Datei mit täglichem System-Alarm herunter — dein Handy-/Desktop-Kalender übernimmt die Erinnerung dann auch, wenn die App komplett geschlossen ist. Praktisch besonders bei Medikamenten- und Supplement-Erinnerungen.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "12.36.0",
+      "title": "Erinnerungen ausgebaut: Kategorien, Medikamente, Supplements",
+      "points": [
+        {
+          "text": "Erinnerungen sind jetzt deutlich leichter zu finden: eine eigene Karte im Trainings-Tab und eine eigene Kategorie in den Einstellungen.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Neu: Erinnerungen lassen sich in Kategorien einordnen — Supplement, Wasser, Mahlzeit, Workout und Medikament.",
+          "kind": "feature"
+        },
+        {
+          "text": "Neu: Medikamenten-Erinnerungen. Beim Anlegen erscheint einmalig ein Sicherheitshinweis — die App ist kein Medizinprodukt und ersetzt keine ärztliche Anweisung.",
+          "kind": "feature"
+        },
+        {
+          "text": "Neu im Ernährungs-Tab: eine Nährstoff-/Supplement-Sektion, die alle Erinnerungen der Kategorie „Supplement\" gebündelt zeigt.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "12.35.0",
+      "title": "Einschränkungs-Filter: verletzte Muskelgruppen berücksichtigen",
+      "points": [
+        {
+          "text": "Neu im Profil: dauerhafte körperliche Einschränkungen bzw. verletzte Muskelgruppen lassen sich hinterlegen.",
+          "kind": "feature"
+        },
+        {
+          "text": "Markierte Muskelgruppen gelten in Muskel-Balance und Radar-Diagramm nie mehr als „unterversorgt\" — das Soll entfällt für sie, statt dich dauerhaft an ein Ziel zu erinnern, das du gerade nicht trainieren kannst. Deine bisherige Historie bleibt dabei vollständig erhalten.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "12.34.0",
+      "title": "Feedback geben & Roadmap ansehen",
+      "points": [
+        {
+          "text": "Neu in den Einstellungen: \"Feedback geben\" öffnet ein kurzes Formular für Bugs, Feature-Wünsche oder Sonstiges — \"Senden\" öffnet dein Mail-Programm mit einem vorausgefüllten Entwurf an eine dedizierte Feedback-Adresse. Kein Mail-Programm eingerichtet? Jeder Eintrag bleibt in einer eigenen Verlaufsliste und lässt sich dort jederzeit erneut senden oder teilen/kopieren.",
+          "kind": "feature"
+        },
+        {
+          "text": "Neu: \"Roadmap\" in den Einstellungen zeigt eine schreibgeschützte Übersicht geplanter, laufender und bereits umgesetzter Themen.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "12.33.0",
+      "title": "PR-Glow statt Konfetti, Abschluss-Übersicht",
+      "points": [
+        {
+          "text": "Ein neuer persönlicher Rekord feiert sich jetzt direkt auf der Satz-Zeile: kurzes Aufleuchten + kompaktes \"PR\"-Abzeichen, dazu eine kurze Vibration — statt des bisherigen Konfetti-Schauers.",
+          "kind": "feature"
+        },
+        {
+          "text": "Beim Beenden eines Trainings zeigt ein kompaktes Fenster jetzt drei Kennzahlen: Gesamttonnage, Anzahl neuer Rekorde und trainierte Muskelgruppen.",
+          "kind": "feature"
+        },
+        {
+          "text": "Übungskarten zeigen ein dezentes Hantel-Symbol, erfasste Sätze einen kleinen Haken, und eine aktive Deload-/Übergangswoche erscheint jetzt als Abzeichen statt als reiner Text.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Der Schalter für die PR-Feier ist umgezogen: \"Haptisches Feedback & PR-Animationen\" jetzt unter Einstellungen → App-Präferenzen.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "12.32.0",
+      "title": "Geführte Tour durch die App + Bugfix Onboarding",
+      "points": [
+        {
+          "text": "Neu: eine kurze, geführte Tour hebt beim ersten Start die vier wichtigsten Stellen der App visuell hervor — Training starten, Gewicht & RIR eintragen, Ernährung/Tools, Einstellungen. Erscheint einmalig, auch für bestehende Nutzer, und lässt sich in den Einstellungen jederzeit erneut starten.",
+          "kind": "feature"
+        },
+        {
+          "text": "Bugfix: nach dem Bestätigen des Nutzungshinweises erschien die Onboarding-Frage bisher erst nach einem Neuladen der Seite — läuft jetzt nahtlos in einer Sitzung durch.",
+          "kind": "fix"
+        }
+      ]
+    },
+    {
+      "version": "12.31.0",
+      "title": "Kurzes Onboarding beim ersten Start",
+      "points": [
+        {
+          "text": "Direkt nach dem Nutzungshinweis fragt die App beim allerersten Start drei kurze Dinge ab: wie lange du schon trainierst, dein Hauptziel und wie oft du pro Woche trainierst — jederzeit mit \"Überspringen\" auslassbar.",
+          "kind": "feature"
+        },
+        {
+          "text": "Deine Erfahrung stellt automatisch die Einsteiger-Tipps ein (an bei Einsteiger/Fortgeschritten, aus bei Profi/Erfahren) — in den Einstellungen jederzeit änderbar.",
+          "kind": "feature"
+        },
+        {
+          "text": "Hauptziel und Trainingsfrequenz belegen den Trainingsplan-Generator vor, bleiben dort aber jederzeit frei wählbar.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "12.30.0",
+      "title": "Einsteiger-Tipps & Erklärungen jetzt wirksam abschaltbar",
+      "points": [
+        {
+          "text": "Der Schalter \"Einsteiger-Tipps & Erklärungen anzeigen\" (Einstellungen → \"Trainings-Logik & Automatisierung\") wirkt jetzt tatsächlich: er blendet Erklärtexte unter Reglern und Schaltern in den Einstellungen aus, für eine schlankere Oberfläche.",
+          "kind": "feature"
+        },
+        {
+          "text": "Neu: drei kurze, einmalige Mikro-Tipps für Einsteiger — \"Was bedeuten RIR und RPE?\" (bei der Anstrengungs-Skala), \"Was ist ein Deload?\" (bei der Deload-Steuerung) und \"Was bedeuten BMR und TDEE?\" (beim Körper-Profil). Jeder erscheint nur einmal und lässt sich mit \"Verstanden\" dauerhaft bestätigen.",
+          "kind": "feature"
+        },
+        {
+          "text": "Schaltest du die Tipps später wieder ab, wird ein noch unbestätigter Mikro-Tipp nur ausgeblendet, nicht automatisch als gelesen markiert — schaltest du sie wieder an, erscheint er erneut.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "12.29.0",
+      "title": "Einstellungen neu geordnet, wissenschaftliche Quellen sichtbar",
+      "points": [
+        {
+          "text": "Die Einstellungen sind jetzt in vier Kategorien gegliedert: \"Trainings-Logik & Automatisierung\", \"Wissenschaftliche Grundlagen\", \"Profil & Regeneration\", \"App-Präferenzen\" — statt einer langen, gemischten Liste.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Neu: \"Wissenschaftliche Grundlagen\" zeigt die Quellen hinter den Trainingsvorgaben dieser App (Trainingsvolumen, Pausenzeiten, RIR/RPE, Wiederholungsbereich, isometrische Werte). Info-Symbole (i) an einzelnen Reglern verlinken direkt zur passenden Quelle.",
+          "kind": "feature"
+        },
+        {
+          "text": "Neu unter \"Trainings-Logik & Automatisierung\": ein Schalter \"Einsteiger-Tipps & Erklärungen anzeigen\" — wirkt aktuell noch auf keine sichtbaren Inhalte, das folgt in einer der nächsten Versionen.",
+          "kind": "feature"
+        },
+        {
+          "text": "Dein Körper-Profil (Alter, Größe, Gewicht, Aktivität, Ziel) pflegst du jetzt unter Einstellungen → \"Profil & Regeneration\" statt im Ernährungs-Tab. Der Kalorienrechner dort zeigt weiterhin dein Ergebnis und verlinkt zum Bearbeiten dorthin.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Die manuelle Deload-Steuerung ist von \"Training & Timer\" nach \"Profil & Regeneration\" umgezogen.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "12.28.0",
+      "title": "Trainingshinweise abschaltbar, Update-Übersicht kumulativ",
+      "points": [
+        {
+          "text": "Neu in den Einstellungen unter \"Sätze & Progression\": ein Schalter blendet den Trainingshinweis und die Deload-Vorschlagskarte im Verlauf-Tab dauerhaft aus. Der Deload-Modus selbst (aktive Woche, manueller Start) bleibt davon unberührt.",
+          "kind": "feature"
+        },
+        {
+          "text": "Das \"Was ist neu\"-Fenster zeigt jetzt auch übersprungene Updates: alles seit deinem letzten Besuch liegt eingeklappt unter der aktuellen Version, nicht mehr nur die neueste.",
+          "kind": "feature"
+        },
+        {
+          "text": "Neu im Einstellungen-Footer: die aktuelle Versionsnummer plus ein \"Was ist neu?\"-Link, der die Update-Übersicht jederzeit erneut öffnet.",
+          "kind": "feature"
+        },
+        {
+          "text": "Änderungspunkte tragen jetzt eine farbige Kennzeichnung (Neu / Verbessert / Ausgebessert) statt eines schlichten Aufzählungspunkts.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "12.27.1",
+      "title": "Bugfix: Trainingshinweis blieb sichtbar trotz aktivem/stummgeschaltetem Deload",
+      "points": [
+        "Der \"Trainingshinweis\" im Verlauf-Tab (Volumen-Rückgang / hohe Anstrengung) blendet sich jetzt korrekt aus, solange ein Deload aktiv läuft, in der Übergangswoche danach oder während die Deload-Empfehlung stummgeschaltet ist — vorher stand er dem \"Deload beenden\"-Hinweis widersprüchlich gegenüber."
+      ]
+    },
+    {
+      "version": "12.27.0",
+      "title": "Deload-Stummschaltung vorzeitig aufheben",
+      "points": [
+        "Neu in den Einstellungen unter \"Sätze & Progression\" → \"Deload-Modus\": Wenn der Deload-Hinweis gerade für 7 Tage stummgeschaltet ist, zeigt die Statuszeile jetzt \"stummgeschaltet bis DD.MM.\" an.",
+        "Neuer Button \"Stummschaltung aufheben\" holt den Hinweis sofort zurück, statt die vollen 7 Tage abzuwarten — unabhängig vom Start/Zurücksetzen-Button für den Deload selbst."
+      ]
+    },
+    {
+      "version": "12.26.0",
+      "title": "Deload beenden: Sicherheitsabfrage, Rückgängig, manuelle Steuerung",
+      "points": [
+        "\"Deload beenden\" fragt jetzt erst nach, bevor der Deload wirklich endet — genau wie \"Jetzt starten\" und \"Ablehnen\" seit 12.24.0.",
+        "Nach dem Beenden erscheint kurz eine Bestätigung mit \"Rückgängig\". Verlässt du den Verlauf-Tab oder lädst die App neu, verschwindet sie automatisch.",
+        "Neu in den Einstellungen unter \"Sätze & Progression\": Deload-Modus manuell starten oder zurücksetzen, unabhängig vom automatischen Vorschlag."
+      ]
+    },
+    {
+      "version": "12.25.0",
+      "title": "Ernährungs-Header anpassbar (Quick-Actions & Menü-Gruppen)",
+      "points": [
+        {
+          "text": "Neu: bis zu zwei Ernährungs-Werkzeuge lassen sich als eigenes Icon direkt in den Header legen (Werkseinstellung: Einkaufsliste und Tag automatisch generieren).",
+          "kind": "feature"
+        },
+        {
+          "text": "Das ⋯-Menü im Ernährungs-Tab ist jetzt in drei benannte Gruppen gegliedert: „Ziele & Rechner\", „Planung & Vorrat\" und „Generierung\".",
+          "kind": "improvement"
+        },
+        {
+          "text": "Neu über „Ernährungs-Menü anpassen\": pro Werkzeug lässt sich getrennt festlegen, ob es als Quick-Action im Header liegt und ob es im Menü sichtbar ist.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "12.24.1",
+      "title": "Optischer Feinschliff bei Einstellungen und Deload",
+      "points": [
+        {
+          "text": "Die drei Kategorien unter „Training & Timer\" sind jetzt echte Karten mit eigenem Icon statt nur durch dünne Linien getrennt.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Die Deload-Buttons („Jetzt starten\", „Ablehnen\", „Deload beenden\") sehen jetzt aus wie alle anderen Buttons der App.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "12.24.0",
+      "title": "Deload-Vorschlag: bestätigen oder ablehnen",
+      "points": [
+        {
+          "text": "Ein Deload-Vorschlag startet nicht mehr sofort auf einen Tap: „Jetzt starten\" fragt vorher nach.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Neu: „Ablehnen\" schaltet den Deload-Hinweis für 7 Tage stumm — auch für neue Vorschläge, die in dieser Zeit entstehen. Danach rechnet die App ganz normal weiter, du musst nichts zurücksetzen.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "12.23.1",
+      "title": "Training & Timer: Einstellungen in drei Kategorien",
+      "points": [
+        {
+          "text": "„Training & Timer\" war eine einzige lange Liste aus 13 Blöcken. Jetzt drei aufklappbare Kategorien: „Timer & Audio\", „Sätze & Progression\" und „Ansicht & Equipment\".",
+          "kind": "improvement"
+        },
+        {
+          "text": "Mehrere der längsten Hinweistexte wurden gestrafft — inhaltlich unverändert, nur kürzer.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "12.23.0",
+      "title": "Generator: keine ungeeigneten Übungen mehr, bessere Kniebeuge-Auswahl",
+      "points": [
+        "Vier Übungen mit bekannten Schwächen wählt der automatische Plan-Generator ab sofort nie mehr: Kickbacks (schlechte Spannung am Bewegungsende), Burpees, Rudergerät und Laufband (reines Cardio ohne Muskelaufbau-Nutzen). Manuell bleiben alle vier weiterhin wählbar.",
+        "Die erste, schwerste Kniebeugungs-Übung eines Bein-/Ganzkörpertags wählt der Generator jetzt nie mehr als Goblet Squat, Ausfallschritte oder Bulgarian Split Squat — bei diesen gibt meist der Griff/Oberarm nach, bevor die Beine wirklich gefordert sind. Kniebeugen oder Beinpresse haben Vorrang; nur wenn beide in derselben Woche schon vergeben sind, springt der Generator doch auf eine der drei anderen.",
+        "Kleine Korrektur an der Übungsreihenfolge aus 12.22.0: Schulter-/Rücken-Isolationsübungen (z. B. Seitheben) kommen jetzt immer vor Arm-Isolation (Bizeps/Trizeps) — unabhängig davon, ob mit Kurzhantel oder am Kabelzug ausgeführt."
+      ]
+    },
+    {
+      "version": "12.22.0",
+      "title": "Generator: Rückenschonung, bessere Übungsreihenfolge, Satz-Obergrenze",
+      "points": [
+        "Nach einer besonders rückenbelastenden Übung (z. B. Kreuzheben, Kniebeugen, Rudern vorgebeugt) plant der Generator am Folgetag keine weitere davon ein — dein Rücken bekommt eine Erholungspause.",
+        "Übungen innerhalb einer Einheit werden konsequenter sortiert: erst freie Grundübungen, dann Grundübungen an der Maschine, dann freie Isolationsübungen, dann Kabel-/Maschinen-Isolation, Bauch und Waden immer ganz am Ende.",
+        "Neue Obergrenze: mehr als 10 Sätze pro Muskelgruppe und Einheit deckelt der Generator automatisch. Stellst du manuell mehr zusammen (im Routine-Editor oder live beim Training), bekommst du nur einen dezenten Hinweis — blockiert wird nichts."
+      ]
+    },
+    {
+      "version": "12.21.0",
+      "title": "Pull-Tag korrigiert + einfaches Anlegen eigener Übungen",
+      "points": [
+        "Pull-Tag hat jetzt genau 4 Slots (vertikaler Zug, horizontaler Zug, hintere Schulter/Nacken, Bizeps) — Kreuzheben/RDL zählen trainingswissenschaftlich zur Hüftstreckung und stehen deshalb jetzt ausschließlich am Bein-Tag.",
+        "Neues, einfaches Formular zum Anlegen eigener Übungen: nur noch Name, Hauptmuskel und Bewegungsrichtung in Alltagssprache (\"Nach oben drücken\", \"Reine Isolation\" usw.) — keine Fachbegriffe mehr nötig.",
+        "Die App erkennt automatisch, ob eine neue Übung explosiv ist (Name enthält \"Swing\", \"Clean\" oder \"Snatch\") und weist bei Regelkonflikten (z. B. Frontheben, ballistische Hüftstreckung) mit einem Hinweis inkl. Alternative darauf hin — anlegen bleibt trotzdem immer möglich.",
+        "Das Bearbeiten bestehender Übungen läuft weiterhin über die bisherige, detailliertere Maske."
+      ]
+    },
+    {
+      "version": "12.20.0",
+      "title": "Generator: präzisere Übungsauswahl je Split",
+      "points": [
+        "Push- und Pull-Tage bekommen jetzt garantiert je eine drückende/ziehende Übung aus unterschiedlicher Richtung (z. B. Bankdrücken UND Schulterdrücken) — vorher konnte durch Zufall zweimal dieselbe Richtung landen.",
+        "Seitheben (seitliche Schulter) kommt jetzt mindestens 2x pro Woche vor, wenn dein Split das hergibt. Frontheben wird als generierte Hauptübung nicht mehr vorgeschlagen (Redundanz zu Drück-Übungen) — bleibt aber im Übungs-Picker wählbar.",
+        "Jeder Bein-/Unterkörpertag enthält jetzt gezielt eine Beinbeuger-Übung statt zufällig nur Quadrizeps oder Waden.",
+        "Pull-Tag hat einen zusätzlichen Slot für hintere Schulter/Nacken (Face Pulls, Reverse Butterfly, Shrugs) bekommen.",
+        "Kettlebell Swings werden nicht mehr als Haupt-Hüftstreckungsübung vorgeschlagen — RDL, Kreuzheben und Hip Thrust sind für Muskelaufbau kontrollierter dosierbar. Bleibt manuell wählbar."
+      ]
+    },
+    {
+      "version": "12.19.0",
+      "title": "Aktive Deload-Automatik",
+      "points": [
+        "Neu im Verlauf: ein Vorschlag zum Starten einer Deload-Woche, wenn du 6+ Wochen ohne Pause trainiert hast ODER das geschätzte 1RM bei einer deiner Hauptübungen in zwei Wochen spürbar gesunken ist.",
+        "Nach Bestätigung läuft eine 7-tägige Deload-Woche: Zielsätze werden in der Anzeige halbiert, mit dem Hinweis RIR ≥ 3 zu halten. Deine Routine selbst bleibt komplett unverändert.",
+        "Danach folgt automatisch eine Übergangswoche mit 90 % Zielsätzen, bevor es normal weitergeht. Jederzeit über \"Deload beenden\" abbrechbar.",
+        "Während Deload/Übergangswoche pausieren die Steigerungs- und Autoregulations-Vorschläge (12.17.0/12.18.0), damit sich keine widersprüchlichen Hinweise zeigen."
+      ]
+    },
+    {
+      "version": "12.18.0",
+      "title": "Autoregulation: Gewichtsvorschlag reagiert auf deine Tagesform",
+      "points": [
+        "Nach dem ersten Arbeitssatz einer Übung prüft die App jetzt deinen erfassten RIR und schlägt bei Bedarf ein angepasstes Gewicht für die restlichen Sätze DERSELBEN Einheit vor.",
+        "Deutlich härter als geplant (RIR bis zum Versagen) → Vorschlag −5 % Gewicht, mit Hinweis „Niedrige Tagesform erkannt\".",
+        "Deutlich leichter als geplant UND Wiederholungsziel erreicht → Vorschlag +2,5 % Gewicht, mit Hinweis „Starke Tagesform erkannt\".",
+        "Reiner Vorschlag im Eingabefeld, kein automatischer Eingriff — du kannst den Wert jederzeit überschreiben."
+      ]
+    },
+    {
+      "version": "12.17.0",
+      "title": "Progressions-Vorschläge berücksichtigen jetzt RIR-Ziel",
+      "points": [
+        "Der Steigerungs-Vorschlag für den ersten Satz einer Übung prüft jetzt, ob du beim letzten Mal das Wiederholungsziel UND den Ziel-RIR-Bereich erreicht hast — nicht mehr automatisch +1 Schritt.",
+        "Grundübungen: zwei Einheiten in Folge unter Ziel zeigen einen Hinweis, dass ein Satz weniger helfen könnte. Reine Information, an deiner Routine ändert sich nichts von selbst.",
+        "Isolationsübungen: erreicht der erste Satz einer Einheit Wiederholungsziel und RIR, steigt das Wiederholungsziel für die folgenden Sätze DERSELBEN Einheit direkt mit.",
+        "Neue, generierte Trainingspläne merken sich jetzt das gewählte Trainingsziel (Kraft/Muskelaufbau/Kraftausdauer) — Grundlage für diese Vorschläge. Manuell angelegte Routinen sind davon nicht betroffen."
+      ]
+    },
+    {
+      "version": "12.16.0",
+      "title": "Genauere 1RM-Schätzung mit RIR",
+      "points": [
+        "Das geschätzte 1RM in der Übungsstatistik bezieht jetzt den erfassten RIR mit ein, nicht mehr nur Gewicht und Wiederholungen.",
+        "Neue Formel (Brzycki) für den üblichen Trainingsbereich, die bisherige (Epley) bleibt als Fallback bei sehr vielen Wiederholungen.",
+        "Gilt auch rückwirkend für bestehende Sätze — ohne erfassten RIR wird „bis zum Versagen\" angenommen, wie bisher. Bestehende Verlaufskurven können sich dadurch leicht verschieben, dazu erscheint einmalig ein Hinweis im Verlauf."
+      ]
+    },
+    {
+      "version": "12.15.0",
+      "title": "RIR als Anstrengungsmaß — RPE bleibt wählbar",
+      "points": [
+        "Neue Einstellung unter Training & Timer: Anstrengung pro Satz als RIR (Reps in Reserve) oder wie gewohnt als RPE erfassen.",
+        "Das Eingabefeld beim Satz, die Anzeige im laufenden Training und im Verlauf sowie der CSV-Export folgen der gewählten Skala.",
+        "Bereits erfasste RPE-Werte wurden beim Update einmalig automatisch in RIR umgerechnet — nichts geht verloren, nichts ist doppelt einzutragen.",
+        "Reine Grundlage für spätere Auswertungen (RIR-gestützte 1RM-Schätzung, Progressions- und Deload-Vorschläge) — an deiner Routine ändert sich dadurch aktuell nichts."
+      ]
+    },
+    {
+      "version": "12.14.0",
+      "title": "Hinweis bei viel Ausdauertraining",
+      "points": [
+        "Wenn du in einer Woche sehr viel Cardio machst, steht im Verlauf jetzt ein Hinweis — bei diesem Umfang kann die Kraftanpassung im Unterkörper leiden.",
+        "Die Grenze richtet sich nach dem Geschlecht im Profil: 180 Minuten pro Woche bei Männern, 300 bei Frauen. Ohne Profilangabe kommt kein Hinweis.",
+        "Reine Information. Es wird nichts an deiner Routine oder am Satzvolumen geändert, und der Hinweis verschwindet von selbst, sobald weniger Cardio in der Woche steht.",
+        "Er erscheint nur, wenn du in derselben Woche auch Kraft trainiert hast — eine reine Cardio-Woche stört nichts."
+      ]
+    },
+    {
+      "version": "12.13.0",
+      "title": "Klügere Übungsreihenfolge und mehr Luft für den Trizeps",
+      "points": [
+        "Generierte Trainingstage sortieren jetzt nach drei Kriterien statt nur „Grundübung vor Isolation\": freie Last vor geführter Maschine, große Muskelgruppe vor kleiner.",
+        "Konkret heißt das: Kniebeuge und Kreuzheben stehen vor Beinpresse und Latzug — die technisch anspruchsvollen Übungen kommen, solange du frisch bist.",
+        "Der Trizeps hat einen eigenen Volumenkorridor bekommen (bis 24 statt 18 Sätze pro Woche). Die Studienlage zeigt für ihn als einzige kleine Gruppe auch jenseits von 20 Sätzen noch Zuwachs — die Balken im Verlauf schlagen dort also später auf „zu viel\" um.",
+        "Bestehende Routinen bleiben unangetastet, die neue Reihenfolge gilt nur für neu generierte Pläne."
+      ]
+    },
+    {
+      "version": "12.12.0",
+      "title": "Eigene Signaltöne für Pausen- und Halte-Timer",
+      "points": [
+        "Vier Klangvarianten zur Wahl (Doppelton, Akkord, Glocke, Puls) — antippen spielt sie direkt zur Probe ab.",
+        "Pausen-Timer und Halte-Timer haben jeweils ihren eigenen Klang.",
+        "Weiterhin rein synthetisch erzeugt, keine Audiodatei, kein Upload."
+      ]
+    },
+    {
+      "version": "12.11.0",
+      "title": "Der Ernährungstab lädt nur noch, was er zeigt",
+      "points": [
+        "Der Ernährungstab lädt beim Öffnen nur noch das, was die jeweilige Ansicht wirklich braucht.",
+        "Einmal geladen bleibt geladen — ein Wechsel zurück ist sofort da.",
+        "Spürbar vor allem auf älteren Geräten und bei viel erfassten Daten."
+      ]
+    },
+    {
+      "version": "12.10.0",
+      "title": "Stabilere Abläufe in der Ernährung",
+      "points": [
+        "„Woche kochen\" und „Einkauf abhaken\" laufen jetzt zuverlässiger — dort saßen die letzten beiden Vorrats-Fehler.",
+        "Für dich ändert sich sonst nichts sichtbar."
+      ]
+    },
+    {
+      "version": "12.9.1",
+      "title": "Fehler werden gemeldet statt geschluckt",
+      "points": [
+        "Scheiterte das Löschen eines Lebensmittels oder Rezepts, passierte sichtbar nichts — jetzt kommt eine Meldung.",
+        "Bei vollem Speicher stand teilweise wieder „bitte erneut versuchen\" statt des Hinweises auf den Export. Der zweite Versuch scheitert in dem Fall garantiert genauso.",
+        "Ein Posten konnte doppelt auf der Einkaufsliste landen, wenn beim Kochen einer Woche mehrere Zutaten gleichzeitig nachbestellt wurden."
+      ]
+    },
+    {
+      "version": "12.9.0",
+      "title": "Rekorde rechnen wieder mit dem echten Verlauf",
+      "points": [
+        "Wurde im Verlauf ein Training gelöscht, ein Satz korrigiert, archiviert oder eine Sicherung eingespielt, verglich die Rekord-Erkennung danach weiter gegen die alten Werte — bis die App neu geladen wurde.",
+        "Die Übungskarten im laufenden Training holen ihre Vergleichswerte jetzt sparsamer — spürbar flotter beim Blättern.",
+        "Ein Satz aus einem abgeschlossenen Training lässt sich nicht mehr versehentlich über das laufende Training löschen."
+      ]
+    },
+    {
+      "version": "12.8.2",
+      "title": "Elf deutsche Reste im Englisch-Modus behoben",
+      "points": [
+        "Kalorienrechner, Pausen-Banner, Gewichtsprognose, Rezeptvorschläge und mehrere Fehlermeldungen zeigten im Englisch-Modus weiter Deutsch.",
+        "Betroffen war auch die gesprochene Pausen-Ansage — sie wurde auf Englisch mit deutschem Text vorgelesen."
+      ]
+    },
+    {
+      "version": "12.8.1",
+      "title": "Vorrat zählt richtig, Meldungen sprechen die eingestellte Sprache",
+      "points": [
+        "Wurden mehrere Posten gleichzeitig in den Vorrat gebucht (z. B. beim Abhaken der Einkaufsliste oder beim Kochen einer Woche), konnte derselbe Artikel mehrfach angelegt werden statt zusammengezählt zu werden.",
+        "Optionale Angaben wie MHD oder Mindestbestand werden nur noch gespeichert, wenn sie auch gesetzt sind — und beim Leeren im Formular wieder entfernt.",
+        "Die Meldung bei Zeitüberschreitung erschien im Englisch-Modus auf Deutsch."
+      ]
+    },
+    {
+      "version": "12.8.0",
+      "title": "Sicherungen werden beim Import gründlich geprüft",
+      "points": [
+        "Zutaten in Rezepten und Übungen in Routinen wurden beim Import bisher überhaupt nicht geprüft — eine beschädigte Datei konnte dort unbemerkt kaputte Mengen einschleusen.",
+        "Datensätze, denen ein Pflichtwert fehlt (z. B. ein Satz ohne Gewicht), werden jetzt verworfen statt halbiert gespeichert. Vorher machten sie jede Statistik-Summe dauerhaft unbrauchbar.",
+        "Der Bericht nach dem Import zählt unvollständige Datensätze getrennt auf, damit sichtbar ist, was gefehlt hat."
+      ]
+    },
+    {
+      "version": "12.7.1",
+      "title": "Aufwärmsätze rechnen wieder vom Arbeitsgewicht",
+      "points": [
+        "Der zweite Aufwärmsatz ging bisher vom ersten Aufwärmgewicht aus statt vom eingetragenen Arbeitsgewicht — bei 100 kg kamen 50 und 37,5 kg statt 50 und 75 kg.",
+        "Auch das Eingabefeld sprang nach einem Aufwärmsatz auf dessen Gewicht; der erste Arbeitssatz konnte dadurch unbemerkt zu leicht geloggt werden.",
+        "Aufwärmsätze zählen jetzt nirgends mehr als erster erfasster Satz — der Steigerungs-Vorschlag bleibt dadurch bis zum ersten echten Arbeitssatz stehen."
+      ]
+    },
+    {
+      "version": "12.7.0",
+      "title": "Benachrichtigungen für den Vorrat",
+      "points": [
+        "Neu im ⋯-Menü der Ernährung: Vorrats-Benachrichtigungen, An/Aus + Anzahl Tage im Voraus.",
+        "Meldet sich höchstens einmal pro Tag, wenn Produkte in diesem Zeitraum ablaufen.",
+        "Läuft rein lokal ohne Server, wie die bestehenden Trainings-Erinnerungen — kein Konto, keine Cloud."
+      ]
+    },
+    {
+      "version": "12.6.0",
+      "title": "Rezeptvorschläge retten, was bald abläuft",
+      "points": [
+        "Die Resteverwertung zeigt jetzt bevorzugt Rezepte, die Zutaten mit Status Gelb oder Rot verbrauchen.",
+        "Solche Vorschläge sind mit einem kleinen Hinweis markiert.",
+        "Weiterhin ohne KI: reiner Abgleich zwischen Vorrat und Rezept-Zutaten."
+      ]
+    },
+    {
+      "version": "12.5.0",
+      "title": "Einfrier-Assistent",
+      "points": [
+        "Bei Posten, die bald ablaufen, erscheint jetzt \"Jetzt einfrieren?\".",
+        "Ein Tap verschiebt die Lagerzone auf Tiefkühler und verlängert das MHD um 6 Monate.",
+        "Die Verlängerung rechnet ab dem bisherigen MHD, nicht ab heute — die Reserve bleibt erhalten."
+      ]
+    },
+    {
+      "version": "12.4.0",
+      "title": "Kürzere Wege im Supermarkt",
+      "points": [
+        "Die Einkaufsliste gruppiert sich jetzt automatisch nach Supermarkt-Bereich, z. B. Obst & Gemüse, Kühlregal, Konserven.",
+        "Die Zuordnung kommt vom Vorrat — Kategorie beim Anlegen/Bearbeiten eines Postens setzen.",
+        "Der Vorrat lässt sich neu nach Lagerzone filtern (Kühlschrank, Tiefkühler, Vorratskammer, Keller)."
+      ]
+    },
+    {
+      "version": "12.3.0",
+      "title": "Barcode direkt in den Vorrat",
+      "points": [
+        "Neuer Scan-Button im Vorrat: Barcode scannen oder eingeben, Produktname kommt automatisch von Open Food Facts.",
+        "Kennt die App den Barcode schon, öffnet sich direkt der bestehende Posten zum Bearbeiten statt eines Duplikats.",
+        "Menge, MHD, Kategorie und Zone bleiben danach normal editierbar."
+      ]
+    },
+    {
+      "version": "12.2.0",
+      "title": "Einkaufsliste füllt sich von selbst",
+      "points": [
+        "Ist ein Vorratsposten aufgebraucht oder unter dem Mindestbestand, landet er automatisch auf der Einkaufsliste.",
+        "Den Mindestbestand legst du beim detaillierten Anlegen/Bearbeiten eines Postens fest — optional, wie MHD, Kategorie und Zone.",
+        "Gilt auch beim Kochen einer Woche: was der Vorrat dabei verliert, prüft die App genauso."
+      ]
+    },
+    {
+      "version": "12.1.0",
+      "title": "Vorrat mit Haltbarkeitsdatum",
+      "points": [
+        "Jeder Vorratsposten kann jetzt ein MHD, eine Kategorie, eine Lagerzone und einen Mindestbestand bekommen.",
+        "Ampel-Anzeige: Gelb ab 3 Tagen vor Ablauf, Rot ab dem Ablauftag.",
+        "Alles optional und jederzeit editierbar — die schnelle Eingabe ohne diese Angaben funktioniert weiter wie bisher."
+      ]
+    },
+    {
+      "version": "12.0.0",
+      "title": "Englisch, richtig gemacht",
+      "points": [
+        "Die App ist jetzt vollständig auf Deutsch und Englisch — offline, ohne Browser-Übersetzung.",
+        "Auch Übungs- und Lebensmittelnamen, CSV-Spalten und Fehlermeldungen wechseln mit.",
+        "Die Rechtstexte bleiben aus rechtlichen Gründen deutsch, mit Hinweis im Englisch-Modus."
+      ]
+    },
+    {
+      "version": "11.4.0",
+      "title": "Wartung im Trainingsbereich",
+      "points": [
+        "Wartungsarbeiten für einen stabileren Trainingsbereich.",
+        "Für dich ändert sich an der Bedienung nichts."
+      ]
+    },
+    {
+      "version": "11.3.0",
+      "title": "Grundlage für echtes Englisch",
+      "points": [
+        "Die Oberfläche bekommt einen eigenen Sprachkatalog statt der Browser-Übersetzung.",
+        "Trainingsbereich und geteilte Bausteine sind bereits übersetzt.",
+        "Die Umschaltung bleibt beim bisherigen Verhalten, bis alle Bereiche fertig sind."
+      ]
+    },
+    {
+      "version": "11.2.0",
+      "title": "Timer für Halteübungen",
+      "points": [
+        "Bei Übungen auf Zeit gibt es jetzt einen Startknopf: der Timer zählt auf die Zielzeit herunter.",
+        "Bei Ablauf kommt das Signal, danach läuft die Überzeit weiter — geloggt wird, was du wirklich gehalten hast.",
+        "Nach dem Stoppen wird der Satz eingetragen und die Pause startet von selbst."
+      ]
+    },
+    {
+      "version": "11.1.0",
+      "title": "Du siehst jetzt, was ein Update bringt",
+      "points": [
+        "Nach dem Neuladen zeigt die App einmalig, was sich geändert hat.",
+        "Die Update-Leiste nennt die Versionsnummer und die wichtigsten Punkte.",
+        "Die Liste steckt in der App selbst und funktioniert auch offline."
+      ]
+    },
+    {
+      "version": "11.0.2",
+      "title": "Die Ansicht bleibt beim Tabwechsel, wie sie ist",
+      "points": [
+        "Nach einem Tabwechsel war alles verkleinert und musste von Hand herausgezoomt werden.",
+        "Ursache war die Einschiebe-Bewegung: die Seite war kurz breiter als der Bildschirm.",
+        "Eingeblendete Hinweise richten sich wieder korrekt am Bildschirm aus."
+      ]
+    },
+    {
+      "version": "11.0.1",
+      "title": "Der Satz-Zähler passt wieder zum Ziel",
+      "points": [
+        "Der Zähler an der Übungskarte zählt nur noch Arbeitssätze.",
+        "Aufwärm- und Arbeitssätze sind getrennt durchnummeriert.",
+        "Schreibfehler „Satze\" behoben."
+      ]
+    },
+    {
+      "version": "11.0.0",
+      "title": "Aufwärmsätze",
+      "points": [
+        "Zu jeder Übung gibt es eine Aufwärm-Rampe, die sich am Arbeitsgewicht ausrichtet.",
+        "Aufwärmsätze zählen nicht mehr ins Trainingsvolumen — rückwirkend.",
+        "Anzahl je Übung einstellbar, Standard in den Trainings-Einstellungen."
+      ]
+    },
+    {
+      "version": "10.9.0",
+      "title": "Übungen tauschen",
+      "points": [
+        "Besetztes Gerät? Übung tauschen, mit passenden Vorschlägen.",
+        "Wahlweise nur für heute oder dauerhaft im Plan."
+      ]
+    },
+    {
+      "version": "10.8.0",
+      "title": "Übungskarten bleiben zugeklappt",
+      "points": [
+        "Der Zustand jeder Karte überlebt jetzt einen Neustart.",
+        "Akkordeon-Modus (immer nur eine Karte offen) als Einstellung."
+      ]
+    },
+    {
+      "version": "10.7.0",
+      "title": "Bizeps im Generator, ehrlichere Muskel-Balance",
+      "points": [
+        "Auch bei 1–3 Trainingstagen kommt Bizeps im Plan vor.",
+        "Helfermuskeln zählen zur Hälfte mit — sichtbar als heller Teil im Balken."
+      ]
+    }
+  ]
+}

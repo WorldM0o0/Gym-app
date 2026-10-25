@@ -1,0 +1,1 @@
+import{bx as n,by as s,bz as a,bA as r}from"./index-DjUS4W3P.js";function t(e){return{key:e.key,label:e.label,sets:e.setsSpanLabel,reps:e.repsSpanLabel,rest:e.compound.restLabel,hint:`${e.intensityLabel}. ${e.hint}`,goal:e}}const o=a.map(t),b=n;function A(e){return t(s(e))}function T(e){return r(e.goal)}export{b as D,o as T,T as f,A as g};
