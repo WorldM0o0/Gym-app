@@ -1,6 +1,6 @@
 {
-  "summary":  "Umsetzungsplan für gezielte Alltags- und Komfort-Verbesserungen (Quality of Life) ohne Feature-Ballast: Intelligente Suche & Sortierung (Zuletzt/Häufig zuerst, Ein-Tipp-Löschen, Kategorie-/Muskel-Schnellfilter), ruhigere Karten durch eingeklappte Sekundär-Details, schnellere Eingabe bei Training, Ernährung und Gewicht sowie sanfte Undo-Toasts statt unterbrechender Bestätigungs-Dialoge.",
-  "updatedAt":  "2026-10-25T11:54:52.411071939Z",
+  "summary":  "Umsetzungsplan für angepinnte Geräte-Notizen & Trainings-Feinschliff, automatische Systemsprachen-Erkennung (DE/EN) beim Erststart sowie gezielte iOS-/iPhone-Optimierungen (Dynamic Island Safe-Area, Audio-Interrupt-Recovery für den Pausentimer, Tastatur-Auto-Close und Touch-Ergonomie).",
+  "updatedAt":  "2026-10-26T08:16:10.437334310Z",
   "requestFeedback":  true,
   "userFacing":  true
 }
