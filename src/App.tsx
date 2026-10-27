@@ -3,55 +3,66 @@
  * Siehe LICENSE für Nutzungsbedingungen.
  */
 
-import { useEffect, useState } from 'react';
+const ALLOWED_TABS = new Set(['training', 'verlauf', 'ernaehrung', 'einstellungen']);
+const APP_ENTRY_MODULE = '/assets/index-DjUS4W3P.js?v=13.8.14';
 
-export default function App() {
-  const [ready, setReady] = useState(false);
+let booted = false;
 
-  useEffect(() => {
-    let active = true;
-    const timeout = window.setTimeout(() => {
-      if (active) setReady(true);
-    }, 400);
+export function bootGymApp(): void {
+  if (booted || typeof window === 'undefined') return;
+  booted = true;
 
-    (async () => {
-      try {
-        if ('caches' in window) {
-          const keys = await window.caches.keys();
-          await Promise.all(
-            keys
-              .filter((k) => k.startsWith('workbox-precache') || k.includes('precache'))
-              .map((k) => window.caches.delete(k))
-          );
-        }
-        if ('serviceWorker' in navigator) {
-          const regs = await navigator.serviceWorker.getRegistrations();
-          await Promise.all(regs.map((r) => r.update().catch(() => {})));
-        }
-      } catch {
-        // Ignore cache cleanup errors in restricted contexts
-      } finally {
-        window.clearTimeout(timeout);
-        if (active) setReady(true);
-      }
-    })();
+  // Map ?tab= query parameter (e.g. from PWA shortcuts) directly to hash route
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab')?.replace(/^\//, '').toLowerCase();
+    if (tab && ALLOWED_TABS.has(tab) && !window.location.hash) {
+      window.location.hash = `#/${tab}`;
+    }
+  } catch {
+    // Ignore URL parsing issues
+  }
 
-    return () => {
-      active = false;
-      window.clearTimeout(timeout);
-    };
-  }, []);
+  // Capture PWA install prompt events on the main window
+  const win = window as Window & { __gymDeferredPrompt?: Event | null };
+  window.addEventListener('beforeinstallprompt', (e: Event) => {
+    e.preventDefault();
+    win.__gymDeferredPrompt = e;
+    window.dispatchEvent(new CustomEvent('gym-pwa-prompt-ready'));
+  });
+  window.addEventListener('appinstalled', () => {
+    win.__gymDeferredPrompt = null;
+    window.dispatchEvent(new CustomEvent('gym-pwa-installed'));
+  });
 
-  return (
-    <main className="w-full h-screen m-0 p-0 overflow-hidden bg-[#111214]">
-      {ready && (
-        <iframe
-          src="/app.html"
-          title="Gym App"
-          className="w-full h-full border-none m-0 p-0 block"
-          allow="camera; microphone; display-capture"
-        />
-      )}
-    </main>
-  );
+  // Sync theme-color meta tag and body background whenever --color-surface changes
+  const syncSurfaceColor = () => {
+    const rootEl = document.documentElement;
+    const surface =
+      rootEl.style.getPropertyValue('--color-surface').trim() ||
+      getComputedStyle(rootEl).getPropertyValue('--color-surface').trim() ||
+      '#111214';
+    rootEl.style.setProperty('--app-surface', surface);
+    if (document.body) {
+      document.body.style.backgroundColor = surface;
+    }
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) {
+      themeMeta.setAttribute('content', surface);
+    }
+  };
+
+  syncSurfaceColor();
+  const observer = new MutationObserver(syncSurfaceColor);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['style', 'class'],
+  });
+
+  // Mount the main application bundle directly into #root (no iframe, no duplicate React root)
+  import(/* @vite-ignore */ APP_ENTRY_MODULE).catch((err) => {
+    console.error('Fehler beim Laden der Gym App:', err);
+  });
 }
+
+export default bootGymApp;

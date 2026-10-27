@@ -1,5 +1,30 @@
 @import "tailwindcss";
 
+:root {
+  --app-surface: #111214;
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  background-color: var(--color-surface, #111214);
+  color: var(--color-on-surface, #F2F4F3);
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  width: 100%;
+  min-height: 100dvh;
+}
+
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-results-button,
@@ -8,4 +33,3 @@ input[type="search"]::-webkit-search-results-decoration {
   appearance: none;
   display: none;
 }
-

@@ -1,1 +1,262 @@
-{"name":"Gym App","short_name":"Gym App","description":"Persönliche All-in-One Fitness-App – Training, Verlauf, Ernährung.","start_url":"/","display":"standalone","background_color":"#111214","theme_color":"#111214","lang":"de","scope":"/","id":"/","dir":"ltr","orientation":"portrait","icons":[{"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},{"src":"icons/icon-maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}],"screenshots":[{"src":"screenshots/01-training.png","sizes":"540x1080","type":"image/png","form_factor":"narrow","label":"Wochenplan und Routinen im Training-Tab"},{"src":"screenshots/02-ernaehrung.png","sizes":"540x1080","type":"image/png","form_factor":"narrow","label":"Tagesplan mit Kalorien- und Makro-Übersicht"},{"src":"screenshots/03-verlauf-muskeln.png","sizes":"540x1080","type":"image/png","form_factor":"narrow","label":"Muskel-Balance als Netzdiagramm mit Satz-Korridoren"},{"src":"screenshots/04-verlauf-trainings.png","sizes":"540x1080","type":"image/png","form_factor":"narrow","label":"Zeitraum-Vergleich und Trainingsverlauf"},{"src":"screenshots/05-plan-generator.png","sizes":"540x1080","type":"image/png","form_factor":"narrow","label":"Trainingsplan nach Zielen und Fokus generieren"},{"src":"screenshots/06-ernaehrung-verlauf.png","sizes":"540x1080","type":"image/png","form_factor":"narrow","label":"Kalorienverlauf und Makros im Wochenschnitt"},{"src":"screenshots/07-gewicht.png","sizes":"540x1080","type":"image/png","form_factor":"narrow","label":"Gewichtstagebuch mit Trendkurve und Zielrechner"},{"src":"screenshots/08-rezepte.png","sizes":"540x1080","type":"image/png","form_factor":"narrow","label":"Rezept-Vorschläge zum Übernehmen in den Wochenplan"},{"src":"screenshots/09-einstellungen.png","sizes":"540x1080","type":"image/png","form_factor":"narrow","label":"Einstellungen mit Export, Import und Archivierung"}]}
+{
+  "name": "Gym App",
+  "short_name": "Gym App",
+  "description": "Persönliche All-in-One Fitness-App – Training, Verlauf, Ernährung. Läuft komplett lokal ohne Cloud oder Tracking.",
+  "start_url": "/",
+  "id": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "tabbed",
+    "window-controls-overlay",
+    "standalone"
+  ],
+  "tab_strip": {
+    "home_tab": {
+      "url": "/",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    "new_tab_button": {
+      "url": "/"
+    }
+  },
+  "background_color": "#111214",
+  "theme_color": "#111214",
+  "lang": "de",
+  "dir": "ltr",
+  "orientation": "portrait",
+  "categories": [
+    "fitness",
+    "health",
+    "sports",
+    "lifestyle"
+  ],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "launch_handler": {
+    "client_mode": [
+      "navigate-existing",
+      "auto"
+    ]
+  },
+  "edge_side_panel": {
+    "preferred_width": 420
+  },
+  "note_taking": {
+    "new_note_url": "/?tab=training"
+  },
+  "scope_extensions": [
+    {
+      "type": "origin",
+      "origin": "https://gym-app.netlify.app"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/?import=backup",
+      "accept": {
+        "application/json": [
+          ".json"
+        ]
+      }
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+gymapp",
+      "url": "/?route=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "shortcuts": [
+    {
+      "name": "Training starten",
+      "short_name": "Training",
+      "description": "Heutiges Workout oder freie Einheit direkt starten",
+      "url": "/?tab=training",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Ernährung & Kalorien",
+      "short_name": "Ernährung",
+      "description": "Tagesplan, Makros und Rezepte öffnen",
+      "url": "/?tab=ernaehrung",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Trainingsverlauf",
+      "short_name": "Verlauf",
+      "description": "Muskel-Balance und Fortschritt ansehen",
+      "url": "/?tab=verlauf",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Einstellungen & Backup",
+      "short_name": "Backup",
+      "description": "Daten sichern, importieren oder anpassen",
+      "url": "/?tab=einstellungen",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "widgets": [
+    {
+      "name": "Gym App Training",
+      "short_name": "Training",
+      "description": "Schnellzugriff auf dein heutiges Training und deinen Wochenplan",
+      "tag": "gym-training",
+      "template": "gym-training-template",
+      "ms_ac_template": "/widgets/training-template.json",
+      "data": "/widgets/training-data.json",
+      "type": "application/json",
+      "auth": false,
+      "update": 3600,
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "/screenshots/01-training.png",
+          "sizes": "540x1080",
+          "type": "image/png",
+          "label": "Wochenplan und Routinen im Training-Tab"
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/01-training.png",
+      "sizes": "540x1080",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Wochenplan und Routinen im Training-Tab"
+    },
+    {
+      "src": "/screenshots/02-ernaehrung.png",
+      "sizes": "540x1080",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Tagesplan mit Kalorien- und Makro-Übersicht"
+    },
+    {
+      "src": "/screenshots/03-verlauf-muskeln.png",
+      "sizes": "540x1080",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Muskel-Balance als Netzdiagramm mit Satz-Korridoren"
+    },
+    {
+      "src": "/screenshots/04-verlauf-trainings.png",
+      "sizes": "540x1080",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Zeitraum-Vergleich und Trainingsverlauf"
+    },
+    {
+      "src": "/screenshots/05-plan-generator.png",
+      "sizes": "540x1080",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Trainingsplan nach Zielen und Fokus generieren"
+    },
+    {
+      "src": "/screenshots/06-ernaehrung-verlauf.png",
+      "sizes": "540x1080",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Kalorienverlauf und Makros im Wochenschnitt"
+    },
+    {
+      "src": "/screenshots/07-gewicht.png",
+      "sizes": "540x1080",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Gewichtstagebuch mit Trendkurve und Zielrechner"
+    },
+    {
+      "src": "/screenshots/08-rezepte.png",
+      "sizes": "540x1080",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Rezept-Vorschläge zum Übernehmen in den Wochenplan"
+    },
+    {
+      "src": "/screenshots/09-einstellungen.png",
+      "sizes": "540x1080",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Einstellungen mit Export, Import und Archivierung"
+    },
+    {
+      "src": "/screenshots/10-wide-overview.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Gym App – Training, Ernährung und Verlauf im Breitbild-Überblick"
+    }
+  ]
+}

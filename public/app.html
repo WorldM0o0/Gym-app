@@ -10,11 +10,11 @@
     <meta charset="UTF-8" />
     <meta name="author" content="Julian" />
     <meta name="copyright" content="© 2026 Julian – Alle Rechte vorbehalten." />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#111214" />
-    <meta name="description" content="Persönliche All-in-One Fitness-App – Training, Verlauf, Ernährung. Läuft komplett lokal." />
+    <meta name="description" content="Persönliche All-in-One Fitness-App – Training, Verlauf, Ernährung. Läuft komplett lokal ohne Cloud oder Tracking." />
     <meta property="og:title" content="Gym App" />
-    <meta property="og:description" content="Persönliche All-in-One Fitness-App – Training, Verlauf, Ernährung. Läuft komplett lokal." />
+    <meta property="og:description" content="Persönliche All-in-One Fitness-App – Training, Verlauf, Ernährung. Läuft komplett lokal ohne Cloud oder Tracking." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -28,16 +28,15 @@
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <title>Gym App</title>
     <script>
-      if ('caches' in window) {
-        caches.keys().then(function (keys) {
-          keys.forEach(function (k) {
-            if (k.indexOf('precache') !== -1) caches.delete(k);
-          });
-        }).catch(function () {});
+      if (window.self !== window.top) {
+        document.documentElement.classList.add('in-safe-iframe');
+      }
+      if (navigator.storage && navigator.storage.persist) {
+        navigator.storage.persist().catch(function () {});
       }
     </script>
-    <script type="module" crossorigin src="/assets/index-DjUS4W3P.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Bna0_7G_.css">
+    <script type="module" crossorigin src="/assets/index-DjUS4W3P.js?v=13.8.14"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bna0_7G_.css?v=13.8.14">
     <link rel="manifest" href="/manifest.webmanifest">
   </head>
   <body class="dark">
