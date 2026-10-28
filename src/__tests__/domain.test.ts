@@ -8,6 +8,22 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import {
+  PRESET_PETS,
+  ACCESSORIES,
+  getEvolutionStage,
+  calculateWorkoutXpGain,
+  calculateWorkoutStreak,
+  calculateTotalPetLevels,
+  isNightSleepWindow,
+  hasTrainedOnSameDay,
+  determinePositivePetMood,
+  isPresetPetUnlocked,
+  hexToHsl,
+  hslToHex,
+  getMonochromePetHex,
+  sanitizeGymBuddyBackupRecord,
+} from '../gymBuddy/gymBuddy';
 
 // ---------------------------------------------------------------------------
 // 1. Trainings-Mathematik (identisch zu index-DjUS4W3P.js & exerciseStats.worker)
@@ -313,5 +329,187 @@ describe('Backup-Schema-Validierung & Bundle-Integrität', () => {
       workerCode.length < 2500,
       'exerciseStats.worker sollte ohne ungenutzten React-Dead-Code unter 2,5 KB liegen'
     );
+
+    const appBootCode = fs.readFileSync(path.resolve('src/App.tsx'), 'utf8');
+    assert.ok(
+      !appBootCode.includes('import(/* @vite-ignore */'),
+      'src/App.tsx darf kein dynamisches import() für das Hauptbundle nutzen, da Vite sonst ?import anhängt und eine zweite React-Instanz erzeugt'
+    );
+  });
+
+  it('hält APP_VERSION, package.json, sw.js und das zweisprachige Changelog (DE/EN) synchron', () => {
+    const pkg = JSON.parse(fs.readFileSync(path.resolve('package.json'), 'utf8'));
+    const changelog = JSON.parse(fs.readFileSync(path.resolve('public/changelog.json'), 'utf8'));
+    const swCode = fs.readFileSync(path.resolve('public/sw.js'), 'utf8');
+    const indexBundle = fs.readFileSync(path.resolve('public/assets/index-DjUS4W3P.js'), 'utf8');
+    const deBundle = fs.readFileSync(path.resolve('public/assets/de-D5J3Pm2D.js'), 'utf8');
+
+    const latestEntry = changelog.entries[0];
+    assert.ok(latestEntry, 'Changelog muss mindestens einen Eintrag enthalten');
+    assert.equal(pkg.version, latestEntry.version, 'package.json Version muss mit Changelog übereinstimmen');
+    assert.ok(
+      indexBundle.includes(`const APP_VERSION="${latestEntry.version}"`),
+      'index-Bundle muss aktuelle APP_VERSION enthalten'
+    );
+    assert.ok(
+      swCode.includes(`const APP_VERSION = "${latestEntry.version}"`),
+      'sw.js muss aktuelle APP_VERSION enthalten'
+    );
+    assert.ok(
+      typeof latestEntry.title === 'string' && typeof latestEntry.titleEn === 'string',
+      'Aktueller Changelog-Eintrag muss deutschen und englischen Titel haben'
+    );
+    for (const pt of latestEntry.points) {
+      assert.ok(
+        typeof pt.text === 'string' && typeof pt.textEn === 'string',
+        'Jeder Punkt im aktuellen Changelog muss auf Deutsch (text) und Englisch (textEn) vorliegen'
+      );
+    }
+
+    // Prüfe 6-Schritte Spotlight-Tour & Zurück-Button in DE und EN
+    assert.ok(indexBundle.includes('id:"restSwap"'), 'Spotlight-Tour muss Schritt 3 (restSwap) enthalten');
+    assert.ok(indexBundle.includes('stepRestSwap:'), 'Englische Tour-Texte müssen stepRestSwap enthalten');
+    assert.ok(deBundle.includes('stepRestSwap:'), 'Deutsche Tour-Texte müssen stepRestSwap enthalten');
+    assert.ok(deBundle.includes('App-Tour / Tutorial neu starten'), 'Deutscher Tour-Neustart-Button muss vorhanden sein');
   });
 });
+
+// ---------------------------------------------------------------------------
+// 5. Gym Buddy (Tamagotchi-Begleiter – Schritt A)
+// ---------------------------------------------------------------------------
+
+describe('Gym Buddy (Tamagotchi-Logik, Cute/Progress-Stile, Post-Workout, Nachtschlaf & Backup)', () => {
+  it('teilt alle 10 Pets exakt 50/50 in Cute und Progress auf und enthält die 3 High-Level-Meilenstein-Pets', () => {
+    assert.equal(PRESET_PETS.length, 10, 'Es müssen 10 Preset-Pets vorhanden sein');
+    const cutePets = PRESET_PETS.filter((p) => p.style === 'cute');
+    const progressPets = PRESET_PETS.filter((p) => p.style === 'progress');
+    assert.equal(cutePets.length, 5, 'Exakt die Hälfte (5) muss im Cute-Stil sein');
+    assert.equal(progressPets.length, 5, 'Exakt die Hälfte (5) muss im Progress/Beast-Stil sein');
+
+    const shiba = PRESET_PETS.find((p) => p.id === 'shiba');
+    const axolotl = PRESET_PETS.find((p) => p.id === 'axolotl');
+    const cyberwolf = PRESET_PETS.find((p) => p.id === 'cyberwolf');
+    assert.ok(shiba && shiba.style === 'cute' && shiba.unlockWorkouts === 50);
+    assert.ok(axolotl && axolotl.style === 'cute' && axolotl.unlockWorkouts === 75);
+    assert.ok(cyberwolf && cyberwolf.style === 'progress' && cyberwolf.unlockWorkouts === 100);
+
+    // High-Level-Freischaltung über Workouts ODER Gesamt-Level über alle Pets
+    assert.equal(isPresetPetUnlocked(shiba, 20, 0, 2, 10), false);
+    assert.equal(isPresetPetUnlocked(shiba, 50, 0, 2, 4), true);
+    assert.equal(isPresetPetUnlocked(shiba, 15, 0, 3, 12), true);
+    assert.equal(isPresetPetUnlocked(cyberwolf, 40, 0, 4, 20), true);
+
+    const totalLvl = calculateTotalPetLevels({
+      robot: { xp: 600 }, // Stufe 4
+      bear: { xp: 300 },  // Stufe 3
+    });
+    assert.equal(totalLvl, 7);
+
+    const slots = new Set(ACCESSORIES.map((a) => a.slot));
+    assert.equal(slots.has('head'), true);
+    assert.equal(slots.has('body'), true);
+    assert.equal(slots.has('hand'), true);
+  });
+
+  it('berechnet die 4 Evolutionsstufen und XP-Fortschritt pro Pet korrekt', () => {
+    assert.equal(getEvolutionStage(0), 1);
+    assert.equal(getEvolutionStage(99), 1);
+    assert.equal(getEvolutionStage(100), 2);
+    assert.equal(getEvolutionStage(300), 3);
+    assert.equal(getEvolutionStage(600), 4);
+
+    // XP steigt durch Dauer und Streak
+    const baseXp = calculateWorkoutXpGain(20 * 60, 1);
+    const longStreakXp = calculateWorkoutXpGain(60 * 60, 5);
+    assert.ok(longStreakXp > baseXp, 'Längeres Workout + Streak muss mehr XP als kurzes Basis-Workout geben');
+  });
+
+  it('steuert post_workout (2h nach Training), Tages-Stimmungen und die Schlaf-Automatik (22:00–06:00 Uhr)', () => {
+    const daytimeNow = new Date(2026, 9, 27, 14, 0, 0).getTime(); // 14:00 Uhr tagsüber
+    const nightNow = new Date(2026, 9, 27, 23, 15, 0).getTime();  // 23:15 Uhr abends
+    const earlyMorningNow = new Date(2026, 9, 28, 4, 30, 0).getTime(); // 04:30 Uhr morgens
+
+    assert.equal(isNightSleepWindow(daytimeNow), false);
+    assert.equal(isNightSleepWindow(nightNow), true);
+    assert.equal(isNightSleepWindow(earlyMorningNow), true);
+
+    // Direkt nach dem Training (bis 2h): post_workout (erschöpft, aber stolz)
+    assert.equal(determinePositivePetMood(daytimeNow - 30 * 60 * 1000, daytimeNow), 'post_workout');
+    assert.equal(determinePositivePetMood(daytimeNow - 2 * 3600 * 1000, daytimeNow), 'post_workout');
+    // Nach > 2h bis 36h tagsüber: happy
+    assert.equal(determinePositivePetMood(daytimeNow - 5 * 3600 * 1000, daytimeNow), 'happy');
+    assert.equal(determinePositivePetMood(daytimeNow - 48 * 3600 * 1000, daytimeNow), 'idle');
+    assert.equal(determinePositivePetMood(daytimeNow - 80 * 3600 * 1000, daytimeNow), 'reading');
+    assert.equal(determinePositivePetMood(daytimeNow - 120 * 3600 * 1000, daytimeNow), 'sleep');
+    assert.equal(determinePositivePetMood(null, daytimeNow), 'sleep');
+
+    // Zwischen 22:00 und 06:00 Uhr automatisch im Schlaf-Modus (außer unmittelbar im 2h post_workout Fenster)
+    const workoutAt16h = new Date(2026, 9, 27, 16, 0, 0).getTime();
+    assert.equal(determinePositivePetMood(workoutAt16h, nightNow), 'sleep');
+    assert.equal(hasTrainedOnSameDay(workoutAt16h, nightNow), true);
+  });
+
+  it('konvertiert Hex <-> HSL für den freien Farbwähler präzise und liefert monochrome Theme-Defaults', () => {
+    const hex = '#3B82F6';
+    const hsl = hexToHsl(hex);
+    const roundtrip = hslToHex(hsl.h, hsl.s, hsl.l);
+    assert.ok(roundtrip.startsWith('#') && roundtrip.length === 7);
+
+    assert.equal(getMonochromePetHex(true), '#F2F4F7');
+    assert.equal(getMonochromePetHex(false), '#1E232B');
+  });
+
+  it('berechnet Trainings-Streaks aus Trainingstagen zuverlässig', () => {
+    const dayMs = 24 * 60 * 60 * 1000;
+    const now = new Date(2026, 9, 27, 12, 0, 0).getTime();
+    assert.equal(calculateWorkoutStreak([now, now - dayMs, now - 2 * dayMs], now), 3);
+    assert.equal(calculateWorkoutStreak([now - dayMs, now - 2 * dayMs], now), 2);
+    assert.equal(calculateWorkoutStreak([now - 10 * dayMs], now), 0);
+  });
+
+  it('validiert und bereinigt Gym-Buddy-Daten beim Backup-Import strikt gegen Manipulation', () => {
+    assert.equal(sanitizeGymBuddyBackupRecord(null), null);
+    assert.equal(sanitizeGymBuddyBackupRecord('invalid'), null);
+    assert.equal(sanitizeGymBuddyBackupRecord({ id: 'wrong' }), null);
+
+    const sanitized = sanitizeGymBuddyBackupRecord({
+      id: 'default',
+      enabled: false,
+      activePetId: 'robot',
+      petProgress: {
+        robot: {
+          customName: '  RoboMax  ',
+          colorMode: 'custom',
+          customHex: '#00ffaa',
+          xp: 450,
+          workoutsCompleted: 4,
+          totalMinutes: 180,
+          equipped: {
+            head: 'sunglasses',
+            body: 'x'.repeat(100),
+            hand: 'dumbbell',
+          },
+          accessoryColors: {
+            head: '#ff0055',
+            body: 'javascript:alert(1)',
+          },
+        },
+      },
+    });
+
+    assert.ok(sanitized, 'Valider Backup-Datensatz muss akzeptiert werden');
+    assert.equal(sanitized.enabled, false);
+    assert.equal(sanitized.activePetId, 'robot');
+    assert.equal(sanitized.petProgress.robot.customName, 'RoboMax');
+    assert.equal(sanitized.petProgress.robot.customHex, '#00FFAA');
+    assert.equal(sanitized.petProgress.robot.colorMode, 'custom');
+    assert.equal(sanitized.petProgress.robot.xp, 450);
+    assert.equal(sanitized.petProgress.robot.equipped.head, 'sunglasses');
+    assert.equal(sanitized.petProgress.robot.equipped.body, null);
+    assert.equal(sanitized.petProgress.robot.equipped.hand, 'dumbbell');
+    assert.equal(sanitized.petProgress.robot.accessoryColors.head, '#FF0055');
+    assert.equal(sanitized.petProgress.robot.accessoryColors.body, null);
+  });
+});
+
+

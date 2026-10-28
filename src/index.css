@@ -33,3 +33,106 @@ input[type="search"]::-webkit-search-results-decoration {
   appearance: none;
   display: none;
 }
+
+/* Gym Buddy – extrem ressourcenschonende SVG/CSS-Keyframe-Animationen */
+@keyframes gb-hop {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-0.75px); }
+}
+@keyframes gb-idle-bob {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-0.32px); }
+}
+@keyframes gb-post-workout-breathe {
+  0%, 100% { transform: translateY(0px) scale(1, 1); }
+  50% { transform: translateY(-0.25px) scale(1.035, 1.065); }
+}
+@keyframes gb-sleep-breathe {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(1.02, 1.045); }
+}
+@keyframes gb-eye-left-blink {
+  0%, 23.8%, 26.2%, 73.8%, 76.2%, 100% { transform: scaleY(1); }
+  24.6%, 25.4%, 74.6%, 75.4% { transform: scaleY(0.14); }
+}
+@keyframes gb-eye-right-wink {
+  0%, 23.8%, 26.2%, 47.8%, 52.2%, 73.8%, 76.2%, 95.8%, 100% { transform: scaleY(1); }
+  24.6%, 25.4%, 74.6%, 75.4% { transform: scaleY(0.14); }
+  48.6%, 51.4%, 96.6%, 99.4% { transform: scaleY(0.12); }
+}
+@keyframes gb-sweat-bob {
+  0%, 100% { transform: translateY(0px); opacity: 0.95; }
+  50% { transform: translateY(0.55px); opacity: 1; }
+}
+@keyframes gb-zzz-float-1 {
+  0%, 100% { transform: translate(0px, 0px); opacity: 0.35; }
+  50% { transform: translate(0.25px, -0.55px); opacity: 1; }
+}
+@keyframes gb-zzz-float-2 {
+  0%, 100% { transform: translate(0px, 0px); opacity: 0.95; }
+  50% { transform: translate(0.35px, -0.65px); opacity: 0.3; }
+}
+@keyframes gb-star-twinkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.12); }
+}
+@keyframes gb-aura-pulse {
+  0%, 100% { opacity: 0.28; transform: translateY(0px) scale(0.98); }
+  50% { opacity: 0.68; transform: translateY(-0.35px) scale(1.03); }
+}
+.gb-anim-happy {
+  animation: gb-hop 1.15s ease-in-out infinite;
+  transform-origin: 8px 14px;
+}
+.gb-anim-idle {
+  animation: gb-idle-bob 2.5s ease-in-out infinite;
+  transform-origin: 8px 14px;
+}
+.gb-anim-post-workout {
+  animation: gb-post-workout-breathe 2.8s ease-in-out infinite;
+  transform-origin: 8px 14px;
+}
+.gb-anim-sleep {
+  animation: gb-sleep-breathe 4.0s ease-in-out infinite;
+  transform-origin: 8px 14px;
+}
+.gb-eye-left-awake {
+  animation: gb-eye-left-blink 14s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center 78%;
+}
+.gb-eye-right-awake {
+  animation: gb-eye-right-wink 14s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center 78%;
+}
+.gb-sweat-drop {
+  animation: gb-sweat-bob 2.0s ease-in-out infinite;
+}
+.gb-zzz-1 {
+  animation: gb-zzz-float-1 3.2s ease-in-out infinite;
+}
+.gb-zzz-2 {
+  animation: gb-zzz-float-2 3.2s ease-in-out infinite;
+}
+.gb-star-a {
+  animation: gb-star-twinkle 2.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.gb-star-b {
+  animation: gb-star-twinkle 2.2s ease-in-out 1.1s infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.gb-beast-aura {
+  animation: gb-aura-pulse 1.9s ease-in-out infinite;
+  transform-origin: 8px 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gb-anim-happy, .gb-anim-idle, .gb-anim-post-workout, .gb-anim-sleep,
+  .gb-eye-left-awake, .gb-eye-right-awake, .gb-sweat-drop, .gb-zzz-1, .gb-zzz-2,
+  .gb-star-a, .gb-star-b, .gb-beast-aura {
+    animation: none !important;
+  }
+}

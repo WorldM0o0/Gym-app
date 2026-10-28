@@ -2,11 +2,116 @@
   "format": 1,
   "entries": [
     {
+      "version": "13.12.0",
+      "title": "Gym Buddy Feinschliff: Dezenter Pixel-Mund & Überraschungs-Evolution ohne Spoiler",
+      "titleEn": "Gym Buddy Polish: Subtle Pixel Mouth & Spoiler-Free Evolution Surprise",
+      "points": [
+        {
+          "text": "Überarbeiteter Pixel-Art-Mund & Torso-Shading für Progress-Pets: Der Mund aller Progress/Beast-Pets (wie Lifter-Max & Pumper-Monster) sitzt jetzt kompakt und stilgerecht mittig zwischen den Augen ohne weiße Balken, ergänzt durch weiches Muskel-Shading im Oberkörper.",
+          "textEn": "Refined pixel-art mouth & torso shading for Progress pets: The mouth on all Progress/Beast pets (such as Lifter-Max & Pump Monster) now sits compactly and cleanly between the eyes without white bars, paired with smooth torso muscle shading.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Keine Evolutions-Spoiler mehr: Die 4-Stufen-Evolutionsvorschau im Gym-Buddy-Menü wurde entfernt, damit jede neue Entwicklungsstufe beim Level-Up eine echte Überraschung bleibt.",
+          "textEn": "No more evolution spoilers: Removed the 4-stage evolution preview from the Gym Buddy sheet so every new evolution stage remains a genuine surprise when leveling up.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.11.0",
+      "title": "Gym Buddy Update: Lächeln & Zwinkern, Post-Workout-Modus, Nachtschlaf & 3 Endgame-Pets",
+      "titleEn": "Gym Buddy Update: Smile & Wink, Post-Workout Mode, Night Sleep & 3 Endgame Pets",
+      "points": [
+        {
+          "text": "Lebendige Gesichts-Animationen per SVG/CSS-Keyframes: Alle Buddys haben jetzt ein klar sichtbares, freundliches Lächeln (süßes Lächeln bei Cute-Pets, selbstbewusstes Grinsen bei Progress-Pets) und zwinkern dir etwa alle 7 Sekunden motivierend mit einem Auge zu — abgewechselt mit natürlichem Blinzeln.",
+          "textEn": "Lively facial animations via SVG/CSS keyframes: All buddies now feature a clearly visible, friendly smile (sweet smile on Cute pets, confident grin on Progress pets) and give you a motivating single-eye wink every ~7 seconds — alternating with natural blinking.",
+          "kind": "feature"
+        },
+        {
+          "text": "Neuer Post-Workout-Zustand & Schlaf-Automatik (22–06 Uhr): Direkt nach einem Workout (für 2 Stunden) atmet dein Buddy tief und stolz durch, trägt einen kleinen Schweißtropfen an der Stirn und strahlt übers ganze Gesicht. Zwischen 22:00 und 06:00 Uhr wechselt er automatisch in den friedlichen Nachtschlaf mit Zzz-Animation und sanftem Lächeln.",
+          "textEn": "New post-workout mood & night sleep automation (10 PM–6 AM): For 2 hours right after a workout, your buddy breathes deeply with a little forehead sweat drop and a proud smile. Between 10:00 PM and 6:00 AM, it automatically enters peaceful night sleep with floating Zzz animations and a gentle sleeping smile.",
+          "kind": "feature"
+        },
+        {
+          "text": "50/50-Aufteilung in ‚Cute‘ vs. ‚Progress‘ + 3 neue High-Level-Pets: Hälfte ‚Cute‘ (bleiben kompakt & knuffig, glänzende Augen, funkelnde Sterne auf Stufe 4) und Hälfte ‚Progress/Beast‘ (breiter, muskulöser + pulsierende Energie-Aura). Neu als späte Meilensteine: Pump-Shiba (ab 50 Workouts), Gains-Axolotl (ab 75 Workouts) und Cyber-Wolf (ab 100 Workouts oder hohem Gesamt-Pet-Level).",
+          "textEn": "50/50 split into 'Cute' vs. 'Progress' + 3 new high-level pets: Half 'Cute' (stay compact & adorable, glossy eyes, twinkling stars at Stage 4) and half 'Progress/Beast' (wider, more muscular + pulsing energy aura). New late-game milestones: Pump Shiba (50 workouts), Gains Axolotl (75 workouts), and Cyber Wolf (100 workouts or high total pet level).",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "13.10.0",
+      "title": "Neu: Gym Buddy – Dein rein positiver Trainings-Begleiter (Teil A)",
+      "titleEn": "New: Gym Buddy – Your Purely Positive Workout Companion (Part A)",
+      "points": [
+        {
+          "text": "Rein positiver Tamagotchi-Begleiter („Gym Buddy“): Dein Begleiter auf dem Trainings-Dashboard freut sich über jedes Training, liest an Ruhetagen entspannt ein Buch oder macht einen „Rest Day Power-Nap“ — komplett ohne Bestrafung, Stress oder schlechtes Gewissen.",
+          "textEn": "Purely positive Tamagotchi companion ('Gym Buddy'): Your companion on the Training dashboard celebrates every workout, reads a book on rest days, or takes a 'Rest Day Power-Nap' — with zero punishment, guilt, or stress.",
+          "kind": "feature"
+        },
+        {
+          "text": "7 Begleiter & 4 Evolutionsstufen: Starte mit 4 Charakteren (Pumper-Monster, Iron-Bot, Mini-Lifter, Kraft-Bär) und schalte 3 weitere durch Meilensteine frei. Jedes Pet speichert seinen eigenen Fortschritt über 4 Entwicklungsstufen.",
+          "textEn": "7 companions & 4 evolution stages: Start with 4 characters (Pump Monster, Iron-Bot, Mini Lifter, Power Bear) and unlock 3 more via milestones. Each pet saves its own progress across 4 evolution stages.",
+          "kind": "feature"
+        },
+        {
+          "text": "Echter Farbwähler, freischaltbare Accessoires & Backup-Integration: Vergib eigene Namen, wähle jede beliebige Farbe per HSL-Slider & Hex-Eingabe (Standard: edles Monochrom passend zum Theme) und rüste freigeschaltete Accessoires (Schweißband, Sonnenbrille, Hoodie, Hantel u. v. m.) aus. In den Einstellungen jederzeit komplett abschaltbar.",
+          "textEn": "True color picker, unlockable accessories & backup integration: Give your pet a custom name, pick any color via HSL sliders & hex input (default: sleek theme-matching monochrome), and equip unlocked accessories (sweatband, sunglasses, hoodie, dumbbell, etc.). Can be completely disabled anytime in Settings.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "13.9.0",
+      "title": "Großes Funktions-Update: Pausentimer, Rezepte (DE/EN), Autoregulation, Swap & neue App-Tour",
+      "titleEn": "Major Feature Update: Rest Timer, Recipes (DE/EN), Autoregulation, Swap & New App Tour",
+      "points": [
+        {
+          "text": "Minimierbarer Pausentimer: Den Vollbild-Pausentimer kannst du jetzt jederzeit in eine kompakte, schwebende Leiste am unteren Bildschirmrand minimieren, um während der Pause frei im Training zu blättern oder Sätze vorzubereiten — und per Tipp wieder groß öffnen.",
+          "textEn": "Minimizable rest timer: You can now minimize the fullscreen rest timer into a compact floating bar at the bottom of the screen at any time to browse your workout or prepare sets during rest — and expand it back with one tap.",
+          "kind": "feature"
+        },
+        {
+          "text": "Komplette Rezept-Ansicht mit echter DE/EN-Übersetzung: Jedes Rezept im Ernährungs-Tab lässt sich jetzt mit vollständiger Zutatenliste (inkl. Mengenskalierung), Makros und Schritt-für-Schritt-Zubereitung aufklappen — automatisch passend zu deiner gewählten App-Sprache auf Deutsch oder Englisch.",
+          "textEn": "Complete recipe view with true DE/EN translation: Every recipe in the Nutrition tab now expands to show the full ingredient list (with portion scaling), macros, and step-by-step instructions — automatically translated into German or English based on your app language.",
+          "kind": "feature"
+        },
+        {
+          "text": "Erweiterter Übungs-Tausch (Swap): Ist ein Gerät im Gym besetzt, bietet dir der „⇄ Swap“-Dialog auf der Übungskarte und im Plan-Generator jetzt deutlich mehr passende Ersatzübungen (gleiche Muskelgruppe & Bewegungsrichtung) inklusive direkter Suche über alle Übungen.",
+          "textEn": "Enhanced exercise swap dialog: When a machine in the gym is taken, the '⇄ Swap' dialog on exercise cards and in the plan generator now suggests a much wider range of matching replacement exercises (same muscle group & movement pattern) plus a full exercise search.",
+          "kind": "feature"
+        },
+        {
+          "text": "Autoregulations-Fix & saubere Gewichtsrundung: Die automatische Gewichtsanpassung anhand deiner Tagesform (RPE/RIR) greift jetzt erst präzise ab dem 2. Arbeitssatz (im Vergleich zum vorigen Satz derselben Einheit) und rundet vorgeschlagene Gewichte immer sauber auf deine eingestellte Gewichtsstufe (z. B. 2,5 kg).",
+          "textEn": "Autoregulation fix & clean weight rounding: Automatic weight adjustment based on your daily form (RPE/RIR) now accurately triggers from the 2nd working set onwards (compared against the previous set of the same session) and cleanly rounds suggested weights to your configured weight step (e.g. 2.5 kg).",
+          "kind": "fix"
+        },
+        {
+          "text": "Stabilisierte Übungskarten im Training: Aktive Übungskarten bleiben während der Satzeingabe ruhig an ihrer Position und wandern erst nach Abschluss aller Zielsätze zu den erledigten Übungen — kein ungewolltes Wegspringen mehr beim Tippen.",
+          "textEn": "Stabilized exercise cards during workouts: Active exercise cards stay anchored in place while logging sets and only move to completed once all target sets are done — no more cards jumping away under your thumb.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Verbesserte 7-Tage-Muskel-Balance & „🏆 PR“-Badges: Präzisere Berechnung der wöchentlichen Satz-Ziele je Muskelgruppe im Verlauf sowie übersichtliche „🏆 PR“-Rekord-Auszeichnungen direkt beim Satz und in der Trainings-Zusammenfassung.",
+          "textEn": "Improved 7-day muscle balance & '🏆 PR' badges: More accurate calculation of weekly set targets per muscle group in History plus clear '🏆 PR' personal record badges directly on set rows and in the workout summary.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Neue interaktive 6-Schritte Spotlight-Tour & automatisches Update-Fenster: Das Einsteiger-Tutorial erklärt jetzt alle Kernfunktionen mit realistischen Vorschau-Karten, Zurück/Weiter-Navigation und lässt sich in den Einstellungen jederzeit neu starten. Nach jedem App-Update öffnet sich „Was ist neu?“ automatisch.",
+          "textEn": "New interactive 6-step Spotlight tour & automatic update modal: The onboarding tutorial now explains all core features with realistic preview cards and Back/Next navigation, and can be restarted anytime in Settings. After every app update, 'What's new?' opens automatically.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
       "version": "13.8.1",
       "title": "Nur noch ein Hinweis pro Update",
+      "titleEn": "Only one notification per update",
       "points": [
         {
           "text": "Bei einem Update kamen zwei Meldungen mit demselben Inhalt: erst der kleine Balken unten mit den Änderungen, nach dem Neuladen dasselbe nochmal in groß. Der Balken sagt jetzt nur noch, dass eine neue Version bereitliegt — was drin ist, liest du wie gehabt hier im großen Fenster.",
+          "textEn": "Previously, an update showed two messages with the same content: first the bottom banner and then the full modal after reloading. The banner now simply notifies you that a new version is ready — and the full changelog opens automatically here after reloading.",
           "kind": "fix"
         }
       ]
@@ -14,17 +119,21 @@
     {
       "version": "13.8.0",
       "title": "Die Übungsliste sortiert sich selbst",
+      "titleEn": "Smart exercise list sorting",
       "points": [
         {
           "text": "Während einer Einheit rutscht die Übung, an der du zuletzt gearbeitet hast, nach oben. Ist sie abgeschlossen, wandert sie stattdessen nach unten zu den erledigten. Alles andere behält die Reihenfolge aus deinem Plan.",
+          "textEn": "During a session, the exercise you worked on most recently moves to the top. Once completed, it moves down to the finished exercises while everything else keeps your planned order.",
           "kind": "feature"
         },
         {
           "text": "Es wandert immer nur eine Übung nach oben. Wer zwischen zwei Geräten hin- und herspringt, bekommt sonst bei jedem Satz eine andere Anordnung und findet nichts wieder.",
+          "textEn": "Only one active exercise moves to the top at a time, keeping the list predictable even when alternating between two machines.",
           "kind": "improvement"
         },
         {
           "text": "Die Karte, an der du gerade tippst, bleibt dabei an ihrer Stelle auf dem Bildschirm — die Liste ordnet sich um deinen Daumen herum, statt unter ihm wegzuspringen.",
+          "textEn": "The card you are currently interacting with stays anchored on screen instead of jumping away.",
           "kind": "improvement"
         }
       ]
@@ -32,21 +141,26 @@
     {
       "version": "13.7.0",
       "title": "Du siehst jetzt, wie weit du bist",
+      "titleEn": "Clear workout and exercise progress",
       "points": [
         {
           "text": "Jede Übungskarte zeigt während der Session dauerhaft ihren Stand: ein Statuspunkt vor dem Namen, der Zähler „x/y“ und ein Fortschrittsbalken darunter. Fertige Übungen erkennst du beim Durchscrollen sofort — der Name wird gedämpft, Punkt und Zähler wechseln in die Akzentfarbe.",
+          "textEn": "Every exercise card permanently displays its progress during a session: a status dot, 'x/y' set counter, and a progress bar underneath. Completed exercises are immediately recognizable while scrolling.",
           "kind": "feature"
         },
         {
           "text": "Die Kopfzeile der Session zeigt denselben Fortschritt fürs ganze Training. Aufwärmsätze zählen dabei nicht mit.",
+          "textEn": "The session header shows the overall progress for the entire workout (excluding warm-up sets).",
           "kind": "feature"
         },
         {
           "text": "Die Wisch-Geste an der Satzzeile ist wieder entfernt. Knopf und Geste am selben Element waren zwei Wege zum selben Ziel, und eine Eingabemaske bietet der Geste keine natürliche Fläche zum Anfassen. „Satz bestätigen“ bleibt der eine Weg.",
+          "textEn": "Simplified set confirmation: 'Confirm set' is the single clear action to log your set without accidental swipe triggers.",
           "kind": "improvement"
         },
         {
           "text": "Bugfix: In den Einstellungen musste immer genau ein Abschnitt offen sein — ein Tippen auf den offenen tat nichts. Jetzt schließt er sich.",
+          "textEn": "Bugfix: Tapping an open accordion section in Settings now properly closes it.",
           "kind": "fix"
         }
       ]
@@ -54,17 +168,21 @@
     {
       "version": "13.6.3",
       "title": "Die Wisch-Geste funktioniert jetzt wirklich",
+      "titleEn": "Touch gesture & input refinements",
       "points": [
         {
           "text": "Bugfix: Am Handy passierte beim Wischen an der Satzzeile gar nichts. Der Browser hielt jede Berührung für einen Scrollversuch und brach sie ab, bevor die App sie sah. Jetzt bekommt die App die waagerechte Richtung, der Browser behält die senkrechte — Scrollen geht unverändert.",
+          "textEn": "Bugfix: Horizontal touch gestures no longer conflict with vertical page scrolling on mobile browsers.",
           "kind": "fix"
         },
         {
           "text": "Bugfix: Die Geste ließ sich fast nirgends starten, weil die Zeile fast vollständig aus Bedienelementen besteht. Jetzt darf der Daumen überall in der Zeile aufsetzen — nur die Zahlenfelder und die scrollbare Satztyp-Reihe behalten ihre eigene Geste. Ein Wisch, der auf einem Knopf beginnt, löst diesen Knopf nicht mehr zusätzlich aus.",
+          "textEn": "Bugfix: Improved touch target handling on set input rows.",
           "kind": "fix"
         },
         {
           "text": "Am Rechner lässt sich die Geste jetzt auch mit der Maus ausprobieren.",
+          "textEn": "Added mouse pointer support on desktop.",
           "kind": "improvement"
         }
       ]
@@ -72,17 +190,21 @@
     {
       "version": "13.6.2",
       "title": "Drei Funde aus dem Gerätetest",
+      "titleEn": "Three improvements from device testing",
       "points": [
         {
           "text": "Bugfix: Auf einem leeren Bildschirm — etwa im Verlauf, bevor das erste Training drin steht — ließ sich nicht zum nächsten Reiter wischen. Die Wischfläche war nur so hoch wie ihr Inhalt; darunter nahm die App die Geste gar nicht erst an. Jetzt reicht sie immer bis zum unteren Bildschirmrand.",
+          "textEn": "Bugfix: Swiping between tabs now works across the full screen height even when a tab has little or no content.",
           "kind": "fix"
         },
         {
           "text": "Bugfix: Nach dem Einspielen einer Sicherung kam die Einführungstour wieder, und der Nutzungshinweis ebenso. Beides gehört zum Gerät, nicht zu den Trainingsdaten — bereits erteilte Bestätigungen bleiben jetzt bestehen, und der Tour-Stand wird nicht auf eine ältere Sicherung zurückgedreht.",
+          "textEn": "Bugfix: Restoring a backup no longer resets your device's completed onboarding tour or usage notice acknowledgment.",
           "kind": "fix"
         },
         {
           "text": "Neu: Der Übungsverlauf hat ein Suchfeld. Ab acht Übungen erscheint es über der Liste und filtert sie beim Tippen; die Trefferzahl steht daneben. Das alte Auswahlfeld darüber ist entfallen — es zeigte dieselben Namen ein zweites Mal, ohne sie durchsuchbar zu machen.",
+          "textEn": "New: Exercise history now includes a live search bar with result count once you have 8 or more exercises.",
           "kind": "feature"
         }
       ]
@@ -90,25 +212,31 @@
     {
       "version": "13.6.0",
       "title": "Mehrere Muskelgruppen je Übung, neue Zusammenfassung",
+      "titleEn": "Multiple muscle groups per exercise & new workout summary",
       "points": [
         {
           "text": "Eigene Übungen können jetzt mehrere Muskelgruppen haben. „Direkt trainiert“ nimmt beliebig viele (Klimmzug = Rücken + Bizeps), „Mittrainiert“ die Synergisten. In der Muskel-Balance zählt jede direkte Gruppe einen vollen Satz, jede mittrainierte einen halben.",
+          "textEn": "Custom exercises can now target multiple primary and secondary muscle groups. In Muscle Balance, each primary muscle counts as 1 full set and each secondary muscle as 0.5 sets.",
           "kind": "feature"
         },
         {
           "text": "Nach dem Training kommt eine richtige Zusammenfassung als eigener Bildschirm: Dauer, Volumen, Sätze und Übungen im Gitter, deine neuen Rekorde und die trainierten Muskeln als Balken.",
+          "textEn": "Completing a workout now opens a dedicated summary screen with duration, volume, sets, exercises, personal records, and trained muscle group bars.",
           "kind": "feature"
         },
         {
           "text": "Die Übungs-Detailansicht im Verlauf ist ebenfalls ein eigener Bildschirm: Bestwerte im Gitter, aktueller Wert groß, Rekorde und Verlauf als Listen.",
+          "textEn": "Redesigned exercise detail view in History with personal bests grid, current e1RM highlight, and full record & session lists.",
           "kind": "improvement"
         },
         {
           "text": "Der Ernährungs-Tab lädt schneller: Rezepte, Lebensmittel, Einkauf, Vorrat, Verlauf und Gewicht werden erst beim Öffnen geladen (162 kB → 82 kB).",
+          "textEn": "Faster Nutrition tab loading through on-demand code splitting.",
           "kind": "improvement"
         },
         {
           "text": "Bugfix: „Aktuell“ in der Übungs-Detailansicht und der Anlegen-Knopf im Übungsformular standen in der englischen Oberfläche noch auf Deutsch.",
+          "textEn": "Bugfix: Fixed remaining German labels in the English exercise detail view and custom exercise form.",
           "kind": "fix"
         }
       ]

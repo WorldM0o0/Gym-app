@@ -1,7 +1,14 @@
-const CACHE_NAME = "gym-app-offline-v9";
-const ICON_CACHE = "gym-app-icons-v9";
-const SHELL_CACHE = "gym-app-shell-v9";
-const RUNTIME_CACHE = "gym-app-runtime-v9";
+/**
+ * ⚠️ DAUERHAFTE PFLICHT-REGEL FÜR KI-ENTWICKLER (MANDATORY AI DEVELOPER RULE):
+ * Bei JEDER Code-Änderung an der App muss `CACHE_NAME` (sowie ICON/SHELL/RUNTIME_CACHE)
+ * synchron mit `APP_VERSION` (`13.9.0`) hochgezählt werden, damit Netlify-Deploys
+ * bei bestehenden Nutzern automatisch das Update-Banner & "Was ist neu?" auslösen!
+ */
+const APP_VERSION = "13.12.0";
+const CACHE_NAME = "gym-app-offline-v13-12-0";
+const ICON_CACHE = "gym-app-icons-v13-12-0";
+const SHELL_CACHE = "gym-app-shell-v13-12-0";
+const RUNTIME_CACHE = "gym-app-runtime-v13-12-0";
 const OFFLINE_URL = "/index.html";
 
 const ICON_PATHS = [
@@ -52,6 +59,7 @@ const PRECACHE_ASSETS = [
   "/assets/fetchWithTimeout-CbW2UsEj.js",
   "/assets/foods-CFScO8lP.js",
   "/assets/generatedPlanAssignment-CxxU_aVg.js",
+  "/assets/gymBuddy.js",
   "/assets/index-Bna0_7G_.css",
   "/assets/index-DjUS4W3P.js",
   "/assets/muscleBalance-CEkIZpHD.js",
@@ -83,7 +91,7 @@ self.addEventListener("install", (event) => {
       await Promise.all(
         PRECACHE_ASSETS.map(async (url) => {
           try {
-            const response = await fetch(url, { credentials: "same-origin" });
+            const response = await fetch(url, { credentials: "same-origin", cache: "reload" });
             if (response && response.ok) {
               await cache.put(url, response.clone());
             }
@@ -189,28 +197,31 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // 3. Static JS/CSS/font assets: Cache-first with validated network fallback (never return HTML for JS/CSS!)
+  // 3. Static JS/CSS/font assets: Network-first for JS/CSS (so updates apply immediately), Cache-first for fonts
+  const isFontAsset = url.pathname.startsWith("/fonts/") || url.pathname.endsWith(".woff2");
   const isCodeOrFontAsset =
+    isFontAsset ||
     url.pathname.startsWith("/assets/") ||
-    url.pathname.startsWith("/fonts/") ||
     url.pathname.endsWith(".js") ||
     url.pathname.endsWith(".css");
 
   if (isCodeOrFontAsset) {
     event.respondWith(
       (async () => {
-        const cachedByPath = await caches.match(url.pathname);
-        if (cachedByPath && isValidAssetResponse(url.pathname, cachedByPath)) {
-          return cachedByPath;
-        }
-        const cachedByReq = await caches.match(event.request);
-        if (cachedByReq && isValidAssetResponse(url.pathname, cachedByReq)) {
-          return cachedByReq;
+        if (isFontAsset) {
+          try {
+            const currentCache = await caches.open(CACHE_NAME);
+            const cachedFont = await currentCache.match(url.pathname);
+            if (cachedFont && isValidAssetResponse(url.pathname, cachedFont)) {
+              return cachedFont;
+            }
+          } catch {}
         }
 
         try {
           const networkResponse = await fetch(url.pathname, {
-            credentials: "same-origin"
+            credentials: "same-origin",
+            cache: isFontAsset ? "default" : "no-cache"
           });
           if (isValidAssetResponse(url.pathname, networkResponse)) {
             const clone = networkResponse.clone();
@@ -219,6 +230,18 @@ self.addEventListener("fetch", (event) => {
               .then((cache) => cache.put(url.pathname, clone))
               .catch(() => {});
             return networkResponse;
+          }
+        } catch {}
+
+        try {
+          const currentCache = await caches.open(CACHE_NAME);
+          const cachedByPath = await currentCache.match(url.pathname);
+          if (cachedByPath && isValidAssetResponse(url.pathname, cachedByPath)) {
+            return cachedByPath;
+          }
+          const cachedByReq = await currentCache.match(event.request);
+          if (cachedByReq && isValidAssetResponse(url.pathname, cachedByReq)) {
+            return cachedByReq;
           }
         } catch {}
 

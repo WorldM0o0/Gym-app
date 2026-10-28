@@ -3,8 +3,17 @@
  * Siehe LICENSE für Nutzungsbedingungen.
  */
 
+/**
+ * ⚠️ DAUERHAFTE PFLICHT-REGEL FÜR KI-ENTWICKLER (MANDATORY AI DEVELOPER RULE):
+ * Bei JEDER künftigen Code-Änderung an dieser App musst du unaufgefordert und automatisch:
+ * 1. Die Versionsnummer (`APP_VERSION` hier, `Rr`/`APP_VERSION` in `public/assets/index-DjUS4W3P.js`,
+ *    `package.json`, `index.html`, `public/app.html` sowie `CACHE_NAME` in `public/sw.js`) um eins hochzählen!
+ * 2. Die neuen Änderungen sofort zweisprachig auf Deutsch UND Englisch in `public/changelog.json`
+ *    sowie in `INLINE_CHANGELOG` (`public/assets/index-DjUS4W3P.js`) unter "Was ist neu?" eintragen!
+ */
+export const APP_VERSION = '13.12.0';
 const ALLOWED_TABS = new Set(['training', 'verlauf', 'ernaehrung', 'einstellungen']);
-const APP_ENTRY_MODULE = '/assets/index-DjUS4W3P.js?v=13.8.14';
+const APP_ENTRY_MODULE = '/assets/index-DjUS4W3P.js';
 
 let booted = false;
 
@@ -59,10 +68,57 @@ export function bootGymApp(): void {
     attributeFilter: ['style', 'class'],
   });
 
-  // Mount the main application bundle directly into #root (no iframe, no duplicate React root)
-  import(/* @vite-ignore */ APP_ENTRY_MODULE).catch((err) => {
-    console.error('Fehler beim Laden der Gym App:', err);
-  });
+  // Purge any older Service Worker caches so updated /assets/*.js modules load fresh immediately
+  const mountEntry = () => {
+    if (!document.querySelector(`script[data-gym-entry="${APP_ENTRY_MODULE}"]`)) {
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.crossOrigin = '';
+      script.src = APP_ENTRY_MODULE;
+      script.setAttribute('data-gym-entry', APP_ENTRY_MODULE);
+      script.onerror = (err) => {
+        console.error('Fehler beim Laden der Gym App:', err);
+      };
+      document.head.appendChild(script);
+    }
+  };
+
+  try {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .getRegistrations()
+        .then((regs) => regs.forEach((r) => r.update().catch(() => {})))
+        .catch(() => {});
+    }
+    const cacheCleanPromise =
+      'caches' in window
+        ? window.caches
+            .keys()
+            .then((keys) =>
+              Promise.all(
+                keys
+                  .filter((k) => !k.endsWith('v13-12-0'))
+                  .map((k) => window.caches.delete(k).catch(() => false))
+              )
+            )
+            .catch(() => {})
+        : Promise.resolve();
+
+    const reloadAssetsPromise = Promise.all([
+      fetch('/assets/index-DjUS4W3P.js', { cache: 'reload' }).catch(() => {}),
+      fetch('/assets/gymBuddy.js', { cache: 'reload' }).catch(() => {}),
+      fetch('/assets/gymBuddy.js?v=13.12.0', { cache: 'reload' }).catch(() => {}),
+      fetch('/assets/SettingsScreen-DEAqAtbV.js', { cache: 'reload' }).catch(() => {}),
+      fetch('/assets/backupExport-ByV0wFPi.js', { cache: 'reload' }).catch(() => {}),
+    ]);
+
+    Promise.all([cacheCleanPromise, reloadAssetsPromise]).finally(mountEntry);
+    return;
+  } catch {
+    // Fallback to immediate mount
+  }
+
+  mountEntry();
 }
 
 export default bootGymApp;
