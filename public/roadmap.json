@@ -26,6 +26,14 @@
       "descriptionEn": "Local pre-cache for your most frequently scanned food barcodes for instant scanning without gym basement connection drops."
     },
     {
+      "id": "break-comeback-system",
+      "status": "shipped",
+      "title": "Automatische Pausen- & Comeback-Erkennung (Streak-Schutz & Deload-Kopplung)",
+      "titleEn": "Automatic Break & Comeback Detection (Streak Protection & Deload Coupling)",
+      "description": "Vollautomatische Erkennung längerer Trainingspausen beim Öffnen der App mit „Willkommen zurück!“-Abfrage (Urlaub, Krankheit, Erholung) zur rückwirkenden Streak-Rettung, automatischem Deload-Reset ab 7 Tagen Pause und sanftem Comeback-Workout-Hinweis.",
+      "descriptionEn": "Fully automatic detection of longer workout gaps when opening the app with a 'Welcome back!' prompt (Vacation, Sick, Recovery) for retroactive streak protection, automatic deload reset after 7+ days off, and gentle comeback workout guidance."
+    },
+    {
       "id": "interactive-live-tab-tour-polish",
       "status": "shipped",
       "title": "Interaktive 5-Schritte-Tour mit Live-Tab-Wechsel & UI/UX-Polish",

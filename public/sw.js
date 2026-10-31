@@ -4,11 +4,11 @@
  * synchron mit `APP_VERSION` hochgezählt werden!
  * Zusätzlich müssen Roadmap & Previews stets automatisch synchron zum Implementierungsstand gepflegt werden!
  */
-const APP_VERSION = "13.21.0";
-const CACHE_NAME = "gym-app-offline-v13-21-0";
-const ICON_CACHE = "gym-app-icons-v13-21-0";
-const SHELL_CACHE = "gym-app-shell-v13-21-0";
-const RUNTIME_CACHE = "gym-app-runtime-v13-21-0";
+const APP_VERSION = "13.26.0";
+const CACHE_NAME = "gym-app-offline-v13-26-0";
+const ICON_CACHE = "gym-app-icons-v13-26-0";
+const SHELL_CACHE = "gym-app-shell-v13-26-0";
+const RUNTIME_CACHE = "gym-app-runtime-v13-26-0";
 const OFFLINE_URL = "/index.html";
 const NETWORK_TIMEOUT_MS = 3500;
 

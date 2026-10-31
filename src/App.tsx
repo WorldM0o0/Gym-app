@@ -18,10 +18,10 @@
  *    auf animierten Elementen, `env(safe-area-inset-*)`, `-webkit-tap-highlight-color: transparent`,
  *    `navigator.storage?.persist()` sowie `navigator.share` beim Backup-Export).
  */
-export const APP_VERSION = '13.21.0';
+export const APP_VERSION = '13.26.0';
 const ALLOWED_TABS = new Set(['training', 'verlauf', 'ernaehrung', 'einstellungen']);
 const APP_ENTRY_MODULE = '/assets/index-DjUS4W3P.js';
-const CACHE_VERSION_SUFFIX = 'v13-21-0';
+const CACHE_VERSION_SUFFIX = 'v13-26-0';
 const PURGED_VERSION_STORAGE_KEY = 'gym-cache-purged-version';
 
 interface GymWindow extends Window {

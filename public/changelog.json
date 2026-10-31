@@ -2,6 +2,89 @@
   "format": 1,
   "entries": [
     {
+      "version": "13.26.0",
+      "title": "Vollautomatische Pausen- & Comeback-Erkennung (ohne manuelle Pausen-Buttons)",
+      "titleEn": "Fully Automatic Break & Comeback Detection (No Manual Pause Buttons)",
+      "points": [
+        {
+          "text": "Sichtbare Pausen-Buttons entfernt – 100 % automatische Erkennung: Alle permanent sichtbaren „⏸️ Pause“-Buttons und manuellen Pausen-Karten im Dashboard, Pet-Menü und in den Einstellungen wurden entfernt. Stattdessen erkennt die App jetzt komplett automatisch, wenn du die App länger nicht geöffnet oder länger kein Training geloggt hast.",
+          "textEn": "Removed manual pause buttons — 100% automatic detection: All permanently visible '⏸️ Pause' buttons and manual break cards on the dashboard, in the pet menu, and in Settings have been removed. Instead, the app automatically detects when you haven't opened the app or logged a workout in a while.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Automatische „Willkommen zurück!“-Abfrage zur Streak-Rettung & Deload-Anpassung: Sobald nach einer längeren Trainingspause (ab 4 Tagen ohne Workout bzw. 5 Tagen in Zyklus-Phase 1) deine Streak unterbrochen wäre, fragt dich die App beim Öffnen automatisch, ob du krank, im Urlaub oder regenerieren warst – und schützt mit einem Tipp rückwirkend deine Streak sowie deinen Deload-Zähler.",
+          "textEn": "Automatic 'Welcome back!' prompt for streak protection & deload adjustment: Whenever a longer training gap (4+ days without a workout, or 5+ days in Cycle Phase 1) would break your streak, the app automatically asks on launch whether you were sick, on vacation, or recovering — retroactively protecting your streak and deload counter with a single tap.",
+          "kind": "feature"
+        }
+      ]
+    },
+    {
+      "version": "13.25.0",
+      "title": "Einstellungen bereinigt (Demo-Daten-Loader entfernt)",
+      "titleEn": "Settings Cleanup (Removed Demo Data Loader)",
+      "points": [
+        {
+          "text": "Entwickler-/Demo-Daten-Button entfernt: Der temporäre Button zum Laden von Demo-Daten und alle zugehörigen Hilfsfunktionen wurden wieder vollständig aus den Einstellungen und der App-Übersicht entfernt.",
+          "textEn": "Removed developer/demo data button: Completely removed the temporary demo data loader button and all associated helper functions from Settings and the App Overview.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.24.0",
+      "title": "1:1 Original-App-Previews & Bereinigung auf die 7 echten Pets",
+      "titleEn": "1:1 True App Previews & Cleanup to the 7 Authentic Pets",
+      "points": [
+        {
+          "text": "Exakte 1:1-Anpassung aller App-Previews (SVG & In-App-Vorschau): Alle vier Preview-Grafiken unter docs/previews/ sowie die Vorschau in den Einstellungen bilden nun zu 100 % das echte UI, die echten Farben (#111214, #1C1E21, #A8DAB5), die echte Capsule-Nav-Leiste (4 Tabs, Label nur beim aktiven Tab), das horizontale Gym-Buddy-Widget, den echten 26-Wochen-Konstanz-Kalender, den echten Workout-Tracker („Oberkörper A“) und den originalen 16×16-Pixel-Art-Code ab – komplett ohne Textüberlappungen.",
+          "textEn": "Exact 1:1 alignment of all app previews (SVG & in-app showcase): All four preview graphics in docs/previews/ and the in-app preview modal now faithfully replicate the real UI, exact colors (#111214, #1C1E21, #A8DAB5), real Capsule-Nav bar (4 tabs, label only on active tab), horizontal Gym Buddy widget, 26-week consistency calendar, live Workout Tracker ('Upper Body A'), and authentic 16×16 pixel-art sprites — with zero overlapping text.",
+          "kind": "fix"
+        },
+        {
+          "text": "Bereinigung auf die 7 echten Gym-Buddy-Begleiter: Alle nachträglich erfundenen Zusatz-Pets wurden aus Code, Previews und README entfernt. Es existieren exakt die 7 originalen Begleiter: Pumper-Monster, Iron-Bot, Lifter-Max, Kraft-Bär, Gym-Katze, Reps-Rex und Silberrücken (3 Cute, 4 Progress/Beast).",
+          "textEn": "Cleaned up to the 7 authentic Gym Buddy companions: Removed all invented extra pets from code, previews, and README. Strictly the 7 original companions remain: Pump Monster, Iron-Bot, Lifter Max, Power Bear, Gym Cat, Reps Rex, and Silverback (3 Cute, 4 Progress/Beast).",
+          "kind": "fix"
+        }
+      ]
+    },
+    {
+      "version": "13.23.0",
+      "title": "Intelligentes Pausen- & Comeback-System (Urlaubs- / Krankheits-Modus)",
+      "titleEn": "Smart Break & Comeback System (Vacation / Sick Mode)",
+      "points": [
+        {
+          "text": "Manueller & automatischer Pausen-Modus (Urlaub / Krankheit / Sonstige Pause): Direkt über das Streak-/Status-Badge im „Heute“-Screen oder in den Einstellungen kannst du jederzeit eine Trainingspause mit optionalem Zeitraum eintragen. Der Pausen-Modus endet automatisch, sobald du dein nächstes reguläres Workout abschließt. Nach ungeplanten Pausen (> 7 Tage ohne Workout) begrüßt dich zudem ein freundlicher „Willkommen zurück!“-Dialog zur nachträglichen Bestätigung.",
+          "textEn": "Manual & automatic Break Mode (Vacation / Sick / General Break): Log a training break with an optional date range directly via the Streak/Status badge on the Today screen or in Settings. Break mode ends automatically as soon as you complete your next regular workout. After unplanned gaps (> 7 days without a workout), a friendly “Welcome back!” modal lets you confirm your break retroactively.",
+          "kind": "feature"
+        },
+        {
+          "text": "Clevere Deload-Kopplung & Comeback-Workout-Hinweis: Nach einer Pause ab 7 Tagen (vollständige Regeneration) wird der interne Deload-/Mesozyklus-Zähler automatisch auf Woche 1 zurückgesetzt – es wird kein sinnloser Deload nach Krankheit oder Urlaub vorgeschlagen. Kurze Pausen (3–6 Tage) frieren den Deload-Zähler einfach ein. Nach Pausen ab 10 Tagen begleitet dich in den ersten 1–2 Trainings ein sanfter Comeback-Hinweis im Workout-Tracker (-5–10 % Gewicht oder +1–2 RIR gegen starken Muskelkater).",
+          "textEn": "Smart deload coupling & Comeback Workout guidance: After a break of 7+ days (full recovery), the internal deload/mesocycle counter automatically resets to Week 1 — preventing pointless deload prompts right after illness or vacation. Short breaks (3–6 days) freeze the deload counter. After breaks of 10+ days, a gentle comeback banner in the Workout Tracker guides your first 1–2 sessions (-5–10% weight or +1–2 RIR to prevent severe soreness).",
+          "kind": "feature"
+        },
+        {
+          "text": "Streak-Freeze, Kalender-Markierungen & Gym-Buddy-Reaktion: Während bestätigter Urlaubs- oder Krankheitspausen ist deine Trainings-Streak komplett eingefroren (❄️). Pausen werden farbig im Trainingskalender markiert (🏖️ Urlaub, 🍵 Krankheit/Erholung, ⏸️ Pause) und dein Gym Buddy wechselt passend in den entspannten Urlaubs-Look (Sonnenbrille & Urlaubsdrink) oder den ruhigen Genesungs-Schlafmodus mit warmem Tee – 100 % lokal in IndexedDB und im JSON-Backup.",
+          "textEn": "Streak freeze, calendar markers & Gym Buddy reactions: During confirmed vacation or sick breaks, your workout streak is completely frozen (❄️). Break days are subtly marked in the training calendar (🏖️ Vacation, 🍵 Sick/Recovery, ⏸️ Break) and your Gym Buddy switches to a relaxed vacation look (sunglasses & tropical drink) or a calm recovery sleep state with warm tea — 100% local in IndexedDB and included in JSON backups.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.22.0",
+      "title": "Premium-Disclaimer („Bevor du loslegst“) & Zweisprachiger Rechtsbereich",
+      "titleEn": "Premium Disclaimer (“Before you start”) & Bilingual Legal Section",
+      "points": [
+        {
+          "text": "Neues Mini-Card-Design beim ersten Start: Der einmalige Hinweis-Screen („Bevor du loslegst“) präsentiert die 4 Kernpunkte (Hobby-Projekt, Kein medizinischer Rat, 100 % Lokale Daten & Backup, Nur für den privaten Gebrauch) jetzt in kompakten, edlen Mini-Cards mit Icons, feiner 1px-Rahmenlinie im Dark & Light Mode und fest verankertem Bestätigungs-Button mit sanftem Touch-Feedback.",
+          "textEn": "Redesigned mini-card layout on first launch: The one-time notice screen (“Before you start”) now presents the 4 core essentials (Personal project, Not medical advice, 100% local data & backup, Private use only) in compact, refined mini-cards with icons, subtle 1px borders in Dark & Light Mode, and a pinned confirmation button with smooth touch feedback."
+        },
+        {
+          "text": "Sprachliches & typografisches Upgrade (DE & EN): Alle Hinweistexte wurden im Start-Modal sowie unter „Einstellungen → Rechtliches“ sprachlich geschärft, um Hinweise zum Zyklus-Tracking ergänzt und vollständig zweisprachig auf Deutsch und Englisch synchronisiert.",
+          "textEn": "Linguistic & typographic upgrade (DE & EN): All notice texts in both the initial start modal and under “Settings → Legal” have been refined, updated to cover cycle phase estimates, and fully synchronized in both German and English."
+        }
+      ]
+    },
+    {
       "version": "13.21.0",
       "title": "GitHub-Repository-Cleanup, iPhone-16-Pro-SVG-Mockups & Zweisprachige Dokumentation",
       "titleEn": "GitHub Repository Cleanup, iPhone 16 Pro SVG Mockups & Bilingual Documentation",

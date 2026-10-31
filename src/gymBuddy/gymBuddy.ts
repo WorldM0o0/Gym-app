@@ -4,12 +4,54 @@
  * Rein positiv (kein Bestrafungssystem), 100 % lokal in IndexedDB, keine externen Assets.
  */
 
-export type PetMood = 'post_workout' | 'happy' | 'idle' | 'reading' | 'sleep' | 'phase1_recovery';
+export type PetMood =
+  | 'post_workout'
+  | 'happy'
+  | 'idle'
+  | 'reading'
+  | 'sleep'
+  | 'phase1_recovery';
 export type PetStyle = 'cute' | 'progress';
 export type EvolutionStage = 1 | 2 | 3 | 4;
 export type AccessorySlot = 'head' | 'body' | 'hand';
 export type UserGender = 'male' | 'female' | 'unspecified';
 export type CyclePhaseId = 'menstruation' | 'follicular' | 'ovulation' | 'luteal';
+export type TrainingBreakCategory = 'vacation' | 'sick' | 'other';
+
+export interface TrainingBreakPeriod {
+  id: string;
+  category: TrainingBreakCategory;
+  startDate: string; // YYYY-MM-DD
+  endDate: string;   // YYYY-MM-DD
+  active: boolean;
+  autoDetected: boolean;
+  endedByWorkout?: boolean;
+  note?: string;
+  createdAt: number;
+  endedAt?: number;
+}
+
+export interface TrainingBreakConfig {
+  id: 'default';
+  activeBreak: TrainingBreakPeriod | null;
+  history: TrainingBreakPeriod[];
+  dismissedGapEndMs: number;
+  comebackBannerRemainingWorkouts: number;
+  comebackBannerBreakDays: number;
+  comebackBannerCategory: TrainingBreakCategory | null;
+  lastAppOpenedAt?: number;
+  updatedAt: number;
+}
+
+export interface UnplannedComebackGapInfo {
+  lastWorkoutMs: number;
+  lastWorkoutDateIso: string;
+  suggestedStartDate: string;
+  suggestedEndDate: string;
+  gapDays: number;
+  appClosedDays?: number;
+  shouldPrompt: boolean;
+}
 
 export interface CycleTrackingConfig {
   id: 'default';
@@ -120,8 +162,8 @@ export const LEVEL_XP_THRESHOLDS: Record<EvolutionStage, number> = {
 };
 
 /**
- * 10 Preset-Pets: Exakt 50 % 'cute' (kompakt, glänzende Augen, süßes Lächeln, Sterne auf Stufe 4)
- * und 50 % 'progress' (breiter, muskulöser, selbstbewusstes Grinsen, pulsierende Energie-Aura).
+ * 7 Preset-Pets: 3 × 'cute' (robot, bear, cat: kompakt, glänzende Augen, süßes Lächeln, Sterne auf Stufe 4)
+ * und 4 × 'progress' (monster, lifter, dino, gorilla: breiter, muskulöser, selbstbewusstes Grinsen, pulsierende Energie-Aura).
  */
 export const PRESET_PETS: PresetPetMetadata[] = [
   {
@@ -188,36 +230,6 @@ export const PRESET_PETS: PresetPetMetadata[] = [
     charEn: 'Massive gym titan with stoic calm and immense presence unlocked through consistency.',
     unlockWorkouts: 30,
     unlockMinutes: 600,
-  },
-  {
-    id: 'shiba',
-    style: 'cute',
-    nameDe: 'Pump-Shiba',
-    nameEn: 'Pump Shiba',
-    charDe: 'Extrem süßer kleiner Shiba Inu mit glänzenden Kulleraugen und unerschütterlicher Trainingsfreude.',
-    charEn: 'Super cute little Shiba Inu with glossy eyes and unshakeable workout joy.',
-    unlockWorkouts: 50,
-    unlockTotalLevels: 12,
-  },
-  {
-    id: 'axolotl',
-    style: 'cute',
-    nameDe: 'Gains-Axolotl',
-    nameEn: 'Gains Axolotl',
-    charDe: 'Seltener kleiner Wasser-Drache – bleibt wunderbar kompakt, strahlt vor Stolz und funkelt voller Sterne.',
-    charEn: 'Rare little water dragon – stays wonderfully compact, beams with pride, and sparkles with stars.',
-    unlockWorkouts: 75,
-    unlockTotalLevels: 16,
-  },
-  {
-    id: 'cyberwolf',
-    style: 'progress',
-    nameDe: 'Cyber-Wolf',
-    nameEn: 'Cyber Wolf',
-    charDe: 'Ultimativer Endgame-Phantomwolf mit selbstbewusstem Grinsen und pulsierender Energie-Aura.',
-    charEn: 'Ultimate endgame phantom wolf with a confident grin and pulsing energy aura.',
-    unlockWorkouts: 100,
-    unlockTotalLevels: 20,
   },
 ];
 
@@ -462,72 +474,6 @@ export const PET_ACCESSORY_ANCHORS: Record<string, Record<EvolutionStage, PetSta
       hand: { x: 14.2, y: 7.2, scale: 1.08, rotate: -7 },
     },
   },
-  shiba: {
-    1: {
-      head: { x: 8, y: 3.2, scale: 0.92, rotate: 0, width: 6.4, eyeY: 5.5 },
-      body: { x: 8, y: 9.1, scale: 0.92, rotate: 0, width: 6.4, height: 2.7, beltY: 11.2 },
-      hand: { x: 11.9, y: 9.1, scale: 0.92, rotate: -5 },
-    },
-    2: {
-      head: { x: 8, y: 3.1, scale: 0.96, rotate: 0, width: 6.8, eyeY: 5.5 },
-      body: { x: 8, y: 9.0, scale: 0.96, rotate: 0, width: 6.8, height: 2.8, beltY: 11.2 },
-      hand: { x: 12.2, y: 8.9, scale: 0.96, rotate: -5 },
-    },
-    3: {
-      head: { x: 8, y: 3.0, scale: 1.0, rotate: 0, width: 7.2, eyeY: 5.5 },
-      body: { x: 8, y: 8.9, scale: 1.0, rotate: 0, width: 7.4, height: 3.0, beltY: 11.2 },
-      hand: { x: 12.6, y: 8.7, scale: 1.0, rotate: -4 },
-    },
-    4: {
-      head: { x: 8, y: 2.9, scale: 1.04, rotate: 0, width: 7.6, eyeY: 5.5 },
-      body: { x: 8, y: 8.8, scale: 1.04, rotate: 0, width: 7.8, height: 3.1, beltY: 11.2 },
-      hand: { x: 12.9, y: 8.5, scale: 1.04, rotate: -4 },
-    },
-  },
-  axolotl: {
-    1: {
-      head: { x: 8, y: 3.2, scale: 0.92, rotate: 0, width: 6.4, eyeY: 5.5 },
-      body: { x: 8, y: 9.1, scale: 0.92, rotate: 0, width: 6.4, height: 2.7, beltY: 11.2 },
-      hand: { x: 11.9, y: 9.1, scale: 0.92, rotate: -5 },
-    },
-    2: {
-      head: { x: 8, y: 3.1, scale: 0.96, rotate: 0, width: 6.8, eyeY: 5.5 },
-      body: { x: 8, y: 9.0, scale: 0.96, rotate: 0, width: 6.8, height: 2.8, beltY: 11.2 },
-      hand: { x: 12.2, y: 8.9, scale: 0.96, rotate: -5 },
-    },
-    3: {
-      head: { x: 8, y: 3.0, scale: 1.0, rotate: 0, width: 7.2, eyeY: 5.5 },
-      body: { x: 8, y: 8.9, scale: 1.0, rotate: 0, width: 7.4, height: 3.0, beltY: 11.2 },
-      hand: { x: 12.6, y: 8.7, scale: 1.0, rotate: -4 },
-    },
-    4: {
-      head: { x: 8, y: 2.9, scale: 1.04, rotate: 0, width: 7.6, eyeY: 5.5 },
-      body: { x: 8, y: 8.8, scale: 1.04, rotate: 0, width: 7.8, height: 3.1, beltY: 11.2 },
-      hand: { x: 12.9, y: 8.5, scale: 1.04, rotate: -4 },
-    },
-  },
-  cyberwolf: {
-    1: {
-      head: { x: 8, y: 3.2, scale: 0.92, rotate: 0, width: 6.6, eyeY: 4.5 },
-      body: { x: 8, y: 8.2, scale: 0.92, rotate: 0, width: 6.8, height: 2.8, beltY: 10.4 },
-      hand: { x: 12.0, y: 8.2, scale: 0.94, rotate: -5 },
-    },
-    2: {
-      head: { x: 8, y: 2.3, scale: 0.98, rotate: 0, width: 7.2, eyeY: 4.5 },
-      body: { x: 8, y: 8.1, scale: 0.98, rotate: 0, width: 7.6, height: 3.0, beltY: 10.4 },
-      hand: { x: 12.9, y: 8.0, scale: 0.98, rotate: -6 },
-    },
-    3: {
-      head: { x: 8, y: 2.2, scale: 1.02, rotate: 0, width: 7.8, eyeY: 3.8 },
-      body: { x: 8, y: 7.6, scale: 1.04, rotate: 0, width: 8.6, height: 3.2, beltY: 10.1 },
-      hand: { x: 13.7, y: 7.4, scale: 1.04, rotate: -6 },
-    },
-    4: {
-      head: { x: 8, y: 2.1, scale: 1.06, rotate: 0, width: 8.4, eyeY: 3.8 },
-      body: { x: 8, y: 7.5, scale: 1.08, rotate: 0, width: 9.4, height: 3.4, beltY: 10.1 },
-      hand: { x: 14.1, y: 7.2, scale: 1.08, rotate: -7 },
-    },
-  },
 };
 
 export function createDefaultPetProgress(petId: string, now = Date.now()): PetProgress {
@@ -598,7 +544,8 @@ const MAX_STREAK_GAP_MS = 3 * 24 * 60 * 60 * 1000; // 2 rest days max gap (3 cal
 export function calculateWorkoutStreak(
   completedSessionDatesMs: number[],
   nowMs = Date.now(),
-  cycleProtection?: boolean | CycleTrackingConfig | null
+  cycleProtection?: boolean | CycleTrackingConfig | null,
+  breakConfig?: Partial<TrainingBreakConfig> | null
 ): number {
   if (!Array.isArray(completedSessionDatesMs) || completedSessionDatesMs.length === 0) return 0;
 
@@ -613,12 +560,12 @@ export function calculateWorkoutStreak(
 
   validTimestamps.sort((a, b) => b - a);
 
-  const PHASE1_Protected_GAP_MS = 5 * 24 * 60 * 60 * 1000; // 4 rest days = 5 calendar days gap
+  const dayMs = 24 * 60 * 60 * 1000;
+  const PHASE1_Protected_GAP_MS = 5 * dayMs; // 4 rest days = 5 calendar days gap
   const isPhase1GapProtected = (laterMs: number, earlierMs: number): boolean => {
     if (cycleProtection === true) return true;
     if (!cycleProtection || typeof cycleProtection !== 'object') return false;
     if (!cycleProtection.enabled || !isValidIsoDateString(cycleProtection.lastPeriodStart)) return false;
-    const dayMs = 24 * 60 * 60 * 1000;
     const steps = Math.min(6, Math.max(0, Math.round((laterMs - earlierMs) / dayMs)));
     for (let d = 0; d <= steps; d++) {
       const checkMs = laterMs - d * dayMs;
@@ -628,10 +575,23 @@ export function calculateWorkoutStreak(
     return false;
   };
 
+  const subtractBreakDaysMs = (laterMs: number, earlierMs: number): number => {
+    if (!breakConfig) return laterMs - earlierMs;
+    const breakDays = countBreakDaysInInterval(earlierMs, laterMs, breakConfig, nowMs);
+    if (breakDays <= 0) return laterMs - earlierMs;
+    return Math.max(0, laterMs - earlierMs - breakDays * dayMs);
+  };
+
+  const todayIso = toLocalIsoDate(nowMs);
+  const hasBreakCoveringToday = Boolean(
+    breakConfig && getBreakForDate(breakConfig, todayIso, nowMs) !== null
+  );
+
   const initialMaxGapMs = isPhase1GapProtected(nowMs, validTimestamps[0])
     ? PHASE1_Protected_GAP_MS
     : MAX_STREAK_GAP_MS;
-  if (nowMs - validTimestamps[0] > initialMaxGapMs) return 0;
+  const effectiveInitialGapMs = subtractBreakDaysMs(nowMs, validTimestamps[0]);
+  if (!hasBreakCoveringToday && effectiveInitialGapMs > initialMaxGapMs) return 0;
 
   // Short-circuiting single-pass calendar-day streak computation
   let streak = 0;
@@ -658,7 +618,8 @@ export function calculateWorkoutStreak(
       ? PHASE1_Protected_GAP_MS
       : MAX_STREAK_GAP_MS;
 
-    if (lastDayMidnightMs - midnightMs <= allowedGapMs) {
+    const effectiveGapMs = subtractBreakDaysMs(lastDayMidnightMs, midnightMs);
+    if (effectiveGapMs <= allowedGapMs) {
       streak += 1;
       lastDayMidnightMs = midnightMs;
       lastDayKey = dayKey;
@@ -1185,4 +1146,510 @@ export function sanitizeCycleTrackingBackupRecord(raw: unknown): CycleTrackingCo
     updatedAt,
   };
 }
+
+// ---------------------------------------------------------------------------
+// Automatic Break & Comeback Detection (No Manual Pause UI)
+// ---------------------------------------------------------------------------
+
+export const DEFAULT_TRAINING_BREAK_CONFIG: TrainingBreakConfig = {
+  id: 'default',
+  activeBreak: null,
+  history: [],
+  dismissedGapEndMs: 0,
+  comebackBannerRemainingWorkouts: 0,
+  comebackBannerBreakDays: 0,
+  comebackBannerCategory: null,
+  updatedAt: 0,
+};
+
+export function toLocalIsoDate(ms: number): string {
+  const d = new Date(ms);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+export function isoDateToLocalMidnightMs(iso: string): number | null {
+  if (!isValidIsoDateString(iso)) return null;
+  const [y, m, d] = iso.trim().split('-').map(Number);
+  return new Date(y, m - 1, d, 0, 0, 0, 0).getTime();
+}
+
+export function isoDateToLocalEndOfDayMs(iso: string): number | null {
+  if (!isValidIsoDateString(iso)) return null;
+  const [y, m, d] = iso.trim().split('-').map(Number);
+  return new Date(y, m - 1, d, 23, 59, 59, 999).getTime();
+}
+
+export function calculateBreakDays(
+  startDateIso: string,
+  endDateIso?: string | null,
+  nowMs = Date.now()
+): number {
+  const startMidnight = isoDateToLocalMidnightMs(startDateIso);
+  if (startMidnight === null) return 0;
+  const effectiveEndIso =
+    endDateIso && isValidIsoDateString(endDateIso) ? endDateIso : toLocalIsoDate(nowMs);
+  const endMidnight = isoDateToLocalMidnightMs(effectiveEndIso);
+  if (endMidnight === null || endMidnight < startMidnight) return 0;
+  return Math.round((endMidnight - startMidnight) / (24 * 60 * 60 * 1000)) + 1;
+}
+
+export function getAllEffectiveBreakPeriods(
+  config?: Partial<TrainingBreakConfig> | null,
+  nowMs = Date.now()
+): TrainingBreakPeriod[] {
+  if (!config) return [];
+  const result: TrainingBreakPeriod[] = [];
+  if (Array.isArray(config.history)) {
+    for (const item of config.history) {
+      if (item && isValidIsoDateString(item.startDate)) {
+        result.push(item);
+      }
+    }
+  }
+  if (config.activeBreak && isValidIsoDateString(config.activeBreak.startDate)) {
+    const act = config.activeBreak;
+    const todayIso = toLocalIsoDate(nowMs);
+    const effectiveEnd =
+      isValidIsoDateString(act.endDate) && act.endDate >= act.startDate
+        ? act.endDate
+        : todayIso >= act.startDate
+          ? todayIso
+          : act.startDate;
+    result.push({
+      ...act,
+      endDate: effectiveEnd,
+    });
+  }
+  return result;
+}
+
+export function getBreakForDate(
+  config: Partial<TrainingBreakConfig> | null | undefined,
+  dateIso: string,
+  nowMs = Date.now()
+): TrainingBreakPeriod | null {
+  if (!config || !isValidIsoDateString(dateIso)) return null;
+  const target = dateIso.trim();
+  const periods = getAllEffectiveBreakPeriods(config, nowMs);
+  for (let i = periods.length - 1; i >= 0; i--) {
+    const p = periods[i];
+    const endIso = isValidIsoDateString(p.endDate) ? p.endDate : toLocalIsoDate(nowMs);
+    if (target >= p.startDate && target <= endIso) {
+      return p;
+    }
+  }
+  return null;
+}
+
+export function countBreakDaysInInterval(
+  earlierMs: number,
+  laterMs: number,
+  config?: Partial<TrainingBreakConfig> | null,
+  nowMs = Date.now()
+): number {
+  if (!config || laterMs <= earlierMs) return 0;
+  const periods = getAllEffectiveBreakPeriods(config, nowMs);
+  if (periods.length === 0) return 0;
+
+  const dStart = new Date(earlierMs);
+  const startMidnight = new Date(dStart.getFullYear(), dStart.getMonth(), dStart.getDate()).getTime();
+  const dEnd = new Date(laterMs);
+  const endMidnight = new Date(dEnd.getFullYear(), dEnd.getMonth(), dEnd.getDate()).getTime();
+  if (endMidnight <= startMidnight) return 0;
+
+  const dayMs = 24 * 60 * 60 * 1000;
+  const intervalStartIso = toLocalIsoDate(startMidnight);
+  const intervalEndIso = toLocalIsoDate(endMidnight);
+  const coveredDays = new Set<string>();
+
+  for (const p of periods) {
+    const pStart = p.startDate;
+    const pEnd = isValidIsoDateString(p.endDate) ? p.endDate : toLocalIsoDate(nowMs);
+    if (pEnd < intervalStartIso || pStart > intervalEndIso) continue;
+    const clampedStartIso = pStart > intervalStartIso ? pStart : intervalStartIso;
+    const clampedEndIso = pEnd < intervalEndIso ? pEnd : intervalEndIso;
+    const sMs = isoDateToLocalMidnightMs(clampedStartIso);
+    const eMs = isoDateToLocalMidnightMs(clampedEndIso);
+    if (sMs === null || eMs === null || eMs < sMs) continue;
+    for (let cur = sMs; cur <= eMs; cur += dayMs) {
+      coveredDays.add(toLocalIsoDate(cur));
+    }
+  }
+
+  return coveredDays.size;
+}
+
+export const COMEBACK_GAP_MIN_DAYS = 4; // >= 4 calendar days (> 3 full days without a workout) triggers automatic comeback inquiry
+export const COMEBACK_BANNER_MIN_BREAK_DAYS = 7;
+export const COMEBACK_BANNER_WORKOUT_COUNT = 2;
+export const DELOAD_RESET_MIN_BREAK_DAYS = 7;
+export const DELOAD_FREEZE_MIN_BREAK_DAYS = 3;
+
+export function detectUnplannedComebackGap(
+  completedSessionDatesMs: number[],
+  config?: Partial<TrainingBreakConfig> | null,
+  nowMs = Date.now(),
+  cycleProtection?: boolean | CycleTrackingConfig | null,
+  lastAppOpenedMs?: number | null
+): UnplannedComebackGapInfo | null {
+  if (!Array.isArray(completedSessionDatesMs) || completedSessionDatesMs.length === 0) return null;
+  if (config?.activeBreak) return null;
+
+  const valid = completedSessionDatesMs.filter(
+    (v) => typeof v === 'number' && Number.isFinite(v) && v > 0 && v <= nowMs
+  );
+  if (valid.length === 0) return null;
+  const lastWorkoutMs = Math.max(...valid);
+
+  const lastD = new Date(lastWorkoutMs);
+  const lastMidnight = new Date(lastD.getFullYear(), lastD.getMonth(), lastD.getDate()).getTime();
+  const nowD = new Date(nowMs);
+  const nowMidnight = new Date(nowD.getFullYear(), nowD.getMonth(), nowD.getDate()).getTime();
+  const dayMs = 24 * 60 * 60 * 1000;
+  const gapDays = Math.round((nowMidnight - lastMidnight) / dayMs);
+
+  // Respect Cycle Phase 1 4-day rest limit (5 calendar days) before prompting
+  let minGapDays = COMEBACK_GAP_MIN_DAYS;
+  if (cycleProtection && typeof cycleProtection === 'object' && cycleProtection.enabled) {
+    const phaseInfo = calculateCyclePhaseForDate(cycleProtection, nowMs);
+    if (phaseInfo && phaseInfo.phase === 'menstruation') {
+      minGapDays = 5;
+    }
+  }
+
+  if (gapDays < minGapDays) return null;
+
+  const suggestedStartMs = lastMidnight + dayMs;
+  const suggestedStartDate = toLocalIsoDate(suggestedStartMs);
+  const suggestedEndDate = toLocalIsoDate(nowMidnight);
+
+  // Check how many days in the gap are not yet covered by a confirmed break
+  const coveredDays = countBreakDaysInInterval(suggestedStartMs, nowMidnight, config, nowMs);
+  const uncoveredGapDays = Math.max(0, gapDays - coveredDays);
+  if (uncoveredGapDays < minGapDays) return null;
+
+  const dismissedMark = config?.dismissedGapEndMs ?? 0;
+  if (dismissedMark >= lastWorkoutMs && nowMidnight - dismissedMark < 3 * dayMs) {
+    return null;
+  }
+
+  let appClosedDays: number | undefined;
+  const effectiveLastOpen = lastAppOpenedMs ?? config?.lastAppOpenedAt;
+  if (typeof effectiveLastOpen === 'number' && Number.isFinite(effectiveLastOpen) && effectiveLastOpen > 0 && effectiveLastOpen < nowMs) {
+    const openD = new Date(effectiveLastOpen);
+    const openMidnight = new Date(openD.getFullYear(), openD.getMonth(), openD.getDate()).getTime();
+    const diffOpen = Math.round((nowMidnight - openMidnight) / dayMs);
+    if (diffOpen >= 1) appClosedDays = diffOpen;
+  }
+
+  return {
+    lastWorkoutMs,
+    lastWorkoutDateIso: toLocalIsoDate(lastMidnight),
+    suggestedStartDate,
+    suggestedEndDate,
+    gapDays,
+    ...(appClosedDays !== undefined ? { appClosedDays } : {}),
+    shouldPrompt: true,
+  };
+}
+
+export function confirmRetroactiveComebackBreak(
+  prev: TrainingBreakConfig,
+  params: {
+    category: TrainingBreakCategory;
+    startDate: string;
+    endDate: string;
+    lastWorkoutMs: number;
+    note?: string;
+  },
+  nowMs = Date.now()
+): TrainingBreakConfig {
+  const category: TrainingBreakCategory =
+    params.category === 'vacation' || params.category === 'sick' || params.category === 'other'
+      ? params.category
+      : 'other';
+  const todayIso = toLocalIsoDate(nowMs);
+  const startDate = isValidIsoDateString(params.startDate) ? params.startDate.trim() : todayIso;
+  const endDate =
+    isValidIsoDateString(params.endDate) && params.endDate.trim() >= startDate
+      ? params.endDate.trim()
+      : todayIso >= startDate
+        ? todayIso
+        : startDate;
+
+  const breakDays = calculateBreakDays(startDate, endDate, nowMs);
+  const entry: TrainingBreakPeriod = {
+    id: `brk-auto-${nowMs}`,
+    category,
+    startDate,
+    endDate,
+    active: false,
+    autoDetected: true,
+    note: typeof params.note === 'string' ? params.note.trim().slice(0, 80) : undefined,
+    createdAt: nowMs,
+    endedAt: nowMs,
+  };
+
+  const history = [...(prev.history ?? []), entry].slice(-60);
+  const shouldShowComeback = breakDays >= COMEBACK_BANNER_MIN_BREAK_DAYS;
+
+  return {
+    id: 'default',
+    activeBreak: null,
+    history,
+    dismissedGapEndMs: nowMs,
+    comebackBannerRemainingWorkouts: shouldShowComeback
+      ? COMEBACK_BANNER_WORKOUT_COUNT
+      : prev.comebackBannerRemainingWorkouts ?? 0,
+    comebackBannerBreakDays: shouldShowComeback ? breakDays : prev.comebackBannerBreakDays ?? 0,
+    comebackBannerCategory: shouldShowComeback ? category : prev.comebackBannerCategory ?? null,
+    lastAppOpenedAt: nowMs,
+    updatedAt: nowMs,
+  };
+}
+
+export function dismissComebackPromptForGap(
+  prev: TrainingBreakConfig,
+  lastWorkoutMs: number,
+  gapDays = 0,
+  nowMs = Date.now()
+): TrainingBreakConfig {
+  const shouldShowComeback = gapDays >= COMEBACK_BANNER_MIN_BREAK_DAYS;
+  return {
+    ...prev,
+    id: 'default',
+    dismissedGapEndMs: Math.max(nowMs, lastWorkoutMs),
+    comebackBannerRemainingWorkouts: shouldShowComeback
+      ? COMEBACK_BANNER_WORKOUT_COUNT
+      : prev.comebackBannerRemainingWorkouts ?? 0,
+    comebackBannerBreakDays: shouldShowComeback ? gapDays : prev.comebackBannerBreakDays ?? 0,
+    comebackBannerCategory: shouldShowComeback ? 'other' : prev.comebackBannerCategory ?? null,
+    lastAppOpenedAt: nowMs,
+    updatedAt: nowMs,
+  };
+}
+
+export function onWorkoutCompletedForBreakConfig(
+  prev: TrainingBreakConfig,
+  nowMs = Date.now()
+): TrainingBreakConfig {
+  const nextRemaining = Math.max(0, (prev.comebackBannerRemainingWorkouts ?? 0) - 1);
+  return {
+    ...prev,
+    id: 'default',
+    activeBreak: null,
+    comebackBannerRemainingWorkouts: nextRemaining,
+    comebackBannerBreakDays: nextRemaining > 0 ? prev.comebackBannerBreakDays : 0,
+    comebackBannerCategory: nextRemaining > 0 ? prev.comebackBannerCategory : null,
+    lastAppOpenedAt: nowMs,
+    updatedAt: nowMs,
+  };
+}
+
+export interface BreakAdjustedDeloadInfo {
+  suppressDeloadSuggestion: boolean;
+  effectiveReferenceStartMs: number | undefined;
+  effectiveWeeksElapsed: number | null;
+  resetToWeekOne: boolean;
+  frozenBreakDays: number;
+}
+
+export function calculateBreakAdjustedDeloadInfo(
+  completedSessionDatesMs: number[],
+  deloadActiveUntilMs: number | undefined,
+  firstSessionDateMs: number | undefined,
+  breakConfig?: Partial<TrainingBreakConfig> | null,
+  nowMs = Date.now()
+): BreakAdjustedDeloadInfo {
+  const weekMs = 7 * 24 * 60 * 60 * 1000;
+  const dayMs = 24 * 60 * 60 * 1000;
+  const baseStart = deloadActiveUntilMs ?? firstSessionDateMs;
+  if (baseStart === undefined) {
+    return {
+      suppressDeloadSuggestion: false,
+      effectiveReferenceStartMs: undefined,
+      effectiveWeeksElapsed: null,
+      resetToWeekOne: false,
+      frozenBreakDays: 0,
+    };
+  }
+
+  const periods = getAllEffectiveBreakPeriods(breakConfig, nowMs);
+  const todayIso = toLocalIsoDate(nowMs);
+
+  let latestLongBreakEndMs: number | null = null;
+  for (const p of periods) {
+    const endIso = isValidIsoDateString(p.endDate) && p.endDate <= todayIso ? p.endDate : todayIso;
+    const days = calculateBreakDays(p.startDate, endIso, nowMs);
+    if (days >= DELOAD_RESET_MIN_BREAK_DAYS) {
+      const endMs = isoDateToLocalEndOfDayMs(endIso);
+      if (endMs !== null && endMs <= nowMs + dayMs) {
+        if (latestLongBreakEndMs === null || endMs > latestLongBreakEndMs) {
+          latestLongBreakEndMs = endMs;
+        }
+      }
+    }
+  }
+
+  const validWorkouts = [...(completedSessionDatesMs ?? [])]
+    .filter((v) => typeof v === 'number' && Number.isFinite(v) && v > 0 && v <= nowMs)
+    .sort((a, b) => a - b);
+
+  for (let i = 1; i < validWorkouts.length; i++) {
+    const prevD = new Date(validWorkouts[i - 1]);
+    const currD = new Date(validWorkouts[i]);
+    const prevMid = new Date(prevD.getFullYear(), prevD.getMonth(), prevD.getDate()).getTime();
+    const currMid = new Date(currD.getFullYear(), currD.getMonth(), currD.getDate()).getTime();
+    const restDaysBetween = Math.round((currMid - prevMid) / dayMs) - 1;
+    if (restDaysBetween >= DELOAD_RESET_MIN_BREAK_DAYS) {
+      const gapEndMs = currMid - 1;
+      if (latestLongBreakEndMs === null || gapEndMs > latestLongBreakEndMs) {
+        latestLongBreakEndMs = gapEndMs;
+      }
+    }
+  }
+
+  if (validWorkouts.length > 0) {
+    const lastW = new Date(validWorkouts[validWorkouts.length - 1]);
+    const lastMid = new Date(lastW.getFullYear(), lastW.getMonth(), lastW.getDate()).getTime();
+    const nowD = new Date(nowMs);
+    const nowMid = new Date(nowD.getFullYear(), nowD.getMonth(), nowD.getDate()).getTime();
+    const ongoingRestDays = Math.round((nowMid - lastMid) / dayMs);
+    if (ongoingRestDays >= DELOAD_RESET_MIN_BREAK_DAYS) {
+      if (latestLongBreakEndMs === null || nowMs > latestLongBreakEndMs) {
+        latestLongBreakEndMs = nowMs;
+      }
+    }
+  }
+
+  let referenceStartMs = baseStart;
+  let resetToWeekOne = false;
+
+  if (latestLongBreakEndMs !== null && latestLongBreakEndMs >= baseStart) {
+    resetToWeekOne = true;
+    const firstWorkoutAfterBreak = validWorkouts.find((ms) => ms > latestLongBreakEndMs!);
+    referenceStartMs = firstWorkoutAfterBreak !== undefined ? firstWorkoutAfterBreak : nowMs;
+  }
+
+  let frozenBreakDays = 0;
+  const refIso = toLocalIsoDate(referenceStartMs);
+  for (const p of periods) {
+    const endIso = isValidIsoDateString(p.endDate) && p.endDate <= todayIso ? p.endDate : todayIso;
+    const days = calculateBreakDays(p.startDate, endIso, nowMs);
+    if (days >= DELOAD_FREEZE_MIN_BREAK_DAYS && days < DELOAD_RESET_MIN_BREAK_DAYS) {
+      if (endIso >= refIso) {
+        const clampedStartIso = p.startDate >= refIso ? p.startDate : refIso;
+        frozenBreakDays += calculateBreakDays(clampedStartIso, endIso, nowMs);
+      }
+    }
+  }
+
+  const shiftedStartMs = Math.min(nowMs, referenceStartMs + frozenBreakDays * dayMs);
+  const effectiveWeeksElapsed = Math.max(0, (nowMs - shiftedStartMs) / weekMs);
+
+  return {
+    suppressDeloadSuggestion: effectiveWeeksElapsed < 6,
+    effectiveReferenceStartMs: shiftedStartMs,
+    effectiveWeeksElapsed,
+    resetToWeekOne,
+    frozenBreakDays,
+  };
+}
+
+export function sanitizeTrainingBreakPeriod(raw: unknown): TrainingBreakPeriod | null {
+  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return null;
+  const obj = raw as Record<string, unknown>;
+  if (!isValidIsoDateString(obj.startDate)) return null;
+  const startDate = obj.startDate.trim();
+  const endDate =
+    isValidIsoDateString(obj.endDate) && obj.endDate.trim() >= startDate
+      ? obj.endDate.trim()
+      : startDate;
+  const category: TrainingBreakCategory =
+    obj.category === 'vacation' || obj.category === 'sick' || obj.category === 'other'
+      ? obj.category
+      : 'other';
+  const id =
+    typeof obj.id === 'string' && obj.id.trim().length > 0
+      ? obj.id.trim().slice(0, 64)
+      : `brk-${startDate}`;
+  const createdAt =
+    typeof obj.createdAt === 'number' && Number.isFinite(obj.createdAt) ? obj.createdAt : Date.now();
+  const endedAt =
+    typeof obj.endedAt === 'number' && Number.isFinite(obj.endedAt) ? obj.endedAt : undefined;
+  const note = typeof obj.note === 'string' ? obj.note.trim().slice(0, 80) : undefined;
+
+  return {
+    id,
+    category,
+    startDate,
+    endDate,
+    active: false,
+    autoDetected: Boolean(obj.autoDetected ?? true),
+    endedByWorkout: typeof obj.endedByWorkout === 'boolean' ? obj.endedByWorkout : undefined,
+    note,
+    createdAt,
+    endedAt,
+  };
+}
+
+export function sanitizeTrainingBreakConfig(raw: unknown): TrainingBreakConfig | null {
+  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return null;
+  const obj = raw as Record<string, unknown>;
+  const history: TrainingBreakPeriod[] = [];
+  if (Array.isArray(obj.history)) {
+    for (const item of obj.history) {
+      const clean = sanitizeTrainingBreakPeriod(item);
+      if (clean) history.push(clean);
+    }
+  }
+  // If an old backup had an activeBreak, migrate it into history so streak protection is preserved without manual pause UI
+  const migratedActive = sanitizeTrainingBreakPeriod(obj.activeBreak);
+  if (migratedActive) {
+    history.push(migratedActive);
+  }
+  const dismissedGapEndMs =
+    typeof obj.dismissedGapEndMs === 'number' && Number.isFinite(obj.dismissedGapEndMs) && obj.dismissedGapEndMs >= 0
+      ? obj.dismissedGapEndMs
+      : 0;
+  const comebackBannerRemainingWorkouts =
+    typeof obj.comebackBannerRemainingWorkouts === 'number' &&
+    Number.isFinite(obj.comebackBannerRemainingWorkouts)
+      ? Math.min(5, Math.max(0, Math.round(obj.comebackBannerRemainingWorkouts)))
+      : 0;
+  const comebackBannerBreakDays =
+    typeof obj.comebackBannerBreakDays === 'number' && Number.isFinite(obj.comebackBannerBreakDays)
+      ? Math.min(365, Math.max(0, Math.round(obj.comebackBannerBreakDays)))
+      : 0;
+  const comebackBannerCategory: TrainingBreakCategory | null =
+    obj.comebackBannerCategory === 'vacation' ||
+    obj.comebackBannerCategory === 'sick' ||
+    obj.comebackBannerCategory === 'other'
+      ? obj.comebackBannerCategory
+      : null;
+  const lastAppOpenedAt =
+    typeof obj.lastAppOpenedAt === 'number' && Number.isFinite(obj.lastAppOpenedAt)
+      ? obj.lastAppOpenedAt
+      : undefined;
+  const updatedAt =
+    typeof obj.updatedAt === 'number' && Number.isFinite(obj.updatedAt) ? obj.updatedAt : Date.now();
+
+  return {
+    id: 'default',
+    activeBreak: null,
+    history: history.slice(-60),
+    dismissedGapEndMs,
+    comebackBannerRemainingWorkouts,
+    comebackBannerBreakDays,
+    comebackBannerCategory,
+    ...(lastAppOpenedAt !== undefined ? { lastAppOpenedAt } : {}),
+    updatedAt,
+  };
+}
+
+
+
 

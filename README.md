@@ -4,7 +4,7 @@
 
 **100 % Lokal · Offline-First PWA · iOS- & iPhone-Optimiert · Anti-Guilt Gamification**
 
-[![Version](https://img.shields.io/badge/version-13.21.0-2D8B8B?style=flat-square)](./public/changelog.json)
+[![Version](https://img.shields.io/badge/version-13.26.0-2D8B8B?style=flat-square)](./public/changelog.json)
 [![100% Local](https://img.shields.io/badge/storage-100%25_Local_IndexedDB-A8DAB5?style=flat-square)](#datenschutz--architektur--privacy--architecture)
 [![Offline-First PWA](https://img.shields.io/badge/PWA-Offline--First-10B981?style=flat-square)](./public/manifest.webmanifest)
 [![iOS Optimized](https://img.shields.io/badge/iOS_Safari-100%25_Compatible-3B82F6?style=flat-square)](#feature-übersicht-deutsch)
@@ -21,12 +21,12 @@
 
 ---
 
-## 📱 App-Preview-Galerie · Live Screen Mockups
+## 📱 App-Preview-Galerie · 1:1 Live Screen Mockups
 
-| **Heute & Gym Buddy 2.0** | **Cycle-Synced Training** | **Live Workout-Tracker** | **Gym Buddy Studio (HSL)** |
+| **Heute & Gym Buddy** | **Verlauf, Konstanz & Zyklus** | **Live Workout-Tracker** | **Gym Buddy Studio (HSL)** |
 | :---: | :---: | :---: | :---: |
-| <img src="docs/previews/preview-dashboard-buddy.svg" alt="Heute-Dashboard mit Gym Buddy 2.0, Schild, Shaker, XP-Balken und Streak" width="210" /> | <img src="docs/previews/preview-cycle-training.svg" alt="Cycle-Synced Training Widget mit 4 Phasen, Anti-Frust-Hinweis und Kalender-Phasenpunkten" width="210" /> | <img src="docs/previews/preview-workout-tracker.svg" alt="Laufendes Krafttraining mit Sätzen, Gewichten, PR-Badge und schwebendem Pausentimer" width="210" /> | <img src="docs/previews/preview-customization.svg" alt="Gym Buddy Anpassungs-Menü mit freiem HSL-Farbwähler, Accessoire-Slots und Pet-Auswahl" width="210" /> |
-| *Heute-Dashboard mit Lächeln, ausgerüstetem Schild/Shaker, XP-Balken & Streak-Schutz* | *4-Phasen-Zyklus-Widget, Anti-Frust-Hinweise & farbige Kalender-Phasenpunkte* | *Aktive Einheit mit Sätzen, Gewichten, RIR, PR-Badges & schwebendem Pausentimer* | *Freier HSL-Farbwähler, 3 Accessoire-Slots (Kopf, Körper, Hand) & 10 Begleiter* |
+| <img src="docs/previews/preview-dashboard-buddy.svg" alt="Heute-Screen mit Gym Buddy Widget (Kraft-Bär), Zyklus-Karte, Heute Geplant und Capsule-Nav" width="210" /> | <img src="docs/previews/preview-cycle-training.svg" alt="Verlauf-Screen mit 26-Wochen Konstanz-Kalender, Zyklus-Phasenpunkten und 4-Phasen-Übersicht" width="210" /> | <img src="docs/previews/preview-workout-tracker.svg" alt="Laufendes Krafttraining (Oberkörper A) mit Satzeingabe, RIR, Satz-Pills und minimiertem Pausentimer" width="210" /> | <img src="docs/previews/preview-customization.svg" alt="Gym Buddy Sheet mit Pumper-Monster, HSL-Farbwähler, 3 Accessoire-Slots und 7 Begleitern" width="210" /> |
+| *Echter „Heute“-Screen mit horizontalem Gym-Buddy-Widget (Kraft-Bär), Zyklus-Karte & Wochenplan* | *Echter „Verlauf“-Screen mit 26-Wochen-Konstanz-Grid, Zyklus-Phasenpunkten & Einheiten* | *Aktive Einheit („Oberkörper A“) mit Vorschlag, RIR, Satz-Pills & schwebendem Pausentimer* | *Gym-Buddy-Sheet mit freiem HSL-Farbwähler, 3 Accessoire-Slots (Kopf, Körper, Hand) & 7 Pets* |
 
 ---
 
@@ -41,14 +41,14 @@
 
 ### 2. 🐾 Gym Buddy 2.0 — Anti-Guilt Trainings-Begleiter
 - **100 % Positiv (Kein Bestrafungssystem):** Dein Begleiter freut sich über jedes Training, liest an Ruhetagen entspannt ein Buch oder hält einen *Rest-Day Power-Nap* — niemals schlechtes Gewissen, kein Level-Verlust.
-- **7+ Freischaltbare Pets (10 Charaktere in 50/50 Cute & Progress) & 4 Evolutionsstufen:**
-  - *Cute-Stil (5 Pets):* **Iron-Bot**, **Kraft-Bär**, **Gym-Katze**, **Pump-Shiba** und **Gains-Axolotl** (kompakt, glänzende Kulleraugen, süßes Lächeln, funkelnde Sterne auf Stufe 4).
-  - *Progress-/Beast-Stil (5 Pets):* **Pumper-Monster**, **Lifter-Max**, **Reps-Rex**, **Silberrücken** und **Cyber-Wolf** (wachsende Muskulatur, breite Schultern, selbstbewusstes Grinsen, pulsierende Energie-Aura).
-  - *Spoiler-freie Evolution:* Jedes Pet entwickelt sich über **4 Stufen** (`0 / 100 / 300 / 600 XP`), ohne zukünftige Stufen vorab zu verraten.
+- **7 Freischaltbare Pixel-Art-Pets (3 Cute & 4 Progress/Beast) & 4 Evolutionsstufen:**
+  - *Cute-Stil (3 Pets):* **Iron-Bot** (`robot`), **Kraft-Bär** (`bear`) und **Gym-Katze** (`cat`, ab 5 Workouts) — kompakt, glänzende Augen, süßes Lächeln, funkelnde Sterne auf Stufe 4.
+  - *Progress-/Beast-Stil (4 Pets):* **Pumper-Monster** (`monster`), **Lifter-Max** (`lifter`), **Reps-Rex** (`dino`, ab 15 Workouts) und **Silberrücken** (`gorilla`, ab 30 Workouts) — wachsende Muskulatur, breite Schultern, selbstbewusstes Grinsen, pulsierende Energie-Aura.
+  - *Spoiler-freie Evolution:* Jedes der 7 Pets besitzt eigene **16×16 Pixel-Art-Sprites** über **4 Stufen** (`0 / 100 / 300 / 600 XP`), ohne zukünftige Stufen vorab zu verraten.
 - **Freie HSL-Farbwahl & Accessoire-Slots mit scharfen SVG-Outlines:**
   - Stufenloser **HSL-Farbwähler** (Farbton, Sättigung, Helligkeit + Hex-Code) oder edler **Theme-Monochrom-Modus**.
   - **3 Accessoire-Slots (Kopf, Körper, Hand):** Schweißband, Gym-Mütze, Sonnenbrille, Pump-Hoodie, Hebergürtel, Kurzhantel, Protein-Shaker, Trainings-Schild und Kettlebell — mit scharfen SVG-Konturen und sichtbarem Pfoten-/Hand-Griff, der sich synchron mit dem Körper bewegt.
-- **Lebendige Mimik & Tagesrhythmus:** Ausdrucksstarkes Lächeln, motivierendes Zwinkern alle ~7 Sekunden, stolze **Post-Workout-Atmung** (2 Stunden nach dem Training) und automatische **Nachtschlaf-Phase** (`22:00–06:00 Uhr`). Jederzeit mit einem Tipp ausblendbar.
+- **Lebendige Mimik & Tagesrhythmus:** Ausdrucksstarkes Lächeln, motivierendes Zwinkern alle ~7 Sekunden, stolze **Post-Workout-Atmung** (2 Stunden nach dem Training) sowie automatische **Nachtschlaf-Phase** (`22:00–06:00 Uhr`). Jederzeit mit einem Tipp ausblendbar.
 
 ### 3. 🌸 Cycle-Synced Training (4 Phasen & Streak-Schutz)
 - **Biologisch abgestimmtes Training (100 % lokal):** Optional im Onboarding oder in den Einstellungen aktivierbar (Zykluslänge `21–35 Tage`, Periodendauer `3–7 Tage`, Schnell-Button *„Periode hat heute begonnen“*).
@@ -57,10 +57,10 @@
   - 🟢 **Phase 2 — Follikelphase:** Steigendes Östrogen & optimale Regeneration — ideal für Muskelaufbau und höheres Satzvolumen.
   - 🟡 **Phase 3 — Ovulation / Power-Peak:** Maximalkraft-Peak in der Zyklusmitte — grünes Licht für schwere Grundübungen und persönliche Rekorde (`🏆 PR`).
   - 🟣 **Phase 4 — Lutealphase (Anti-Frust-Schutz):** Erklärt transparent, dass 1–2 Wdh. weniger oder +1–2 kg durch hormonelle Wassereinlagerung völlig normal sind und kein Kraftverlust vorliegt.
-- **Farbige Kalender-Phasenpunkte:** Zeigt im Trainingskalender unter jedem Tag den passenden Phasenpunkt zur langfristigen Trainingsplanung.
+- **Farbige Kalender-Phasenpunkte:** Zeigt im 26-Wochen-Konstanz-Kalender unter jedem Tag den passenden Phasenpunkt zur langfristigen Trainingsplanung.
 
-### 4. 🧭 Interaktive Live-Tab Guided-Tour, Ernährung & Lokales JSON-Backup
-- **Interaktive 5-Schritte-Tour mit Live-Tab-Wechsel:** Führt Einsteiger live durch *Heute*, *Training*, *Verlauf/Kalender* und *Einstellungen* (inkl. Zurück/Weiter-Navigation, animierten Pill-Dots und Gym-Buddy-Begrüßung).
+### 4. 👋 Automatische Pausen- & Comeback-Erkennung, Ernährung & Lokales JSON-Backup
+- **Vollautomatische Pausen- & Comeback-Erkennung (ohne manuelle Pausen-Buttons):** Wenn du die App länger nicht geöffnet oder kein Training geloggt hast, fragt dich ein freundlicher „Willkommen zurück!“-Dialog beim Öffnen automatisch, ob du krank oder im Urlaub warst — rettet rückwirkend deine Streak, setzt den Deload-Zähler ab 7 Tagen Pause auf Woche 1 zurück und begleitet deine ersten 1–2 Comeback-Workouts mit einem sanften Hinweis.
 - **Ernährung, Rezepte (DE/EN) & Kalorienrechner:** BMR/TDEE-Rechner (Mifflin-St Jeor & Katch-McArdle) mit Sicherheitsgrenzen, Barcode-/Lebensmittelsuche (Open Food Facts), Vorratsschrank, Einkaufsliste und zweisprachigen Rezepten.
 - **100 % iOS-Optimiert & JSON-Backup:** Aktiver Safari-Speicherschutz (`navigator.storage.persist()`), natives iOS-Teilen-Menü (*„In Dateien sichern“*) für vollständige JSON-Backups, `.ics`-Kalender-Export und strikter Lie-Fi-Schutz (3,5 s Timeout im Gym-Funkloch).
 
@@ -76,7 +76,10 @@
 
 ### 2. 🐾 Gym Buddy 2.0 — Anti-Guilt Companion
 - **Purely Positive Gamification:** Celebrates your workouts, reads on rest days, and takes power naps — zero punishment, zero streak shame.
-- **10 Unlockable Pets (50% Cute / 50% Progress) & 4 Evolution Stages:** Evolve companions from Stage 1 to Stage 4 (`0 / 100 / 300 / 600 XP`) with spoiler-free level-up surprises.
+- **7 Unlockable Pixel-Art Pets (3 Cute / 4 Progress) & 4 Evolution Stages:**
+  - *Cute Style (3 Pets):* **Iron-Bot**, **Power Bear**, and **Gym Cat** (unlocked at 5 workouts).
+  - *Progress / Beast Style (4 Pets):* **Pump Monster**, **Lifter Max**, **Reps Rex** (15 workouts), and **Silverback** (30 workouts).
+  - Evolve companions from Stage 1 to Stage 4 (`0 / 100 / 300 / 600 XP`) with custom 16×16 pixel-art sprites and spoiler-free level-up surprises.
 - **Free HSL Color Picker & Crisp SVG Accessories:** Customize your buddy with full Hue/Saturation/Lightness sliders, theme monochrome mode, and 3 accessory slots (*Head*, *Body*, *Hand*) featuring sharp SVG outlines and a synchronized paw grip.
 - **Expressive Animations:** Friendly smile, 7-second wink, 2-hour post-workout proud breathing, and automatic night sleep (`10:00 PM – 6:00 AM`). Completely optional and can be hidden anytime.
 
@@ -84,8 +87,8 @@
 - **4 Biological Training Phases:** Tracks **Phase 1 (Menstruation)**, **Phase 2 (Follicular)**, **Phase 3 (Ovulation / PR Peak)**, and **Phase 4 (Luteal)** with colored calendar phase dots and biological anti-frustration guidance.
 - **Automatic Streak Protection:** Extends the workout streak rest-day buffer from 2 to **4 rest days** during Phase 1 and places your Gym Buddy into a gentle recovery mood.
 
-### 4. 🧭 Live Guided Tour, Nutrition & Local JSON Backup
-- **Interactive 5-Step Live-Tab Tour:** Automatically switches tabs live across *Today*, *Workout*, *History/Calendar*, and *Settings* with smooth cubic-bezier transitions.
+### 4. 👋 Automatic Break & Comeback Detection, Nutrition & Local JSON Backup
+- **Fully Automatic Break & Comeback Detection:** When you return after not opening the app or logging a workout for several days, a friendly 'Welcome back!' prompt automatically asks if you were sick or on vacation — retroactively protecting your streak, resetting deload counters after 7+ days off, and guiding your first comeback workouts.
 - **100% Local & iOS Ready:** Full IndexedDB persistence (`navigator.storage.persist()`), native iOS Share Sheet support (`navigator.share`) for validated JSON backups, and bilingual DE/EN interface.
 
 ---
@@ -98,10 +101,10 @@
 - [x] **7-Tage-Muskel-Balance-Netzdiagramm & Filter für dauerhafte Einschränkungen**
 - [x] **Ernährungs- & Makro-Tracker, Vorrat, Einkaufsliste & Zweisprachige Rezepte (DE/EN)**
 - [x] **Erweiterte Erinnerungen mit `.ics`-Kalender-Export** *(1 Woche, 1 Monat, 3 Monate, unbegrenzt)*
-- [x] **Gym Buddy 2.0 Trainings-Begleiter** *(10 Pets in Cute/Progress, 4 Evolutionsstufen, freier HSL-Farbwähler, 3 Accessoire-Slots mit scharfen SVG-Outlines & Pfoten-Griff, Lächeln/Zwinkern, Post-Workout- & Nachtschlaf-Modus)*
+- [x] **Gym Buddy 2.0 Trainings-Begleiter** *(7 Pets in Cute/Progress: Pumper-Monster, Iron-Bot, Lifter-Max, Kraft-Bär, Gym-Katze, Reps-Rex, Silberrücken · 4 Evolutionsstufen · freier HSL-Farbwähler · 3 Accessoire-Slots mit scharfen SVG-Outlines & Pfoten-Griff)*
 - [x] **Cycle-Synced Training (4 Phasen)** *(Dashboard-Widget, Anti-Frust-Hinweise, farbige Kalender-Punkte & 4-Tage-Streak-Schutz in Phase 1)*
-- [x] **Persönliches Onboarding mit Biologie-Check & sanfter Accordion-Animation**
-- [x] **Interaktive 5-Schritte-Tour mit automatischem Live-Tab-Wechsel & UI/UX-Polish**
+- [x] **Vollautomatische Pausen- & Comeback-Erkennung** *(Automatische „Willkommen zurück!“-Abfrage nach längeren Pausen mit rückwirkendem Streak-Schutz, Deload-Reset ab 7 Tagen & Comeback-Banner)*
+- [x] **Interaktive 5-Schritte-Tour mit automatischem Live-Tab-Wechsel & 1:1 App-Previews**
 - [x] **100 % iPhone- & iOS-Web-App-Optimierung** *(`navigator.storage.persist`, natives iOS Share Sheet für JSON-Backups, WebKit-SVG-Optimierung & 3,5 s Lie-Fi-Schutz)*
 
 ### 🔜 Zukünftige Meilensteine (Planned)

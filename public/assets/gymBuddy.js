@@ -33,10 +33,10 @@ export const LEVEL_XP_THRESHOLDS = {
 };
 
 /**
- * 10 Preset-Pets:
- * - 5 × 'cute' (robot, bear, cat, shiba, axolotl): bleiben auf Stufe 1–4 kompakt & extrem niedlich,
+ * 7 Preset-Pets:
+ * - 3 × 'cute' (robot, bear, cat): bleiben auf Stufe 1–4 kompakt & extrem niedlich,
  *   bekommen größere/glänzendere Augen, süßes/stolzes Lächeln und funkelnde Sterne auf Stufe 4.
- * - 5 × 'progress' (monster, lifter, dino, gorilla, cyberwolf): werden breiter & muskulöser,
+ * - 4 × 'progress' (monster, lifter, dino, gorilla): werden breiter & muskulöser,
  *   selbstbewusstes Grinsen + pulsierende Energie-Aura auf höheren Stufen.
  */
 export const PRESET_PETS = [
@@ -104,36 +104,6 @@ export const PRESET_PETS = [
     charEn: 'Massive gym titan with stoic calm and immense presence unlocked through consistency.',
     unlockWorkouts: 30,
     unlockMinutes: 600,
-  },
-  {
-    id: 'shiba',
-    style: 'cute',
-    nameDe: 'Pump-Shiba',
-    nameEn: 'Pump Shiba',
-    charDe: 'Extrem süßer kleiner Shiba Inu mit glänzenden Kulleraugen und unerschütterlicher Trainingsfreude.',
-    charEn: 'Super cute little Shiba Inu with glossy eyes and unshakeable workout joy.',
-    unlockWorkouts: 50,
-    unlockTotalLevels: 12,
-  },
-  {
-    id: 'axolotl',
-    style: 'cute',
-    nameDe: 'Gains-Axolotl',
-    nameEn: 'Gains Axolotl',
-    charDe: 'Seltener kleiner Wasser-Drache – bleibt wunderbar kompakt, strahlt vor Stolz und funkelt voller Sterne.',
-    charEn: 'Rare little water dragon – stays wonderfully compact, beams with pride, and sparkles with stars.',
-    unlockWorkouts: 75,
-    unlockTotalLevels: 16,
-  },
-  {
-    id: 'cyberwolf',
-    style: 'progress',
-    nameDe: 'Cyber-Wolf',
-    nameEn: 'Cyber Wolf',
-    charDe: 'Ultimativer Endgame-Phantomwolf mit selbstbewusstem Grinsen und pulsierender Energie-Aura.',
-    charEn: 'Ultimate endgame phantom wolf with a confident grin and pulsing energy aura.',
-    unlockWorkouts: 100,
-    unlockTotalLevels: 20,
   },
 ];
 
@@ -361,72 +331,6 @@ export const PET_ACCESSORY_ANCHORS = {
       hand: { x: 14.2, y: 7.2, scale: 1.08, rotate: -7 },
     },
   },
-  shiba: {
-    1: {
-      head: { x: 8, y: 3.2, scale: 0.92, rotate: 0, width: 6.4, eyeY: 5.5 },
-      body: { x: 8, y: 9.1, scale: 0.92, rotate: 0, width: 6.4, height: 2.7, beltY: 11.2 },
-      hand: { x: 11.9, y: 9.1, scale: 0.92, rotate: -5 },
-    },
-    2: {
-      head: { x: 8, y: 3.1, scale: 0.96, rotate: 0, width: 6.8, eyeY: 5.5 },
-      body: { x: 8, y: 9.0, scale: 0.96, rotate: 0, width: 6.8, height: 2.8, beltY: 11.2 },
-      hand: { x: 12.2, y: 8.9, scale: 0.96, rotate: -5 },
-    },
-    3: {
-      head: { x: 8, y: 3.0, scale: 1.0, rotate: 0, width: 7.2, eyeY: 5.5 },
-      body: { x: 8, y: 8.9, scale: 1.0, rotate: 0, width: 7.4, height: 3.0, beltY: 11.2 },
-      hand: { x: 12.6, y: 8.7, scale: 1.0, rotate: -4 },
-    },
-    4: {
-      head: { x: 8, y: 2.9, scale: 1.04, rotate: 0, width: 7.6, eyeY: 5.5 },
-      body: { x: 8, y: 8.8, scale: 1.04, rotate: 0, width: 7.8, height: 3.1, beltY: 11.2 },
-      hand: { x: 12.9, y: 8.5, scale: 1.04, rotate: -4 },
-    },
-  },
-  axolotl: {
-    1: {
-      head: { x: 8, y: 3.2, scale: 0.92, rotate: 0, width: 6.4, eyeY: 5.5 },
-      body: { x: 8, y: 9.1, scale: 0.92, rotate: 0, width: 6.4, height: 2.7, beltY: 11.2 },
-      hand: { x: 11.9, y: 9.1, scale: 0.92, rotate: -5 },
-    },
-    2: {
-      head: { x: 8, y: 3.1, scale: 0.96, rotate: 0, width: 6.8, eyeY: 5.5 },
-      body: { x: 8, y: 9.0, scale: 0.96, rotate: 0, width: 6.8, height: 2.8, beltY: 11.2 },
-      hand: { x: 12.2, y: 8.9, scale: 0.96, rotate: -5 },
-    },
-    3: {
-      head: { x: 8, y: 3.0, scale: 1.0, rotate: 0, width: 7.2, eyeY: 5.5 },
-      body: { x: 8, y: 8.9, scale: 1.0, rotate: 0, width: 7.4, height: 3.0, beltY: 11.2 },
-      hand: { x: 12.6, y: 8.7, scale: 1.0, rotate: -4 },
-    },
-    4: {
-      head: { x: 8, y: 2.9, scale: 1.04, rotate: 0, width: 7.6, eyeY: 5.5 },
-      body: { x: 8, y: 8.8, scale: 1.04, rotate: 0, width: 7.8, height: 3.1, beltY: 11.2 },
-      hand: { x: 12.9, y: 8.5, scale: 1.04, rotate: -4 },
-    },
-  },
-  cyberwolf: {
-    1: {
-      head: { x: 8, y: 3.2, scale: 0.92, rotate: 0, width: 6.6, eyeY: 4.5 },
-      body: { x: 8, y: 8.2, scale: 0.92, rotate: 0, width: 6.8, height: 2.8, beltY: 10.4 },
-      hand: { x: 12.0, y: 8.2, scale: 0.94, rotate: -5 },
-    },
-    2: {
-      head: { x: 8, y: 2.3, scale: 0.98, rotate: 0, width: 7.2, eyeY: 4.5 },
-      body: { x: 8, y: 8.1, scale: 0.98, rotate: 0, width: 7.6, height: 3.0, beltY: 10.4 },
-      hand: { x: 12.9, y: 8.0, scale: 0.98, rotate: -6 },
-    },
-    3: {
-      head: { x: 8, y: 2.2, scale: 1.02, rotate: 0, width: 7.8, eyeY: 3.8 },
-      body: { x: 8, y: 7.6, scale: 1.04, rotate: 0, width: 8.6, height: 3.2, beltY: 10.1 },
-      hand: { x: 13.7, y: 7.4, scale: 1.04, rotate: -6 },
-    },
-    4: {
-      head: { x: 8, y: 2.1, scale: 1.06, rotate: 0, width: 8.4, eyeY: 3.8 },
-      body: { x: 8, y: 7.5, scale: 1.08, rotate: 0, width: 9.4, height: 3.4, beltY: 10.1 },
-      hand: { x: 14.1, y: 7.2, scale: 1.08, rotate: -7 },
-    },
-  },
 };
 
 const QUICK_SWATCHES = [
@@ -469,9 +373,9 @@ export function getBuddyTexts(lang) {
       progress: isDe ? '⚡ Progress' : '⚡ Progress',
     },
     styleFilter: {
-      all: isDe ? 'Alle (10)' : 'All (10)',
-      cute: isDe ? '✨ Cute (5)' : '✨ Cute (5)',
-      progress: isDe ? '⚡ Progress / Beast (5)' : '⚡ Progress / Beast (5)',
+      all: isDe ? 'Alle (7)' : 'All (7)',
+      cute: isDe ? '✨ Cute (3)' : '✨ Cute (3)',
+      progress: isDe ? '⚡ Progress / Beast (4)' : '⚡ Progress / Beast (4)',
     },
     styleHint: {
       cute: isDe
@@ -1451,306 +1355,6 @@ const PET_STAGE_SPRITES = {
         '...1322112231...',
         '..144221122441..',
         '..11111..11111..',
-        '................',
-      ],
-    },
-  },
-
-  // === CUTE PET 4 (High-Level 50 Wo.): Pump-Shiba (kompakt, flauschige Ohren, Kulleraugen) ===
-  shiba: {
-    1: {
-      headY: 3,
-      bodyY: 9,
-      handX: 12,
-      handY: 9,
-      rows: [
-        '................',
-        '..11........11..',
-        '..131......131..',
-        '..123111111321..',
-        '..123222222321..',
-        '..122552255221..',
-        '..122552255221..',
-        '..133322223331..',
-        '...1333333331...',
-        '...122333322111.',
-        '...122333322131.',
-        '....1422224111..',
-        '....131..131....',
-        '....111..111....',
-        '................',
-        '................',
-      ],
-    },
-    2: {
-      headY: 3,
-      bodyY: 9,
-      handX: 12,
-      handY: 9,
-      rows: [
-        '................',
-        '..111......111..',
-        '..132111111231..',
-        '.12332222223321.',
-        '.12325522552321.',
-        '.12225522552221.',
-        '..133322223331..',
-        '...1333333331...',
-        '..1322333322311.',
-        '..1223333332231.',
-        '...14223322411..',
-        '....132..231....',
-        '....111..111....',
-        '................',
-        '................',
-        '................',
-      ],
-    },
-    3: {
-      headY: 3,
-      bodyY: 9,
-      handX: 12,
-      handY: 9,
-      rows: [
-        '................',
-        '..111......111..',
-        '.13321111112331.',
-        '.12332222223321.',
-        '.12325522552321.',
-        '.12225522552221.',
-        '..133332233331..',
-        '...1333333331...',
-        '..1322333322311.',
-        '..1323333332331.',
-        '...14423324411..',
-        '....132..231....',
-        '....111..111....',
-        '................',
-        '................',
-        '................',
-      ],
-    },
-    4: {
-      headY: 3,
-      bodyY: 9,
-      handX: 12,
-      handY: 9,
-      rows: [
-        '................',
-        '.1111......1111.',
-        '.13321111112331.',
-        '.12333222233321.',
-        '.12325522552321.',
-        '.12225522552221.',
-        '..133332233331..',
-        '...1333333331...',
-        '..1332333323311.',
-        '..1323333332331.',
-        '...14423324411..',
-        '....132..231....',
-        '....111..111....',
-        '................',
-        '................',
-        '................',
-      ],
-    },
-  },
-
-  // === CUTE PET 5 (High-Level 75 Wo.): Gains-Axolotl (kompakter Wasser-Drache mit Kiemen-Krönchen) ===
-  axolotl: {
-    1: {
-      headY: 4,
-      bodyY: 9,
-      handX: 12,
-      handY: 9,
-      rows: [
-        '................',
-        '................',
-        '.31..111111..13.',
-        '..131332233131..',
-        '.31232222223213.',
-        '..122552255221..',
-        '..122552255221..',
-        '...1322222231...',
-        '....13233231....',
-        '...12233332211..',
-        '....1422224131..',
-        '....114224111...',
-        '.....12..21.....',
-        '.....11..11.....',
-        '................',
-        '................',
-      ],
-    },
-    2: {
-      headY: 3,
-      bodyY: 9,
-      handX: 12,
-      handY: 9,
-      rows: [
-        '................',
-        '.31..111111..13.',
-        '..131332233131..',
-        '.31233222233213.',
-        '..122552255221..',
-        '..122552255221..',
-        '..132222222231..',
-        '...1332332331...',
-        '..1322333322311.',
-        '...142333324131.',
-        '....1142241111..',
-        '....132..231....',
-        '....111..111....',
-        '................',
-        '................',
-        '................',
-      ],
-    },
-    3: {
-      headY: 3,
-      bodyY: 9,
-      handX: 12,
-      handY: 9,
-      rows: [
-        '................',
-        '.31.11111111.13.',
-        '.13133322333131.',
-        '.31233222233213.',
-        '..122552255221..',
-        '..122552255221..',
-        '..133222222331..',
-        '...1332332331...',
-        '..1322333322311.',
-        '...1423333241331',
-        '....11422411111.',
-        '....132..231....',
-        '....111..111....',
-        '................',
-        '................',
-        '................',
-      ],
-    },
-    4: {
-      headY: 3,
-      bodyY: 9,
-      handX: 12,
-      handY: 9,
-      rows: [
-        '......3..3......',
-        '.31.11111111.13.',
-        '.13133322333131.',
-        '.31233322333213.',
-        '..122552255221..',
-        '..122552255221..',
-        '..133222222331..',
-        '...1333333331...',
-        '..1332333323311.',
-        '...1423333241331',
-        '....11422411111.',
-        '....132..231....',
-        '....111..111....',
-        '................',
-        '................',
-        '................',
-      ],
-    },
-  },
-
-  // === PROGRESS / BEAST PET 5 (Endgame 100 Wo.): Cyber-Wolf (wird massiv + Energie-Aura) ===
-  cyberwolf: {
-    1: {
-      headY: 3,
-      bodyY: 8,
-      handX: 12,
-      handY: 8,
-      rows: [
-        '................',
-        '...11......11...',
-        '..1431....1341..',
-        '..142311113241..',
-        '..142522225241..',
-        '..142522225241..',
-        '..142222222241..',
-        '...1132222311...',
-        '..132234432231..',
-        '..142242242241..',
-        '...1144224411...',
-        '....14211241....',
-        '....121..121....',
-        '....111..111....',
-        '................',
-        '................',
-      ],
-    },
-    2: {
-      headY: 2,
-      bodyY: 7,
-      handX: 13,
-      handY: 7,
-      rows: [
-        '................',
-        '..11........11..',
-        '..143111111341..',
-        '..132522225231..',
-        '..142522225241..',
-        '..142222222241..',
-        '.11332222223311.',
-        '.13224344342231.',
-        '.12424244242421.',
-        '..111142241111..',
-        '....14211241....',
-        '....13211231....',
-        '...1111..1111...',
-        '................',
-        '................',
-        '................',
-      ],
-    },
-    3: {
-      headY: 2,
-      bodyY: 6,
-      handX: 14,
-      handY: 6,
-      rows: [
-        '................',
-        '.11..........11.',
-        '.14311133111341.',
-        '..135522225531..',
-        '..145522225541..',
-        '..142222222241..',
-        '.13342222224331.',
-        '1322433443342231',
-        '1242424334242421',
-        '.11114422441111.',
-        '...1322112231...',
-        '...1422112241...',
-        '..11111..11111..',
-        '................',
-        '................',
-        '................',
-      ],
-    },
-    4: {
-      headY: 1,
-      bodyY: 6,
-      handX: 14,
-      handY: 6,
-      rows: [
-        '................',
-        '.131........131.',
-        '.14331133113341.',
-        '.14255222255241.',
-        '.14255222255241.',
-        '.14222222222241.',
-        '1333422222243331',
-        '1322433443342231',
-        '1242424334242421',
-        '1442422442242441',
-        '.11114422441111.',
-        '...1322112231...',
-        '..144221122441..',
-        '..11111..11111..',
-        '................',
         '................',
       ],
     },
@@ -2930,7 +2534,7 @@ function buildMouthElements(style, stage, mood, eyeBottomY, eyeHex) {
   const elements = [];
 
   if (mood === 'sleep' || mood === 'phase1_recovery') {
-    // Sanftes, entspanntes Lächeln im Schlaf / Phase-1-Erholungsmodus (\_/)
+    // Sanftes, entspanntes Lächeln im Schlaf / Erholungsmodus (\_/)
     elements.push(
       { x: 6.55, y: rowY + 0.02, w: 0.62, h: 0.52, fill: eyeHex },
       { x: 7.12, y: rowY + 0.42, w: 1.76, h: 0.54, fill: eyeHex },
@@ -3795,7 +3399,12 @@ export function sanitizeCycleTrackingBackupRecord(raw) {
   };
 }
 
-export function calculateWorkoutStreak(completedDatesMs, nowMs = Date.now(), cycleProtection = null) {
+export function calculateWorkoutStreak(
+  completedDatesMs,
+  nowMs = Date.now(),
+  cycleProtection = null,
+  breakConfig = null
+) {
   if (!Array.isArray(completedDatesMs) || completedDatesMs.length === 0) return 0;
 
   const validTimestamps = [];
@@ -3809,6 +3418,7 @@ export function calculateWorkoutStreak(completedDatesMs, nowMs = Date.now(), cyc
 
   validTimestamps.sort((a, b) => b - a);
 
+  const dayMs = 24 * 60 * 60 * 1000;
   const isPhase1GapProtected = (laterMs, earlierMs) => {
     if (cycleProtection === true) return true;
     const cfg =
@@ -3818,7 +3428,6 @@ export function calculateWorkoutStreak(completedDatesMs, nowMs = Date.now(), cyc
           ? cachedCycleConfig
           : null;
     if (!cfg || !cfg.enabled || !isValidIsoDateString(cfg.lastPeriodStart)) return false;
-    const dayMs = 24 * 60 * 60 * 1000;
     const steps = Math.min(6, Math.max(0, Math.round((laterMs - earlierMs) / dayMs)));
     for (let d = 0; d <= steps; d++) {
       const checkMs = laterMs - d * dayMs;
@@ -3828,10 +3437,24 @@ export function calculateWorkoutStreak(completedDatesMs, nowMs = Date.now(), cyc
     return false;
   };
 
+  const effBreakCfg = breakConfig !== null ? breakConfig : cachedBreakConfig;
+  const subtractBreakDaysMs = (laterMs, earlierMs) => {
+    if (!effBreakCfg) return laterMs - earlierMs;
+    const breakDays = countBreakDaysInInterval(earlierMs, laterMs, effBreakCfg, nowMs);
+    if (breakDays <= 0) return laterMs - earlierMs;
+    return Math.max(0, laterMs - earlierMs - breakDays * dayMs);
+  };
+
+  const todayIso = toLocalIsoDate(nowMs);
+  const hasBreakCoveringToday = Boolean(
+    effBreakCfg && getBreakForDate(effBreakCfg, todayIso, nowMs) !== null
+  );
+
   const initialMaxGapMs = isPhase1GapProtected(nowMs, validTimestamps[0])
     ? PHASE1_STREAK_GAP_MS
     : MAX_STREAK_GAP_MS;
-  if (nowMs - validTimestamps[0] > initialMaxGapMs) return 0;
+  const effectiveInitialGapMs = subtractBreakDaysMs(nowMs, validTimestamps[0]);
+  if (!hasBreakCoveringToday && effectiveInitialGapMs > initialMaxGapMs) return 0;
 
   let streak = 0;
   let lastDayMidnightMs = null;
@@ -3857,7 +3480,8 @@ export function calculateWorkoutStreak(completedDatesMs, nowMs = Date.now(), cyc
       ? PHASE1_STREAK_GAP_MS
       : MAX_STREAK_GAP_MS;
 
-    if (lastDayMidnightMs - midnightMs <= allowedGapMs) {
+    const effectiveGapMs = subtractBreakDaysMs(lastDayMidnightMs, midnightMs);
+    if (effectiveGapMs <= allowedGapMs) {
       streak += 1;
       lastDayMidnightMs = midnightMs;
       lastDayKey = dayKey;
@@ -4181,8 +3805,15 @@ export function useGymBuddy() {
     getCycleTrackingSnapshot
   );
 
+  const breakState = y.useSyncExternalStore(
+    subscribeTrainingBreaks,
+    getTrainingBreaksSnapshot,
+    getTrainingBreaksSnapshot
+  );
+
   y.useEffect(() => {
     ensureCycleTrackingLoaded().catch(() => {});
+    ensureTrainingBreaksLoaded().catch(() => {});
   }, []);
 
   const currentPhaseInfo = y.useMemo(
@@ -4194,18 +3825,41 @@ export function useGymBuddy() {
     currentPhaseInfo && currentPhaseInfo.phase === 'menstruation'
   );
 
+  const workoutDates = y.useMemo(
+    () => completedSessions.map((s) => s?.completedAt || s?.date).filter(Boolean),
+    [completedSessions]
+  );
+
   const currentStreak = y.useMemo(
     () =>
       calculateWorkoutStreak(
-        completedSessions.map((s) => s?.completedAt || s?.date).filter(Boolean),
+        workoutDates,
         nowMs,
-        cycleState
+        cycleState,
+        breakState
       ),
-    [completedSessions, nowMs, cycleState]
+    [workoutDates, nowMs, cycleState, breakState]
+  );
+
+  const comebackGap = y.useMemo(
+    () =>
+      detectUnplannedComebackGap(
+        workoutDates,
+        breakState,
+        nowMs,
+        cycleState,
+        SESSION_PREVIOUS_APP_OPEN_MS
+      ),
+    [workoutDates, breakState, nowMs, cycleState]
   );
 
   const currentMood = y.useMemo(
-    () => determinePositivePetMood(lastWorkoutAtMs, nowMs, isPhase1Menstruation),
+    () =>
+      determinePositivePetMood(
+        lastWorkoutAtMs,
+        nowMs,
+        isPhase1Menstruation
+      ),
     [lastWorkoutAtMs, nowMs, isPhase1Menstruation]
   );
 
@@ -4300,6 +3954,8 @@ export function useGymBuddy() {
     maxPetLevelReached,
     totalPetLevels,
     cycleState,
+    breakState,
+    comebackGap,
     setEnabled,
     selectPet,
     updateActivePetCustomization,
@@ -5417,6 +5073,7 @@ export function GymBuddyWidget() {
       children: [
         c.jsx(GymBuddyWidgetInternal, {}),
         c.jsx(CycleDashboardWidgetInternal, {}),
+        c.jsx(ComebackWelcomeModal, {}),
       ],
     }),
   });
@@ -6555,6 +6212,811 @@ export async function restoreCycleTrackingFromBackup(cycleRaw, trainingSettingsA
   const sanitized = sanitizeCycleTrackingBackupRecord(candidate);
   if (sanitized) {
     await persistCycleTrackingConfig(sanitized);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 13. Automatische Pausen- & Comeback-Erkennung (Ohne manuelle Pausen-Buttons)
+// ---------------------------------------------------------------------------
+
+export const TRAINING_BREAK_STORAGE_KEY = 'gym-training-breaks-v1';
+export const TRAINING_BREAK_IDB_RECORD_ID = 'training-breaks';
+export const LAST_APP_OPEN_STORAGE_KEY = 'gym-last-app-open-v1';
+
+// Capture previous app open timestamp before updating it for the current session
+const SESSION_PREVIOUS_APP_OPEN_MS = (() => {
+  try {
+    if (typeof localStorage !== 'undefined') {
+      const prevRaw = localStorage.getItem(LAST_APP_OPEN_STORAGE_KEY);
+      const now = Date.now();
+      localStorage.setItem(LAST_APP_OPEN_STORAGE_KEY, String(now));
+      const parsed = Number(prevRaw);
+      if (Number.isFinite(parsed) && parsed > 0) return parsed;
+    }
+  } catch {}
+  return null;
+})();
+
+export const DEFAULT_TRAINING_BREAK_CONFIG = {
+  id: 'default',
+  activeBreak: null,
+  history: [],
+  dismissedGapEndMs: 0,
+  comebackBannerRemainingWorkouts: 0,
+  comebackBannerBreakDays: 0,
+  comebackBannerCategory: null,
+  updatedAt: 0,
+};
+
+export const COMEBACK_GAP_MIN_DAYS = 4;
+export const COMEBACK_BANNER_MIN_BREAK_DAYS = 7;
+export const COMEBACK_BANNER_WORKOUT_COUNT = 2;
+export const DELOAD_RESET_MIN_BREAK_DAYS = 7;
+export const DELOAD_FREEZE_MIN_BREAK_DAYS = 3;
+
+export function toLocalIsoDate(ms = Date.now()) {
+  const d = new Date(ms);
+  const yr = d.getFullYear();
+  const mo = String(d.getMonth() + 1).padStart(2, '0');
+  const dy = String(d.getDate()).padStart(2, '0');
+  return `${yr}-${mo}-${dy}`;
+}
+
+export function isoDateToLocalMidnightMs(iso) {
+  if (!isValidIsoDateString(iso)) return null;
+  const [yr, mo, dy] = iso.trim().split('-').map(Number);
+  return new Date(yr, mo - 1, dy, 0, 0, 0, 0).getTime();
+}
+
+export function isoDateToLocalEndOfDayMs(iso) {
+  if (!isValidIsoDateString(iso)) return null;
+  const [yr, mo, dy] = iso.trim().split('-').map(Number);
+  return new Date(yr, mo - 1, dy, 23, 59, 59, 999).getTime();
+}
+
+export function calculateBreakDays(startDateIso, endDateIso, nowMs = Date.now()) {
+  const startMidnight = isoDateToLocalMidnightMs(startDateIso);
+  if (startMidnight === null) return 0;
+  const effectiveEndIso =
+    endDateIso && isValidIsoDateString(endDateIso) ? endDateIso : toLocalIsoDate(nowMs);
+  const endMidnight = isoDateToLocalMidnightMs(effectiveEndIso);
+  if (endMidnight === null || endMidnight < startMidnight) return 0;
+  return Math.round((endMidnight - startMidnight) / (24 * 60 * 60 * 1000)) + 1;
+}
+
+export function getAllEffectiveBreakPeriods(config, nowMs = Date.now()) {
+  if (!config) return [];
+  const result = [];
+  if (Array.isArray(config.history)) {
+    for (const item of config.history) {
+      if (item && isValidIsoDateString(item.startDate)) {
+        result.push(item);
+      }
+    }
+  }
+  if (config.activeBreak && isValidIsoDateString(config.activeBreak.startDate)) {
+    const act = config.activeBreak;
+    const todayIso = toLocalIsoDate(nowMs);
+    const effectiveEnd =
+      isValidIsoDateString(act.endDate) && act.endDate >= act.startDate
+        ? act.endDate
+        : todayIso >= act.startDate
+          ? todayIso
+          : act.startDate;
+    result.push({
+      ...act,
+      endDate: effectiveEnd,
+    });
+  }
+  return result;
+}
+
+export function getBreakForDate(config, dateIso, nowMs = Date.now()) {
+  if (!config || !isValidIsoDateString(dateIso)) return null;
+  const target = dateIso.trim();
+  const periods = getAllEffectiveBreakPeriods(config, nowMs);
+  for (let i = periods.length - 1; i >= 0; i--) {
+    const p = periods[i];
+    const endIso = isValidIsoDateString(p.endDate) ? p.endDate : toLocalIsoDate(nowMs);
+    if (target >= p.startDate && target <= endIso) {
+      return p;
+    }
+  }
+  return null;
+}
+
+export function countBreakDaysInInterval(earlierMs, laterMs, config, nowMs = Date.now()) {
+  if (!config || laterMs <= earlierMs) return 0;
+  const periods = getAllEffectiveBreakPeriods(config, nowMs);
+  if (periods.length === 0) return 0;
+
+  const dStart = new Date(earlierMs);
+  const startMidnight = new Date(dStart.getFullYear(), dStart.getMonth(), dStart.getDate()).getTime();
+  const dEnd = new Date(laterMs);
+  const endMidnight = new Date(dEnd.getFullYear(), dEnd.getMonth(), dEnd.getDate()).getTime();
+  if (endMidnight <= startMidnight) return 0;
+
+  const dayMs = 24 * 60 * 60 * 1000;
+  const intervalStartIso = toLocalIsoDate(startMidnight);
+  const intervalEndIso = toLocalIsoDate(endMidnight);
+  const coveredDays = new Set();
+
+  for (const p of periods) {
+    const pStart = p.startDate;
+    const pEnd = isValidIsoDateString(p.endDate) ? p.endDate : toLocalIsoDate(nowMs);
+    if (pEnd < intervalStartIso || pStart > intervalEndIso) continue;
+    const clampedStartIso = pStart > intervalStartIso ? pStart : intervalStartIso;
+    const clampedEndIso = pEnd < intervalEndIso ? pEnd : intervalEndIso;
+    const sMs = isoDateToLocalMidnightMs(clampedStartIso);
+    const eMs = isoDateToLocalMidnightMs(clampedEndIso);
+    if (sMs === null || eMs === null || eMs < sMs) continue;
+    for (let cur = sMs; cur <= eMs; cur += dayMs) {
+      coveredDays.add(toLocalIsoDate(cur));
+    }
+  }
+  return coveredDays.size;
+}
+
+export function detectUnplannedComebackGap(
+  completedSessionDatesMs,
+  config,
+  nowMs = Date.now(),
+  cycleProtection = null,
+  lastAppOpenedMs = null
+) {
+  if (!Array.isArray(completedSessionDatesMs) || completedSessionDatesMs.length === 0) return null;
+  if (config?.activeBreak) return null;
+
+  const valid = completedSessionDatesMs.filter(
+    (v) => typeof v === 'number' && Number.isFinite(v) && v > 0 && v <= nowMs
+  );
+  if (valid.length === 0) return null;
+  const lastWorkoutMs = Math.max(...valid);
+
+  const lastD = new Date(lastWorkoutMs);
+  const lastMidnight = new Date(lastD.getFullYear(), lastD.getMonth(), lastD.getDate()).getTime();
+  const nowD = new Date(nowMs);
+  const nowMidnight = new Date(nowD.getFullYear(), nowD.getMonth(), nowD.getDate()).getTime();
+  const dayMs = 24 * 60 * 60 * 1000;
+  const gapDays = Math.round((nowMidnight - lastMidnight) / dayMs);
+
+  let minGapDays = COMEBACK_GAP_MIN_DAYS;
+  const effCycle =
+    cycleProtection && typeof cycleProtection === 'object'
+      ? cycleProtection
+      : cachedCycleConfig?.enabled
+        ? cachedCycleConfig
+        : null;
+  if (effCycle && effCycle.enabled) {
+    const phaseInfo = calculateCyclePhaseForDate(effCycle, nowMs);
+    if (phaseInfo && phaseInfo.phase === 'menstruation') {
+      minGapDays = 5;
+    }
+  }
+
+  if (gapDays < minGapDays) return null;
+
+  const suggestedStartMs = lastMidnight + dayMs;
+  const suggestedStartDate = toLocalIsoDate(suggestedStartMs);
+  const suggestedEndDate = toLocalIsoDate(nowMidnight);
+
+  const coveredDays = countBreakDaysInInterval(suggestedStartMs, nowMidnight, config, nowMs);
+  const uncoveredGapDays = Math.max(0, gapDays - coveredDays);
+  if (uncoveredGapDays < minGapDays) return null;
+
+  const dismissedMark = config?.dismissedGapEndMs ?? 0;
+  if (dismissedMark >= lastWorkoutMs && nowMidnight - dismissedMark < 3 * dayMs) {
+    return null;
+  }
+
+  let appClosedDays;
+  const effectiveLastOpen = lastAppOpenedMs ?? config?.lastAppOpenedAt;
+  if (
+    typeof effectiveLastOpen === 'number' &&
+    Number.isFinite(effectiveLastOpen) &&
+    effectiveLastOpen > 0 &&
+    effectiveLastOpen < nowMs
+  ) {
+    const openD = new Date(effectiveLastOpen);
+    const openMidnight = new Date(openD.getFullYear(), openD.getMonth(), openD.getDate()).getTime();
+    const diffOpen = Math.round((nowMidnight - openMidnight) / dayMs);
+    if (diffOpen >= 1) appClosedDays = diffOpen;
+  }
+
+  return {
+    lastWorkoutMs,
+    lastWorkoutDateIso: toLocalIsoDate(lastMidnight),
+    suggestedStartDate,
+    suggestedEndDate,
+    gapDays,
+    ...(appClosedDays !== undefined ? { appClosedDays } : {}),
+    shouldPrompt: true,
+  };
+}
+
+export function confirmRetroactiveComebackBreak(prev, params, nowMs = Date.now()) {
+  const category =
+    params.category === 'vacation' || params.category === 'sick' || params.category === 'other'
+      ? params.category
+      : 'other';
+  const todayIso = toLocalIsoDate(nowMs);
+  const startDate = isValidIsoDateString(params.startDate) ? params.startDate.trim() : todayIso;
+  const endDate =
+    isValidIsoDateString(params.endDate) && params.endDate.trim() >= startDate
+      ? params.endDate.trim()
+      : todayIso >= startDate
+        ? todayIso
+        : startDate;
+
+  const breakDays = calculateBreakDays(startDate, endDate, nowMs);
+  const entry = {
+    id: `brk-auto-${nowMs}`,
+    category,
+    startDate,
+    endDate,
+    active: false,
+    autoDetected: true,
+    note: typeof params.note === 'string' ? params.note.trim().slice(0, 80) : undefined,
+    createdAt: nowMs,
+    endedAt: nowMs,
+  };
+
+  const history = [...(prev?.history ?? []), entry].slice(-60);
+  const shouldShowComeback = breakDays >= COMEBACK_BANNER_MIN_BREAK_DAYS;
+
+  return {
+    id: 'default',
+    activeBreak: null,
+    history,
+    dismissedGapEndMs: nowMs,
+    comebackBannerRemainingWorkouts: shouldShowComeback
+      ? COMEBACK_BANNER_WORKOUT_COUNT
+      : prev?.comebackBannerRemainingWorkouts ?? 0,
+    comebackBannerBreakDays: shouldShowComeback ? breakDays : prev?.comebackBannerBreakDays ?? 0,
+    comebackBannerCategory: shouldShowComeback ? category : prev?.comebackBannerCategory ?? null,
+    lastAppOpenedAt: nowMs,
+    updatedAt: nowMs,
+  };
+}
+
+export function dismissComebackPromptForGap(prev, lastWorkoutMs, gapDays = 0, nowMs = Date.now()) {
+  const shouldShowComeback = gapDays >= COMEBACK_BANNER_MIN_BREAK_DAYS;
+  return {
+    ...(prev || DEFAULT_TRAINING_BREAK_CONFIG),
+    id: 'default',
+    activeBreak: null,
+    dismissedGapEndMs: Math.max(nowMs, lastWorkoutMs || 0),
+    comebackBannerRemainingWorkouts: shouldShowComeback
+      ? COMEBACK_BANNER_WORKOUT_COUNT
+      : prev?.comebackBannerRemainingWorkouts ?? 0,
+    comebackBannerBreakDays: shouldShowComeback ? gapDays : prev?.comebackBannerBreakDays ?? 0,
+    comebackBannerCategory: shouldShowComeback ? 'other' : prev?.comebackBannerCategory ?? null,
+    lastAppOpenedAt: nowMs,
+    updatedAt: nowMs,
+  };
+}
+
+export function onWorkoutCompletedForBreakConfig(prev, nowMs = Date.now()) {
+  const base = prev || DEFAULT_TRAINING_BREAK_CONFIG;
+  const nextRemaining = Math.max(0, (base.comebackBannerRemainingWorkouts ?? 0) - 1);
+  return {
+    ...base,
+    id: 'default',
+    activeBreak: null,
+    comebackBannerRemainingWorkouts: nextRemaining,
+    comebackBannerBreakDays: nextRemaining > 0 ? base.comebackBannerBreakDays : 0,
+    comebackBannerCategory: nextRemaining > 0 ? base.comebackBannerCategory : null,
+    lastAppOpenedAt: nowMs,
+    updatedAt: nowMs,
+  };
+}
+
+export function sanitizeTrainingBreakPeriod(raw) {
+  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return null;
+  if (!isValidIsoDateString(raw.startDate)) return null;
+  const startDate = raw.startDate.trim();
+  const endDate =
+    isValidIsoDateString(raw.endDate) && raw.endDate.trim() >= startDate
+      ? raw.endDate.trim()
+      : startDate;
+  const category =
+    raw.category === 'vacation' || raw.category === 'sick' || raw.category === 'other'
+      ? raw.category
+      : 'other';
+  const id =
+    typeof raw.id === 'string' && raw.id.trim().length > 0
+      ? raw.id.trim().slice(0, 64)
+      : `brk-${startDate}`;
+  const createdAt =
+    typeof raw.createdAt === 'number' && Number.isFinite(raw.createdAt) ? raw.createdAt : Date.now();
+  const endedAt =
+    typeof raw.endedAt === 'number' && Number.isFinite(raw.endedAt) ? raw.endedAt : undefined;
+  const note = typeof raw.note === 'string' ? raw.note.trim().slice(0, 80) : undefined;
+
+  return {
+    id,
+    category,
+    startDate,
+    endDate,
+    active: false,
+    autoDetected: Boolean(raw.autoDetected ?? true),
+    endedByWorkout: typeof raw.endedByWorkout === 'boolean' ? raw.endedByWorkout : undefined,
+    note,
+    createdAt,
+    endedAt,
+  };
+}
+
+export function sanitizeTrainingBreakConfig(raw) {
+  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return null;
+  const history = [];
+  if (Array.isArray(raw.history)) {
+    for (const item of raw.history) {
+      const clean = sanitizeTrainingBreakPeriod(item);
+      if (clean) history.push(clean);
+    }
+  }
+  const migratedActive = sanitizeTrainingBreakPeriod(raw.activeBreak);
+  if (migratedActive) {
+    history.push(migratedActive);
+  }
+  const dismissedGapEndMs =
+    typeof raw.dismissedGapEndMs === 'number' &&
+    Number.isFinite(raw.dismissedGapEndMs) &&
+    raw.dismissedGapEndMs >= 0
+      ? raw.dismissedGapEndMs
+      : 0;
+  const comebackBannerRemainingWorkouts =
+    typeof raw.comebackBannerRemainingWorkouts === 'number' &&
+    Number.isFinite(raw.comebackBannerRemainingWorkouts)
+      ? Math.min(5, Math.max(0, Math.round(raw.comebackBannerRemainingWorkouts)))
+      : 0;
+  const comebackBannerBreakDays =
+    typeof raw.comebackBannerBreakDays === 'number' && Number.isFinite(raw.comebackBannerBreakDays)
+      ? Math.min(365, Math.max(0, Math.round(raw.comebackBannerBreakDays)))
+      : 0;
+  const comebackBannerCategory =
+    raw.comebackBannerCategory === 'vacation' ||
+    raw.comebackBannerCategory === 'sick' ||
+    raw.comebackBannerCategory === 'other'
+      ? raw.comebackBannerCategory
+      : null;
+  const lastAppOpenedAt =
+    typeof raw.lastAppOpenedAt === 'number' && Number.isFinite(raw.lastAppOpenedAt)
+      ? raw.lastAppOpenedAt
+      : undefined;
+  const updatedAt =
+    typeof raw.updatedAt === 'number' && Number.isFinite(raw.updatedAt) ? raw.updatedAt : Date.now();
+
+  return {
+    id: 'default',
+    activeBreak: null,
+    history: history.slice(-60),
+    dismissedGapEndMs,
+    comebackBannerRemainingWorkouts,
+    comebackBannerBreakDays,
+    comebackBannerCategory,
+    ...(lastAppOpenedAt !== undefined ? { lastAppOpenedAt } : {}),
+    updatedAt,
+  };
+}
+
+function readInitialBreakConfigFromLocalStorage() {
+  try {
+    if (typeof localStorage !== 'undefined') {
+      const raw = localStorage.getItem(TRAINING_BREAK_STORAGE_KEY);
+      if (raw) {
+        const parsed = sanitizeTrainingBreakConfig(JSON.parse(raw));
+        if (parsed) return parsed;
+      }
+    }
+  } catch {}
+  return { ...DEFAULT_TRAINING_BREAK_CONFIG };
+}
+
+let cachedBreakConfig = readInitialBreakConfigFromLocalStorage();
+let breakLoaded = false;
+let breakInitPromise = null;
+const breakListeners = new Set();
+
+function notifyBreakListeners() {
+  for (const fn of breakListeners) fn();
+}
+
+export function subscribeTrainingBreaks(listener) {
+  breakListeners.add(listener);
+  return () => breakListeners.delete(listener);
+}
+
+export function getTrainingBreaksSnapshot() {
+  return cachedBreakConfig;
+}
+
+export async function persistTrainingBreakConfig(nextOrPatch) {
+  const merged = sanitizeTrainingBreakConfig({
+    ...cachedBreakConfig,
+    ...(nextOrPatch || {}),
+    updatedAt: Date.now(),
+  }) || { ...DEFAULT_TRAINING_BREAK_CONFIG, updatedAt: Date.now() };
+
+  cachedBreakConfig = merged;
+  breakLoaded = true;
+
+  try {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(TRAINING_BREAK_STORAGE_KEY, JSON.stringify(merged));
+    }
+  } catch {}
+
+  notifyBreakListeners();
+  notifyListeners();
+
+  try {
+    await pe('Trainingspausen speichern', async (db) => {
+      if (db.objectStoreNames.contains(GYM_BUDDY_STORE)) {
+        await db.put(GYM_BUDDY_STORE, {
+          ...merged,
+          id: TRAINING_BREAK_IDB_RECORD_ID,
+        });
+      }
+    });
+  } catch {}
+
+  return merged;
+}
+
+export async function ensureTrainingBreaksLoaded() {
+  if (breakLoaded) return cachedBreakConfig;
+  if (breakInitPromise) return breakInitPromise;
+
+  breakInitPromise = (async () => {
+    try {
+      const loaded = await pe('Trainingspausen laden', async (db) => {
+        if (db.objectStoreNames.contains(GYM_BUDDY_STORE)) {
+          return await db.get(GYM_BUDDY_STORE, TRAINING_BREAK_IDB_RECORD_ID);
+        }
+        return null;
+      });
+      if (loaded) {
+        const sanitized = sanitizeTrainingBreakConfig(loaded);
+        if (sanitized) {
+          cachedBreakConfig = sanitized;
+          try {
+            if (typeof localStorage !== 'undefined') {
+              localStorage.setItem(TRAINING_BREAK_STORAGE_KEY, JSON.stringify(sanitized));
+            }
+          } catch {}
+          breakLoaded = true;
+          notifyBreakListeners();
+          notifyListeners();
+          return cachedBreakConfig;
+        }
+      }
+    } catch {}
+    breakLoaded = true;
+    return cachedBreakConfig;
+  })();
+
+  return breakInitPromise;
+}
+
+export async function notifyWorkoutCompletedForBreaks(nowMs = Date.now()) {
+  await ensureTrainingBreaksLoaded();
+  const next = onWorkoutCompletedForBreakConfig(cachedBreakConfig, nowMs);
+  await persistTrainingBreakConfig(next);
+  return next;
+}
+
+export function useTrainingBreaks() {
+  const config = y.useSyncExternalStore(
+    subscribeTrainingBreaks,
+    getTrainingBreaksSnapshot,
+    getTrainingBreaksSnapshot
+  );
+
+  y.useEffect(() => {
+    ensureTrainingBreaksLoaded().catch(() => {});
+  }, []);
+
+  const confirmRetroactive = y.useCallback((params) => {
+    const next = confirmRetroactiveComebackBreak(cachedBreakConfig, params, Date.now());
+    return persistTrainingBreakConfig(next);
+  }, []);
+
+  const dismissComebackGap = y.useCallback((lastWorkoutMs, gapDays) => {
+    const next = dismissComebackPromptForGap(cachedBreakConfig, lastWorkoutMs, gapDays, Date.now());
+    return persistTrainingBreakConfig(next);
+  }, []);
+
+  const dismissComebackBanner = y.useCallback(() => {
+    return persistTrainingBreakConfig({
+      comebackBannerRemainingWorkouts: 0,
+      comebackBannerBreakDays: 0,
+      comebackBannerCategory: null,
+    });
+  }, []);
+
+  return {
+    config,
+    confirmRetroactive,
+    dismissComebackGap,
+    dismissComebackBanner,
+  };
+}
+
+export function ComebackWelcomeModal() {
+  const isDe = typeof yS === 'function' ? yS() !== 'en' : true;
+  const { comebackGap } = useGymBuddy();
+  const { confirmRetroactive, dismissComebackGap } = useTrainingBreaks();
+
+  const [category, setCategory] = y.useState('vacation');
+  const [startDate, setStartDate] = y.useState('');
+  const [endDate, setEndDate] = y.useState('');
+
+  y.useEffect(() => {
+    if (comebackGap) {
+      setStartDate(comebackGap.suggestedStartDate);
+      setEndDate(comebackGap.suggestedEndDate);
+    }
+  }, [comebackGap?.suggestedStartDate, comebackGap?.suggestedEndDate]);
+
+  if (!comebackGap || !comebackGap.shouldPrompt) return null;
+
+  const todayIso = toLocalIsoDate();
+  const effectiveStart = startDate || comebackGap.suggestedStartDate;
+  const effectiveEnd = endDate || comebackGap.suggestedEndDate;
+  const breakDaysCount = calculateBreakDays(effectiveStart, effectiveEnd);
+
+  const handleConfirm = async () => {
+    await confirmRetroactive({
+      category,
+      startDate: effectiveStart,
+      endDate: effectiveEnd,
+      lastWorkoutMs: comebackGap.lastWorkoutMs,
+    });
+  };
+
+  const handleDismiss = async () => {
+    await dismissComebackGap(comebackGap.lastWorkoutMs, comebackGap.gapDays);
+  };
+
+  const categories = [
+    {
+      key: 'vacation',
+      icon: '🏖️',
+      label: isDe ? 'Urlaub / Reise' : 'Vacation / Travel',
+    },
+    {
+      key: 'sick',
+      icon: '🍵',
+      label: isDe ? 'Krank / Erholung' : 'Sick / Recovery',
+    },
+    {
+      key: 'other',
+      icon: '⏸️',
+      label: isDe ? 'Trainingspause' : 'Training Break',
+    },
+  ];
+
+  return c.jsx(Sheet, {
+    open: true,
+    onClose: handleDismiss,
+    title: isDe ? 'Willkommen zurück! 👋' : 'Welcome back! 👋',
+    children: c.jsxs('div', {
+      'data-no-swipe': 'true',
+      className: 'flex flex-col gap-4',
+      children: [
+        c.jsxs('div', {
+          className:
+            'flex flex-col gap-1.5 rounded-xl2 border border-primary/30 bg-primary-container/20 p-3.5',
+          children: [
+            c.jsx('p', {
+              className: 'text-titleS font-semibold text-onSurface',
+              children: isDe
+                ? `Seit ${comebackGap.gapDays} Tagen kein Training geloggt`
+                : `No workout logged for ${comebackGap.gapDays} days`,
+            }),
+            c.jsx('p', {
+              className: 'text-caption leading-relaxed text-onSurfaceVariant',
+              children: isDe
+                ? 'Warst du im Urlaub, krank oder hattest du eine Trainingspause? Wenn du den Zeitraum kurz bestätigst, bleibt deine Trainings-Streak geschützt (❄️) und dein Deload-Zyklus wird automatisch angepasst.'
+                : 'Were you on vacation, sick, or taking a training break? Confirming the period protects your workout streak (❄️) and automatically adjusts your deload cycle.',
+            }),
+          ],
+        }),
+
+        c.jsxs('div', {
+          className: 'flex flex-col gap-2',
+          children: [
+            c.jsx('span', {
+              className: 'text-label uppercase text-onSurfaceVariant',
+              children: isDe ? 'Grund der Pause' : 'Reason for break',
+            }),
+            c.jsx('div', {
+              className: 'grid grid-cols-3 gap-2',
+              children: categories.map((cat) => {
+                const selected = category === cat.key;
+                return c.jsxs(
+                  'button',
+                  {
+                    type: 'button',
+                    'aria-pressed': selected,
+                    onClick: () => setCategory(cat.key),
+                    className: [
+                      'press-feedback flex flex-col items-center justify-center gap-1 rounded-xl2 border p-2.5 text-center transition-all',
+                      selected
+                        ? 'border-primary bg-primary-soft font-semibold text-primary ring-1 ring-primary/30'
+                        : 'border-line2 bg-surface-containerHigh text-onSurfaceVariant',
+                    ].join(' '),
+                    children: [
+                      c.jsx('span', {
+                        'aria-hidden': 'true',
+                        className: 'text-lg leading-none',
+                        children: cat.icon,
+                      }),
+                      c.jsx('span', {
+                        className: 'text-caption leading-tight',
+                        children: cat.label,
+                      }),
+                    ],
+                  },
+                  cat.key
+                );
+              }),
+            }),
+          ],
+        }),
+
+        c.jsxs('div', {
+          className: 'grid grid-cols-2 gap-2.5',
+          children: [
+            c.jsxs('label', {
+              className: 'flex flex-col gap-1',
+              children: [
+                c.jsx('span', {
+                  className: 'text-caption font-medium text-onSurfaceVariant',
+                  children: isDe ? 'Von' : 'From',
+                }),
+                c.jsx('input', {
+                  type: 'date',
+                  max: todayIso,
+                  value: effectiveStart,
+                  onChange: (e) => setStartDate(e.target.value),
+                  className:
+                    'h-10 w-full rounded-xl border border-line2 bg-surface-containerHigh px-3 font-mono text-caption text-onSurface',
+                }),
+              ],
+            }),
+            c.jsxs('label', {
+              className: 'flex flex-col gap-1',
+              children: [
+                c.jsx('span', {
+                  className: 'text-caption font-medium text-onSurfaceVariant',
+                  children: isDe ? 'Bis' : 'Until',
+                }),
+                c.jsx('input', {
+                  type: 'date',
+                  min: effectiveStart,
+                  max: todayIso,
+                  value: effectiveEnd,
+                  onChange: (e) => setEndDate(e.target.value),
+                  className:
+                    'h-10 w-full rounded-xl border border-line2 bg-surface-containerHigh px-3 font-mono text-caption text-onSurface',
+                }),
+              ],
+            }),
+          ],
+        }),
+
+        c.jsxs('div', {
+          className: 'flex flex-col gap-2 pt-1',
+          children: [
+            c.jsx(Button, {
+              variant: 'filled',
+              fullWidth: true,
+              onClick: () => {
+                void handleConfirm();
+              },
+              children: isDe
+                ? `❄️ Pause bestätigen (${breakDaysCount} Tage) & Streak schützen`
+                : `❄️ Confirm break (${breakDaysCount}d) & protect streak`,
+            }),
+            c.jsx(Button, {
+              variant: 'outlined',
+              fullWidth: true,
+              onClick: () => {
+                void handleDismiss();
+              },
+              children: isDe
+                ? 'Nein, einfach weitertrainieren'
+                : 'No, just continue training',
+            }),
+          ],
+        }),
+      ],
+    }),
+  });
+}
+
+function ComebackWorkoutBannerInternal() {
+  const isDe = typeof yS === 'function' ? yS() !== 'en' : true;
+  const { config, dismissComebackBanner } = useTrainingBreaks();
+  const remaining = config?.comebackBannerRemainingWorkouts ?? 0;
+  if (remaining <= 0) return null;
+
+  const days = config?.comebackBannerBreakDays || 7;
+
+  return c.jsxs('div', {
+    role: 'status',
+    className:
+      'animate-step-slide flex items-start justify-between gap-3 rounded-xl2 border border-primary/35 bg-primary-container/25 p-3.5 text-onSurface',
+    children: [
+      c.jsxs('div', {
+        className: 'flex min-w-0 flex-1 flex-col gap-1',
+        children: [
+          c.jsxs('div', {
+            className: 'flex flex-wrap items-center gap-2',
+            children: [
+              c.jsx('span', {
+                className: 'text-titleS font-semibold text-primary',
+                children: isDe ? '💪 Comeback-Workout' : '💪 Comeback Workout',
+              }),
+              c.jsx('span', {
+                className:
+                  'rounded-full bg-surface-containerHigh px-2 py-0.5 font-mono text-[11px] font-semibold text-onSurfaceVariant',
+                children: isDe
+                  ? `Nach ${days} Tagen Pause`
+                  : `After ${days} days off`,
+              }),
+            ],
+          }),
+          c.jsx('p', {
+            className: 'text-caption leading-relaxed text-onSurfaceVariant',
+            children: isDe
+              ? 'Sanfter Wiedereinstieg: Starte heute mit ca. 5–10 % weniger Gewicht oder 1–2 RIR mehr Reserve, um starken Muskelkater zu vermeiden. Dein Deload-Zyklus wurde automatisch auf Woche 1 zurückgesetzt.'
+              : 'Gentle return: Start today with ~5–10% less weight or 1–2 more RIR in reserve to avoid heavy soreness. Your deload cycle was automatically reset to Week 1.',
+          }),
+        ],
+      }),
+      c.jsx('button', {
+        type: 'button',
+        'aria-label': isDe ? 'Hinweis schließen' : 'Dismiss hint',
+        onClick: () => {
+          void dismissComebackBanner();
+        },
+        className:
+          'press-feedback flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-containerHigh text-caption text-onSurfaceVariant',
+        children: '✕',
+      }),
+    ],
+  });
+}
+
+export function ComebackWorkoutBanner() {
+  return c.jsx(GymBuddyErrorBoundary, {
+    children: c.jsx(ComebackWorkoutBannerInternal, {}),
+  });
+}
+
+export async function exportTrainingBreaksForBackup(db) {
+  await ensureTrainingBreaksLoaded();
+  try {
+    if (db && db.objectStoreNames.contains(GYM_BUDDY_STORE)) {
+      const rec = await db.get(GYM_BUDDY_STORE, TRAINING_BREAK_IDB_RECORD_ID);
+      if (rec) {
+        const sanitized = sanitizeTrainingBreakConfig(rec);
+        if (sanitized) return sanitized;
+      }
+    }
+  } catch {}
+  return cachedBreakConfig;
+}
+
+export async function restoreTrainingBreaksFromBackup(raw) {
+  if (!raw) return;
+  const sanitized = sanitizeTrainingBreakConfig(raw);
+  if (sanitized) {
+    await persistTrainingBreakConfig(sanitized);
   }
 }
 

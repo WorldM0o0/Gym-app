@@ -1,213 +1,306 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 920" width="440" height="920" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844" fill="none">
   <defs>
-    <linearGradient id="titaniumFrame4" x1="0" y1="0" x2="440" y2="920" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#3A3F4B"/>
-      <stop offset="50%" stop-color="#22262E"/>
-      <stop offset="100%" stop-color="#171A20"/>
+    <clipPath id="screen-clip-custom">
+      <rect x="10" y="10" width="370" height="824" rx="44" />
+    </clipPath>
+    <linearGradient id="hue-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff0000" />
+      <stop offset="17%" stop-color="#ffff00" />
+      <stop offset="33%" stop-color="#00ff00" />
+      <stop offset="50%" stop-color="#00ffff" />
+      <stop offset="67%" stop-color="#0000ff" />
+      <stop offset="83%" stop-color="#ff00ff" />
+      <stop offset="100%" stop-color="#ff0000" />
     </linearGradient>
-    <linearGradient id="hueRainbow" x1="54" y1="0" x2="386" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#EF4444"/>
-      <stop offset="17%" stop-color="#F59E0B"/>
-      <stop offset="33%" stop-color="#10B981"/>
-      <stop offset="50%" stop-color="#06B6D4"/>
-      <stop offset="67%" stop-color="#3B82F6"/>
-      <stop offset="83%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#EC4899"/>
+    <linearGradient id="sat-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#BFC4C1" />
+      <stop offset="100%" stop-color="#5EE884" />
     </linearGradient>
-    <linearGradient id="satGrad" x1="54" y1="0" x2="386" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#6B7280"/>
-      <stop offset="100%" stop-color="#A8DAB5"/>
-    </linearGradient>
-    <linearGradient id="lightGrad" x1="54" y1="0" x2="386" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#14281D"/>
-      <stop offset="50%" stop-color="#A8DAB5"/>
-      <stop offset="100%" stop-color="#F0FDF4"/>
+    <linearGradient id="light-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0F1712" />
+      <stop offset="50%" stop-color="#A8DAB5" />
+      <stop offset="100%" stop-color="#F2FBF4" />
     </linearGradient>
   </defs>
 
-  <!-- iPhone 16 Pro Side Hardware Buttons -->
-  <rect x="6" y="168" width="4" height="34" rx="2" fill="#2E333D"/>
-  <rect x="6" y="222" width="4" height="62" rx="2" fill="#2E333D"/>
-  <rect x="6" y="298" width="4" height="62" rx="2" fill="#2E333D"/>
-  <rect x="430" y="250" width="4" height="86" rx="2" fill="#2E333D"/>
+  <!-- Outer Device Frame -->
+  <rect x="4" y="4" width="382" height="836" rx="50" fill="#181A1D" stroke="#282B30" stroke-width="2" />
+  <!-- App Surface (--color-surface: #111214) -->
+  <rect x="10" y="10" width="370" height="824" rx="44" fill="#111214" />
 
-  <!-- Outer Titanium Bezel -->
-  <rect x="10" y="8" width="420" height="904" rx="58" fill="url(#titaniumFrame4)" stroke="#4B5262" stroke-width="2"/>
-  <rect x="16" y="14" width="408" height="892" rx="52" fill="#090A0C"/>
-  <rect x="22" y="20" width="396" height="880" rx="46" fill="#111214"/>
+  <g clip-path="url(#screen-clip-custom)" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+    <!-- iOS Status Bar & Dynamic Island -->
+    <text x="42" y="36" fill="#F2F4F3" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600">09:41</text>
+    <rect x="138" y="20" width="114" height="24" rx="12" fill="#000000" />
+    <circle cx="236" cy="32" r="4.5" fill="#131824" />
+    <g transform="translate(312, 26)" fill="#F2F4F3">
+      <rect x="0" y="6" width="3" height="5" rx="1" />
+      <rect x="4.5" y="4" width="3" height="7" rx="1" />
+      <rect x="9" y="2" width="3" height="9" rx="1" />
+      <rect x="13.5" y="0" width="3" height="11" rx="1" />
+      <rect x="21" y="1" width="20" height="10" rx="2.5" fill="none" stroke="#F2F4F3" stroke-width="1.2" />
+      <rect x="23" y="3" width="14" height="6" rx="1" fill="#A8DAB5" />
+    </g>
 
-  <!-- iOS Status Bar & Dynamic Island -->
-  <text x="52" y="50" fill="#F2F4F3" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, monospace" font-size="14" font-weight="600">09:41</text>
-  <rect x="158" y="30" width="124" height="32" rx="16" fill="#000000"/>
-  <circle cx="264" cy="46" r="5.5" fill="#101524" stroke="#1E2638" stroke-width="1"/>
-  <circle cx="262" cy="44" r="1.5" fill="#3B82F6" opacity="0.8"/>
-  <rect x="334" y="43" width="3" height="5" rx="1" fill="#F2F4F3"/>
-  <rect x="339" y="41" width="3" height="7" rx="1" fill="#F2F4F3"/>
-  <rect x="344" y="38" width="3" height="10" rx="1" fill="#F2F4F3"/>
-  <rect x="349" y="35" width="3" height="13" rx="1" fill="#F2F4F3"/>
-  <path d="M360 40 C364 36, 370 36, 374 40 M362.5 43 C365 40.5, 369 40.5, 371.5 43 M366 46.5 L368 46.5" stroke="#F2F4F3" stroke-width="1.6" stroke-linecap="round"/>
-  <rect x="380" y="36" width="24" height="12" rx="3.5" stroke="#F2F4F3" stroke-width="1.3" opacity="0.85"/>
-  <rect x="382" y="38" width="18" height="8" rx="2" fill="#A8DAB5"/>
-  <rect x="405.5" y="39.5" width="2" height="5" rx="1" fill="#F2F4F3" opacity="0.7"/>
+    <!-- Dimmed Background Header behind Bottom Sheet -->
+    <text x="26" y="76" fill="#5A605D" font-size="24" font-weight="600">Heute</text>
 
-  <!-- Sheet Backdrop & Modal Container -->
-  <rect x="22" y="68" width="396" height="832" rx="34" fill="#161920" stroke="#2A303D" stroke-width="1"/>
-  <rect x="196" y="78" width="48" height="5" rx="2.5" fill="#4B5563"/>
+    <!-- GYM BUDDY BOTTOM SHEET (GymBuddySheet in gymBuddy.js) -->
+    <g transform="translate(10, 86)">
+      <rect x="0" y="0" width="370" height="748" rx="28" fill="#111214" stroke="#282B30" stroke-width="1" />
+      <!-- Sheet Handle -->
+      <rect x="165" y="10" width="40" height="4" rx="2" fill="#282B30" />
 
-  <!-- Sheet Header -->
-  <text x="38" y="112" fill="#F2F4F3" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="22" font-weight="700">Gym Buddy Studio</text>
-  <rect x="292" y="92" width="110" height="26" rx="8" fill="#232936"/>
-  <text x="304" y="109" fill="#A8DAB5" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="600">✨ 10 Begleiter</text>
+      <!-- Sheet Header -->
+      <text x="20" y="40" fill="#F2F4F3" font-size="20" font-weight="600">Gym Buddy</text>
+      <rect x="318" y="20" width="32" height="32" rx="16" fill="#1C1E21" />
+      <text x="334" y="41" fill="#8A918E" font-size="14" text-anchor="middle">✕</text>
 
-  <!-- Live Buddy Preview Row -->
-  <rect x="38" y="128" width="364" height="118" rx="18" fill="#1D222C" stroke="#2E3646" stroke-width="1"/>
+      <!-- 1. TOP PREVIEW CARD (Exact 16x16 Pumper-Monster Stage 3 Sprite + Info + XP Bar) -->
+      <g transform="translate(16, 56)">
+        <rect x="0" y="0" width="338" height="104" rx="16" fill="#1C1E21" />
 
-  <!-- Mini Buddy Avatar with Outlines, Smile & Accessories -->
-  <circle cx="96" cy="187" r="44" fill="#141820" stroke="#A8DAB5" stroke-width="1.2" stroke-opacity="0.5"/>
-  <!-- Ears -->
-  <circle cx="74" cy="160" r="8" fill="#84C596" stroke="#111214" stroke-width="2"/>
-  <circle cx="118" cy="160" r="8" fill="#84C596" stroke="#111214" stroke-width="2"/>
-  <!-- Head & Body -->
-  <rect x="68" y="158" width="56" height="44" rx="14" fill="#A8DAB5" stroke="#111214" stroke-width="2.5"/>
-  <!-- Sweatband -->
-  <rect x="67" y="164" width="58" height="8" rx="3" fill="#F43F5E" stroke="#111214" stroke-width="2"/>
-  <!-- Eyes & Smile -->
-  <rect x="79" y="176" width="8" height="9" rx="2.5" fill="#111214"/>
-  <rect x="81" y="177.5" width="3" height="3" rx="1" fill="#FFFFFF"/>
-  <rect x="105" y="176" width="8" height="9" rx="2.5" fill="#111214"/>
-  <rect x="107" y="177.5" width="3" height="3" rx="1" fill="#FFFFFF"/>
-  <path d="M89 190 Q96 196 103 190" stroke="#111214" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-  <!-- Mini Shield on Hand -->
-  <path d="M56 180 L66 184 V194 C66 201 61 205 56 208 C51 205 46 201 46 194 V184 L56 180 Z" fill="#3B82F6" stroke="#111214" stroke-width="2"/>
-  <circle cx="66" cy="193" r="4.5" fill="#A8DAB5" stroke="#111214" stroke-width="2"/>
+        <!-- 72x72 Sprite Container -->
+        <rect x="14" y="16" width="72" height="72" rx="16" fill="#24272B" />
 
-  <!-- Pet Name Input & Stats -->
-  <text x="154" y="152" fill="#9CA3AF" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="600">AKTIVER BEGLEITER · CUTE-STIL</text>
-  <rect x="154" y="160" width="232" height="34" rx="9" fill="#13161C" stroke="#374151" stroke-width="1"/>
-  <text x="166" y="182" fill="#F2F4F3" font-family="'Instrument Sans', sans-serif" font-size="14" font-weight="700">Bärchi (Kraft-Bär)</text>
-  <text x="358" y="182" fill="#A8DAB5" font-family="'Instrument Sans', sans-serif" font-size="11">✎</text>
-  <text x="154" y="214" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="600">Stufe 3/4 · 28 Workouts · 1 240 Min.</text>
-  <text x="154" y="232" fill="#8E95A5" font-family="'Instrument Sans', sans-serif" font-size="10.5">Nächste Evolution überrascht dich ab 300 XP!</text>
+        <!-- Exact 16x16 Pixel-Art Sprite: Pumper-Monster (monster, Stage 3) + Sweatband + Belt + Dumbbell -->
+        <svg x="20" y="22" width="60" height="60" viewBox="0 0 16 16" shape-rendering="crispEdges">
+          <!-- Row 2: ...131....131... -->
+          <rect x="3" y="2" width="1" height="1" fill="#1D2A20" />
+          <rect x="4" y="2" width="1" height="1" fill="#D3EEDA" />
+          <rect x="5" y="2" width="1" height="1" fill="#1D2A20" />
+          <rect x="10" y="2" width="1" height="1" fill="#1D2A20" />
+          <rect x="11" y="2" width="1" height="1" fill="#D3EEDA" />
+          <rect x="12" y="2" width="1" height="1" fill="#1D2A20" />
+          <!-- Row 3: ..112111111211.. -->
+          <rect x="2" y="3" width="2" height="1" fill="#1D2A20" />
+          <rect x="4" y="3" width="1" height="1" fill="#A8DAB5" />
+          <rect x="5" y="3" width="6" height="1" fill="#1D2A20" />
+          <rect x="11" y="3" width="1" height="1" fill="#A8DAB5" />
+          <rect x="12" y="3" width="2" height="1" fill="#1D2A20" />
+          <!-- Row 4: .13222222222231. -->
+          <rect x="1" y="4" width="1" height="1" fill="#1D2A20" />
+          <rect x="2" y="4" width="1" height="1" fill="#D3EEDA" />
+          <rect x="3" y="4" width="10" height="1" fill="#A8DAB5" />
+          <rect x="13" y="4" width="1" height="1" fill="#D3EEDA" />
+          <rect x="14" y="4" width="1" height="1" fill="#1D2A20" />
+          <!-- Row 5 & 6: .12255222255221. -->
+          <rect x="1" y="5" width="1" height="2" fill="#1D2A20" />
+          <rect x="2" y="5" width="2" height="2" fill="#A8DAB5" />
+          <rect x="6" y="5" width="4" height="2" fill="#A8DAB5" />
+          <rect x="12" y="5" width="2" height="2" fill="#A8DAB5" />
+          <rect x="14" y="5" width="1" height="2" fill="#1D2A20" />
+          <!-- Row 7: .14222222222241. -->
+          <rect x="1" y="7" width="1" height="1" fill="#1D2A20" />
+          <rect x="2" y="7" width="1" height="1" fill="#6FA97E" />
+          <rect x="3" y="7" width="10" height="1" fill="#A8DAB5" />
+          <rect x="13" y="7" width="1" height="1" fill="#6FA97E" />
+          <rect x="14" y="7" width="1" height="1" fill="#1D2A20" />
+          <!-- Row 8: 1332334224332331 -->
+          <rect x="0" y="8" width="1" height="1" fill="#1D2A20" />
+          <rect x="1" y="8" width="2" height="1" fill="#D3EEDA" />
+          <rect x="3" y="8" width="1" height="1" fill="#A8DAB5" />
+          <rect x="4" y="8" width="2" height="1" fill="#D3EEDA" />
+          <rect x="6" y="8" width="1" height="1" fill="#6FA97E" />
+          <rect x="7" y="8" width="2" height="1" fill="#A8DAB5" />
+          <rect x="9" y="8" width="1" height="1" fill="#6FA97E" />
+          <rect x="10" y="8" width="2" height="1" fill="#D3EEDA" />
+          <rect x="12" y="8" width="1" height="1" fill="#A8DAB5" />
+          <rect x="13" y="8" width="2" height="1" fill="#D3EEDA" />
+          <rect x="15" y="8" width="1" height="1" fill="#1D2A20" />
+          <!-- Row 9: 1222422442242221 -->
+          <rect x="0" y="9" width="1" height="1" fill="#1D2A20" />
+          <rect x="1" y="9" width="3" height="1" fill="#A8DAB5" />
+          <rect x="4" y="9" width="1" height="1" fill="#6FA97E" />
+          <rect x="5" y="9" width="2" height="1" fill="#A8DAB5" />
+          <rect x="7" y="9" width="2" height="1" fill="#6FA97E" />
+          <rect x="9" y="9" width="2" height="1" fill="#A8DAB5" />
+          <rect x="11" y="9" width="1" height="1" fill="#6FA97E" />
+          <rect x="12" y="9" width="3" height="1" fill="#A8DAB5" />
+          <rect x="15" y="9" width="1" height="1" fill="#1D2A20" />
+          <!-- Row 10: 1422424224242241 -->
+          <rect x="0" y="10" width="1" height="1" fill="#1D2A20" />
+          <rect x="1" y="10" width="1" height="1" fill="#6FA97E" />
+          <rect x="2" y="10" width="2" height="1" fill="#A8DAB5" />
+          <rect x="4" y="10" width="1" height="1" fill="#6FA97E" />
+          <rect x="5" y="10" width="1" height="1" fill="#A8DAB5" />
+          <rect x="6" y="10" width="1" height="1" fill="#6FA97E" />
+          <rect x="7" y="10" width="2" height="1" fill="#A8DAB5" />
+          <rect x="9" y="10" width="1" height="1" fill="#6FA97E" />
+          <rect x="10" y="10" width="1" height="1" fill="#A8DAB5" />
+          <rect x="11" y="10" width="1" height="1" fill="#6FA97E" />
+          <rect x="12" y="10" width="2" height="1" fill="#A8DAB5" />
+          <rect x="14" y="10" width="1" height="1" fill="#6FA97E" />
+          <rect x="15" y="10" width="1" height="1" fill="#1D2A20" />
+          <!-- Row 11: .11144222244111. -->
+          <rect x="1" y="11" width="3" height="1" fill="#1D2A20" />
+          <rect x="4" y="11" width="2" height="1" fill="#6FA97E" />
+          <rect x="6" y="11" width="4" height="1" fill="#A8DAB5" />
+          <rect x="10" y="11" width="2" height="1" fill="#6FA97E" />
+          <rect x="12" y="11" width="3" height="1" fill="#1D2A20" />
+          <!-- Row 12: ...1422112241... -->
+          <rect x="3" y="12" width="1" height="1" fill="#1D2A20" />
+          <rect x="4" y="12" width="1" height="1" fill="#6FA97E" />
+          <rect x="5" y="12" width="2" height="1" fill="#A8DAB5" />
+          <rect x="7" y="12" width="2" height="1" fill="#1D2A20" />
+          <rect x="9" y="12" width="2" height="1" fill="#A8DAB5" />
+          <rect x="11" y="12" width="1" height="1" fill="#6FA97E" />
+          <rect x="12" y="12" width="1" height="1" fill="#1D2A20" />
+          <!-- Row 13: ..11111..11111.. -->
+          <rect x="2" y="13" width="5" height="1" fill="#1D2A20" />
+          <rect x="9" y="13" width="5" height="1" fill="#1D2A20" />
 
-  <!-- 1. Pet Selection Section (50% Cute / 50% Progress) -->
-  <text x="38" y="272" fill="#F2F4F3" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="14" font-weight="700">Begleiter wählen (5 Cute · 5 Progress)</text>
+          <!-- Eyes (5) + Confident Beast Grin -->
+          <rect x="4" y="5" width="2" height="2" fill="#0F172A" />
+          <rect x="4" y="5" width="0.65" height="0.65" fill="#FFFFFF" />
+          <rect x="10" y="5" width="2" height="2" fill="#0F172A" />
+          <rect x="10" y="5" width="0.65" height="0.65" fill="#FFFFFF" />
+          <rect x="6.5" y="7.1" width="3.0" height="0.52" fill="#0F172A" />
+          <rect x="9.5" y="6.65" width="0.7" height="0.55" fill="#0F172A" />
 
-  <g transform="translate(38, 282)">
-    <!-- Card 1: Monster -->
-    <rect x="0" y="0" width="86" height="66" rx="12" fill="#1D212A" stroke="#2B313E" stroke-width="1"/>
-    <text x="10" y="22" fill="#F2F4F3" font-family="'Instrument Sans', sans-serif" font-size="11.5" font-weight="600">Monster</text>
-    <text x="10" y="38" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="9.5">Progress · L4</text>
-    <text x="10" y="54" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="9.5">640 XP</text>
+          <!-- Equipped Sweatband & Belt -->
+          <rect x="3.5" y="3.0" width="9.0" height="1.3" rx="0.4" fill="#A8DAB5" stroke="#0F172A" stroke-width="0.38" />
+          <rect x="3.5" y="10.2" width="9.0" height="1.3" rx="0.35" fill="#6FA97E" stroke="#0F172A" stroke-width="0.38" />
+          <rect x="6.85" y="10.05" width="2.3" height="1.6" rx="0.3" fill="#F8FAFC" stroke="#0F172A" stroke-width="0.38" />
+        </svg>
 
-    <!-- Card 2: Kraft-Bär (Active) -->
-    <rect x="92" y="0" width="86" height="66" rx="12" fill="#1F302E" stroke="#A8DAB5" stroke-width="1.6"/>
-    <text x="102" y="22" fill="#FFFFFF" font-family="'Instrument Sans', sans-serif" font-size="11.5" font-weight="700">Kraft-Bär ✓</text>
-    <text x="102" y="38" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="9.5">Cute · L3</text>
-    <text x="102" y="54" fill="#D1D5DB" font-family="'JetBrains Mono', monospace" font-size="9.5">285 XP</text>
+        <!-- Right Info Column -->
+        <text x="100" y="32" fill="#F2F4F3" font-size="16" font-weight="600">Pumper-Monster</text>
+        <rect x="232" y="19" width="92" height="18" rx="9" fill="#213829" />
+        <text x="278" y="31" fill="#A8DAB5" font-size="10" font-weight="600" text-anchor="middle">Stufe 3 · Athlet</text>
 
-    <!-- Card 3: Gym-Katze -->
-    <rect x="184" y="0" width="86" height="66" rx="12" fill="#1D212A" stroke="#2B313E" stroke-width="1"/>
-    <text x="194" y="22" fill="#F2F4F3" font-family="'Instrument Sans', sans-serif" font-size="11.5" font-weight="600">Gym-Katze</text>
-    <text x="194" y="38" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="9.5">Cute · L2</text>
-    <text x="194" y="54" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="9.5">180 XP</text>
+        <text x="100" y="52" fill="#8A918E" font-size="11.5">⚡ Progress · Voller Trainings-Energie!</text>
 
-    <!-- Card 4: Pump-Shiba / Cyber-Wolf -->
-    <rect x="276" y="0" width="88" height="66" rx="12" fill="#1D212A" stroke="#2B313E" stroke-width="1"/>
-    <text x="286" y="22" fill="#F2F4F3" font-family="'Instrument Sans', sans-serif" font-size="11.5" font-weight="600">Pump-Shiba</text>
-    <text x="286" y="38" fill="#A78BFA" font-family="'JetBrains Mono', monospace" font-size="9.5">Cute · 50 W.</text>
-    <text x="286" y="54" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="9.5">Freigeschaltet</text>
+        <!-- XP Bar -->
+        <rect x="100" y="68" width="224" height="6" rx="3" fill="#24272B" />
+        <rect x="100" y="68" width="179" height="6" rx="3" fill="#A8DAB5" />
+        <text x="100" y="88" fill="#8A918E" font-size="10.5">Gesamt-XP</text>
+        <text x="324" y="88" fill="#F2F4F3" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="600" text-anchor="end">480 / 600 XP</text>
+      </g>
+
+      <!-- 2. 3-TAB SWITCHER (Status | Pets wählen | Anpassen) -->
+      <g transform="translate(16, 172)">
+        <rect x="0" y="0" width="338" height="38" rx="12" fill="#1C1E21" />
+        <text x="56" y="24" fill="#8A918E" font-size="12" font-weight="600" text-anchor="middle">Status</text>
+        <text x="169" y="24" fill="#8A918E" font-size="12" font-weight="600" text-anchor="middle">Pets wählen</text>
+        <rect x="226" y="4" width="108" height="30" rx="9" fill="#A8DAB5" />
+        <text x="280" y="24" fill="#111214" font-size="12" font-weight="600" text-anchor="middle">Anpassen</text>
+      </g>
+
+      <!-- 3. TRUE COLOR PICKER (TrueColorPicker in gymBuddy.js) -->
+      <g transform="translate(16, 222)">
+        <rect x="0" y="0" width="338" height="248" rx="16" fill="#1C1E21" />
+        <text x="14" y="24" fill="#F2F4F3" font-size="13.5" font-weight="600">Pet-Farbe</text>
+
+        <!-- Mode Chips: Passend zum App-Theme | Freie Farbe -->
+        <rect x="14" y="34" width="204" height="28" rx="8" fill="#24272B" />
+        <text x="116" y="52" fill="#8A918E" font-size="10.5" font-weight="500" text-anchor="middle">Passend zum App-Theme (Monochrom)</text>
+
+        <rect x="224" y="34" width="100" height="28" rx="8" fill="#A8DAB5" />
+        <text x="274" y="52" fill="#111214" font-size="10.5" font-weight="600" text-anchor="middle">Freie Farbe</text>
+
+        <!-- Hex Input + Swatch Preview -->
+        <rect x="14" y="72" width="34" height="34" rx="10" fill="#A8DAB5" stroke="#282B30" stroke-width="1" />
+        <text x="58" y="84" fill="#8A918E" font-size="9.5">Hex-Code (#RRGGBB)</text>
+        <rect x="58" y="88" width="124" height="24" rx="6" fill="#24272B" stroke="#282B30" stroke-width="1" />
+        <text x="68" y="104" fill="#F2F4F3" font-family="'JetBrains Mono', monospace" font-size="11.5">#A8DAB5</text>
+
+        <!-- 3 HSL Sliders: Farbton | Sättigung | Helligkeit -->
+        <g transform="translate(14, 120)">
+          <text x="0" y="10" fill="#8A918E" font-size="10">Farbton</text>
+          <text x="310" y="10" fill="#8A918E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">136°</text>
+          <rect x="0" y="15" width="310" height="8" rx="4" fill="url(#hue-grad)" />
+          <circle cx="117" cy="19" r="6" fill="#F2F4F3" stroke="#111214" stroke-width="2" />
+
+          <text x="0" y="38" fill="#8A918E" font-size="10">Sättigung</text>
+          <text x="310" y="38" fill="#8A918E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">42%</text>
+          <rect x="0" y="43" width="310" height="8" rx="4" fill="url(#sat-grad)" />
+          <circle cx="130" cy="47" r="6" fill="#F2F4F3" stroke="#111214" stroke-width="2" />
+
+          <text x="0" y="66" fill="#8A918E" font-size="10">Helligkeit</text>
+          <text x="310" y="66" fill="#8A918E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">76%</text>
+          <rect x="0" y="71" width="310" height="8" rx="4" fill="url(#light-grad)" />
+          <circle cx="235" cy="75" r="6" fill="#F2F4F3" stroke="#111214" stroke-width="2" />
+        </g>
+
+        <!-- 8 Quick Swatches (QUICK_SWATCHES in gymBuddy.js) -->
+        <g transform="translate(14, 214)">
+          <circle cx="12" cy="10" r="10" fill="#A8DAB5" stroke="#F2F4F3" stroke-width="2" />
+          <circle cx="42" cy="10" r="10" fill="#38BDF8" />
+          <circle cx="72" cy="10" r="10" fill="#F59E0B" />
+          <circle cx="102" cy="10" r="10" fill="#F43F5E" />
+          <circle cx="132" cy="10" r="10" fill="#A78BFA" />
+          <circle cx="162" cy="10" r="10" fill="#34D399" />
+          <circle cx="192" cy="10" r="10" fill="#FB923C" />
+          <circle cx="222" cy="10" r="10" fill="#E879F9" />
+        </g>
+      </g>
+
+      <!-- 4. ACCESSOIRES CARD (Kopf | Körper | Hand) -->
+      <g transform="translate(16, 482)">
+        <rect x="0" y="0" width="338" height="122" rx="16" fill="#1C1E21" />
+        <text x="14" y="24" fill="#F2F4F3" font-size="13.5" font-weight="600">Accessoires</text>
+
+        <!-- Slot Chips -->
+        <g transform="translate(14, 34)">
+          <rect x="0" y="0" width="64" height="26" rx="8" fill="#A8DAB5" />
+          <text x="32" y="17" fill="#111214" font-size="11" font-weight="600" text-anchor="middle">Kopf</text>
+
+          <rect x="72" y="0" width="72" height="26" rx="8" fill="#24272B" />
+          <text x="108" y="17" fill="#8A918E" font-size="11" font-weight="500" text-anchor="middle">Körper</text>
+
+          <rect x="152" y="0" width="64" height="26" rx="8" fill="#24272B" />
+          <text x="184" y="17" fill="#8A918E" font-size="11" font-weight="500" text-anchor="middle">Hand</text>
+        </g>
+
+        <!-- Head Items -->
+        <g transform="translate(14, 72)">
+          <rect x="0" y="0" width="54" height="32" rx="10" fill="#24272B" />
+          <text x="27" y="20" fill="#8A918E" font-size="11" text-anchor="middle">Keins</text>
+
+          <rect x="60" y="0" width="92" height="32" rx="10" fill="#213829" stroke="#A8DAB5" stroke-width="1" />
+          <text x="106" y="20" fill="#A8DAB5" font-size="11" font-weight="600" text-anchor="middle">Schweißband</text>
+
+          <rect x="158" y="0" width="84" height="32" rx="10" fill="#24272B" />
+          <text x="200" y="20" fill="#F2F4F3" font-size="11" text-anchor="middle">Gym-Beanie</text>
+
+          <rect x="248" y="0" width="76" height="32" rx="10" fill="#24272B" />
+          <text x="286" y="20" fill="#F2F4F3" font-size="11" text-anchor="middle">Sport-Brille</text>
+        </g>
+      </g>
+
+      <!-- 5. 7 PRESET-PETS OVERVIEW (Strictly the 7 Real Pets: 3 Cute, 4 Progress) -->
+      <g transform="translate(16, 616)">
+        <rect x="0" y="0" width="338" height="114" rx="16" fill="#1C1E21" />
+        <text x="14" y="22" fill="#F2F4F3" font-size="12.5" font-weight="600">7 Begleiter (Alle (7) · ✨ Cute (3) · ⚡ Progress (4))</text>
+
+        <!-- Row 1 of Pet Pills (4 Starter Pets) -->
+        <g transform="translate(14, 34)" font-size="10.5">
+          <rect x="0" y="0" width="102" height="28" rx="8" fill="#213829" stroke="#A8DAB5" stroke-width="1" />
+          <text x="51" y="18" fill="#A8DAB5" font-weight="600" text-anchor="middle">⚡ Pumper-Monster</text>
+
+          <rect x="108" y="0" width="66" height="28" rx="8" fill="#24272B" />
+          <text x="141" y="18" fill="#F2F4F3" text-anchor="middle">✨ Iron-Bot</text>
+
+          <rect x="180" y="0" width="72" height="28" rx="8" fill="#24272B" />
+          <text x="216" y="18" fill="#F2F4F3" text-anchor="middle">⚡ Lifter-Max</text>
+
+          <rect x="258" y="0" width="54" height="28" rx="8" fill="#24272B" />
+          <text x="285" y="18" fill="#F2F4F3" text-anchor="middle">✨ Bär</text>
+        </g>
+
+        <!-- Row 2 of Pet Pills (3 Milestone Pets) -->
+        <g transform="translate(14, 70)" font-size="10.5">
+          <rect x="0" y="0" width="98" height="28" rx="8" fill="#24272B" />
+          <text x="49" y="18" fill="#F2F4F3" text-anchor="middle">✨ Gym-Katze (3W)</text>
+
+          <rect x="104" y="0" width="98" height="28" rx="8" fill="#24272B" />
+          <text x="153" y="18" fill="#F2F4F3" text-anchor="middle">⚡ Reps-Rex (15W)</text>
+
+          <rect x="208" y="0" width="104" height="28" rx="8" fill="#24272B" />
+          <text x="260" y="18" fill="#F2F4F3" text-anchor="middle">⚡ Silberrücken (30W)</text>
+        </g>
+      </g>
+    </g>
   </g>
-
-  <!-- 2. Free HSL Color Picker Section -->
-  <rect x="38" y="362" width="364" height="214" rx="18" fill="#1A1E26" stroke="#2A303D" stroke-width="1"/>
-  <text x="54" y="386" fill="#F2F4F3" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="14" font-weight="700">Farbwähler (Theme-Monochrom &amp; Freies HSL)</text>
-
-  <!-- Mode Switch -->
-  <rect x="54" y="396" width="156" height="28" rx="8" fill="#232834"/>
-  <text x="72" y="414" fill="#9CA3AF" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="600">Theme Monochrom</text>
-  <rect x="218" y="396" width="168" height="28" rx="8" fill="#2D8B8B"/>
-  <text x="236" y="414" fill="#FFFFFF" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="700">🎨 Eigene HSL-Farbe</text>
-
-  <!-- Hue Slider -->
-  <text x="54" y="444" fill="#9CA3AF" font-family="'Instrument Sans', sans-serif" font-size="11">Farbton (Hue)</text>
-  <text x="346" y="444" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">136°</text>
-  <rect x="54" y="450" width="332" height="10" rx="5" fill="url(#hueRainbow)"/>
-  <circle cx="180" cy="455" r="8" fill="#A8DAB5" stroke="#FFFFFF" stroke-width="2.5"/>
-
-  <!-- Saturation Slider -->
-  <text x="54" y="482" fill="#9CA3AF" font-family="'Instrument Sans', sans-serif" font-size="11">Sättigung (Saturation)</text>
-  <text x="346" y="482" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">42 %</text>
-  <rect x="54" y="488" width="332" height="10" rx="5" fill="url(#satGrad)"/>
-  <circle cx="194" cy="493" r="8" fill="#A8DAB5" stroke="#FFFFFF" stroke-width="2.5"/>
-
-  <!-- Lightness Slider -->
-  <text x="54" y="520" fill="#9CA3AF" font-family="'Instrument Sans', sans-serif" font-size="11">Helligkeit (Lightness)</text>
-  <text x="346" y="520" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">76 %</text>
-  <rect x="54" y="526" width="332" height="10" rx="5" fill="url(#lightGrad)"/>
-  <circle cx="304" cy="531" r="8" fill="#A8DAB5" stroke="#FFFFFF" stroke-width="2.5"/>
-
-  <!-- Hex Input & Swatches -->
-  <rect x="54" y="544" width="96" height="24" rx="6" fill="#12151B" stroke="#374151" stroke-width="1"/>
-  <text x="66" y="560" fill="#F2F4F3" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="600">#A8DAB5</text>
-  <circle cx="174" cy="556" r="9" fill="#F2F4F7" stroke="#374151" stroke-width="1"/>
-  <circle cx="200" cy="556" r="9" fill="#A8DAB5" stroke="#FFFFFF" stroke-width="2"/>
-  <circle cx="226" cy="556" r="9" fill="#60A5FA"/>
-  <circle cx="252" cy="556" r="9" fill="#F43F5E"/>
-  <circle cx="278" cy="556" r="9" fill="#F59E0B"/>
-  <circle cx="304" cy="556" r="9" fill="#A78BFA"/>
-  <circle cx="330" cy="556" r="9" fill="#34D399"/>
-
-  <!-- 3. Accessory Slots (Kopf · Körper · Hand) -->
-  <rect x="38" y="588" width="364" height="238" rx="18" fill="#1A1E26" stroke="#2A303D" stroke-width="1"/>
-  <text x="54" y="612" fill="#F2F4F3" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="14" font-weight="700">Accessoire-Slots (Scharfe SVG-Outlines)</text>
-
-  <!-- Slot 1: Kopf -->
-  <text x="54" y="634" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">KOPF-SLOT</text>
-  <g transform="translate(54, 640)">
-    <rect x="0" y="0" width="104" height="36" rx="9" fill="#1F302E" stroke="#A8DAB5" stroke-width="1.4"/>
-    <text x="12" y="22" fill="#FFFFFF" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="700">Schweißband ✓</text>
-
-    <rect x="112" y="0" width="104" height="36" rx="9" fill="#232834"/>
-    <text x="126" y="22" fill="#D1D5DB" font-family="'Instrument Sans', sans-serif" font-size="11">Gym-Mütze</text>
-
-    <rect x="224" y="0" width="108" height="36" rx="9" fill="#232834"/>
-    <text x="238" y="22" fill="#D1D5DB" font-family="'Instrument Sans', sans-serif" font-size="11">Sonnenbrille</text>
-  </g>
-
-  <!-- Slot 2: Körper -->
-  <text x="54" y="696" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">KÖRPER-SLOT</text>
-  <g transform="translate(54, 702)">
-    <rect x="0" y="0" width="160" height="36" rx="9" fill="#1F302E" stroke="#A8DAB5" stroke-width="1.4"/>
-    <text x="14" y="22" fill="#FFFFFF" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="700">Hebergürtel ✓</text>
-
-    <rect x="170" y="0" width="162" height="36" rx="9" fill="#232834"/>
-    <text x="186" y="22" fill="#D1D5DB" font-family="'Instrument Sans', sans-serif" font-size="11">Pump-Hoodie (Lvl 3)</text>
-  </g>
-
-  <!-- Slot 3: Hand (mit sichtbarem Pfoten-Griff) -->
-  <text x="54" y="758" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">HAND-SLOT (MIT PFOTEN-GRIFF)</text>
-  <g transform="translate(54, 764)">
-    <rect x="0" y="0" width="80" height="44" rx="9" fill="#1F302E" stroke="#A8DAB5" stroke-width="1.4"/>
-    <text x="10" y="20" fill="#FFFFFF" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="700">Schild ✓</text>
-    <text x="10" y="34" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="9">10 Work.</text>
-
-    <rect x="86" y="0" width="80" height="44" rx="9" fill="#232834"/>
-    <text x="98" y="20" fill="#D1D5DB" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="600">Shaker</text>
-    <text x="98" y="34" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="9">6 Work.</text>
-
-    <rect x="172" y="0" width="80" height="44" rx="9" fill="#232834"/>
-    <text x="184" y="20" fill="#D1D5DB" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="600">Hantel</text>
-    <text x="184" y="34" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="9">2 Work.</text>
-
-    <rect x="258" y="0" width="74" height="44" rx="9" fill="#232834"/>
-    <text x="266" y="20" fill="#D1D5DB" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="600">Kettlebell</text>
-    <text x="266" y="34" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="9">Lvl 4</text>
-  </g>
-
-  <!-- Quick Hide Toggle at Bottom of Sheet -->
-  <rect x="38" y="836" width="364" height="36" rx="10" fill="#1B1F28"/>
-  <text x="92" y="858" fill="#9CA3AF" font-family="'Instrument Sans', sans-serif" font-size="11.5">Gym Buddy auf dem Startbildschirm ausblenden</text>
-
-  <!-- iOS Home Indicator -->
-  <rect x="154" y="884" width="132" height="5" rx="2.5" fill="#6B7280" opacity="0.65"/>
 </svg>

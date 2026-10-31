@@ -26,6 +26,17 @@ import {
   sanitizeGymBuddyBackupRecord,
   calculateCyclePhaseForDate,
   sanitizeCycleTrackingBackupRecord,
+  DEFAULT_TRAINING_BREAK_CONFIG,
+  COMEBACK_GAP_MIN_DAYS,
+  calculateBreakDays,
+  detectUnplannedComebackGap,
+  confirmRetroactiveComebackBreak,
+  dismissComebackPromptForGap,
+  onWorkoutCompletedForBreakConfig,
+  calculateBreakAdjustedDeloadInfo,
+  getBreakForDate,
+  countBreakDaysInInterval,
+  sanitizeTrainingBreakConfig,
 } from '../gymBuddy/gymBuddy';
 
 // ---------------------------------------------------------------------------
@@ -402,25 +413,30 @@ describe('Backup-Schema-Validierung & Bundle-Integrität', () => {
 // ---------------------------------------------------------------------------
 
 describe('Gym Buddy (Tamagotchi-Logik, Cute/Progress-Stile, Post-Workout, Nachtschlaf & Backup)', () => {
-  it('teilt alle 10 Pets exakt 50/50 in Cute und Progress auf und enthält die 3 High-Level-Meilenstein-Pets', () => {
-    assert.equal(PRESET_PETS.length, 10, 'Es müssen 10 Preset-Pets vorhanden sein');
+  it('enthält exakt die 7 echten Pets (3 Cute, 4 Progress) ohne erfundene Zusatz-Pets', () => {
+    assert.equal(PRESET_PETS.length, 7, 'Es müssen exakt die 7 echten Preset-Pets vorhanden sein');
+    const expectedIds = ['monster', 'robot', 'lifter', 'bear', 'cat', 'dino', 'gorilla'];
+    assert.deepEqual(
+      PRESET_PETS.map((p) => p.id),
+      expectedIds,
+      'PRESET_PETS darf ausschließlich die 7 echten Pets enthalten'
+    );
     const cutePets = PRESET_PETS.filter((p) => p.style === 'cute');
     const progressPets = PRESET_PETS.filter((p) => p.style === 'progress');
-    assert.equal(cutePets.length, 5, 'Exakt die Hälfte (5) muss im Cute-Stil sein');
-    assert.equal(progressPets.length, 5, 'Exakt die Hälfte (5) muss im Progress/Beast-Stil sein');
+    assert.equal(cutePets.length, 3, 'Exakt 3 Pets (robot, bear, cat) sind im Cute-Stil');
+    assert.equal(progressPets.length, 4, 'Exakt 4 Pets (monster, lifter, dino, gorilla) sind im Progress/Beast-Stil');
 
-    const shiba = PRESET_PETS.find((p) => p.id === 'shiba');
-    const axolotl = PRESET_PETS.find((p) => p.id === 'axolotl');
-    const cyberwolf = PRESET_PETS.find((p) => p.id === 'cyberwolf');
-    assert.ok(shiba && shiba.style === 'cute' && shiba.unlockWorkouts === 50);
-    assert.ok(axolotl && axolotl.style === 'cute' && axolotl.unlockWorkouts === 75);
-    assert.ok(cyberwolf && cyberwolf.style === 'progress' && cyberwolf.unlockWorkouts === 100);
+    assert.equal(PRESET_PETS.find((p) => p.id === 'shiba'), undefined);
+    assert.equal(PRESET_PETS.find((p) => p.id === 'axolotl'), undefined);
+    assert.equal(PRESET_PETS.find((p) => p.id === 'cyberwolf'), undefined);
 
-    // High-Level-Freischaltung über Workouts ODER Gesamt-Level über alle Pets
-    assert.equal(isPresetPetUnlocked(shiba, 20, 0, 2, 10), false);
-    assert.equal(isPresetPetUnlocked(shiba, 50, 0, 2, 4), true);
-    assert.equal(isPresetPetUnlocked(shiba, 15, 0, 3, 12), true);
-    assert.equal(isPresetPetUnlocked(cyberwolf, 40, 0, 4, 20), true);
+    const cat = PRESET_PETS.find((p) => p.id === 'cat')!;
+    const dino = PRESET_PETS.find((p) => p.id === 'dino')!;
+    const gorilla = PRESET_PETS.find((p) => p.id === 'gorilla')!;
+    assert.equal(isPresetPetUnlocked(cat, 2, 0, 1, 4), false);
+    assert.equal(isPresetPetUnlocked(cat, 3, 0, 1, 4), true);
+    assert.equal(isPresetPetUnlocked(dino, 15, 0, 1, 4), true);
+    assert.equal(isPresetPetUnlocked(gorilla, 30, 0, 1, 4), true);
 
     const totalLvl = calculateTotalPetLevels({
       robot: { xp: 600 }, // Stufe 4
@@ -434,7 +450,7 @@ describe('Gym Buddy (Tamagotchi-Logik, Cute/Progress-Stile, Post-Workout, Nachts
     assert.equal(slots.has('hand'), true);
     assert.ok(ACCESSORIES.some((a) => a.id === 'shield' && a.slot === 'hand'), 'Trainings-Schild muss als Hand-Accessoire registriert sein');
 
-    // Prüfe exakte Ankerpunkte für alle 10 Pets über alle 4 Evolutionsstufen
+    // Prüfe exakte Ankerpunkte für alle 7 echten Pets über alle 4 Evolutionsstufen
     for (const pet of PRESET_PETS) {
       const stages = PET_ACCESSORY_ANCHORS[pet.id];
       assert.ok(stages, `PET_ACCESSORY_ANCHORS muss für ${pet.id} definiert sein`);
@@ -681,7 +697,7 @@ describe('Gym Buddy (Tamagotchi-Logik, Cute/Progress-Stile, Post-Workout, Nachts
       );
     }
 
-    // Prüfe die 4 hochauflösenden SVG-Mockups unter docs/previews/ und deren Einbindung in README.md
+    // Prüfe die 4 hochauflösenden 1:1 SVG-Mockups unter docs/previews/ und deren Einbindung in README.md
     const expectedPreviews = [
       'docs/previews/preview-dashboard-buddy.svg',
       'docs/previews/preview-cycle-training.svg',
@@ -689,6 +705,14 @@ describe('Gym Buddy (Tamagotchi-Logik, Cute/Progress-Stile, Post-Workout, Nachts
       'docs/previews/preview-customization.svg',
     ];
     const readmeContent = fs.readFileSync(path.resolve('README.md'), 'utf8');
+    assert.ok(
+      !readmeContent.includes('Pump-Shiba') &&
+        !readmeContent.includes('Gains-Axolotl') &&
+        !readmeContent.includes('Cyber-Wolf') &&
+        !readmeContent.includes('10 Begleiter') &&
+        !readmeContent.includes('10 Pets'),
+      'README.md darf keine erfundenen Pets oder "10 Begleiter" erwähnen'
+    );
     for (const previewRelPath of expectedPreviews) {
       const fullPath = path.resolve(previewRelPath);
       assert.ok(fs.existsSync(fullPath), `SVG-Mockup ${previewRelPath} muss existieren`);
@@ -698,10 +722,231 @@ describe('Gym Buddy (Tamagotchi-Logik, Cute/Progress-Stile, Post-Workout, Nachts
         `${previewRelPath} muss valides SVG sein`
       );
       assert.ok(
+        svgContent.includes('#111214') && svgContent.includes('#A8DAB5'),
+        `${previewRelPath} muss die echten App-Farben (#111214 Surface & #A8DAB5 Primary) verwenden`
+      );
+      assert.ok(
+        !svgContent.includes('Pump-Shiba') &&
+          !svgContent.includes('Gains-Axolotl') &&
+          !svgContent.includes('Cyber-Wolf') &&
+          !svgContent.includes('10 Begleiter'),
+        `${previewRelPath} darf keine erfundenen Pets oder "10 Begleiter" enthalten`
+      );
+      assert.ok(
         readmeContent.includes(previewRelPath),
         `README.md muss ${previewRelPath} in der Preview-Galerie einbinden`
       );
     }
+    assert.ok(
+      !settingsBundle.includes('seedRealisticDemoData') &&
+        !settingsBundle.includes('Echte App-Screens mit Demo-Daten laden'),
+      'SettingsScreen-DEAqAtbV.js darf keinen Demo-Daten-Loader-Button enthalten'
+    );
+
+    // Prüfe zweisprachigen Premium-Disclaimer ("Bevor du loslegst" / "Before you start") & Rechtliches
+    const deBundle = fs.readFileSync(path.resolve('public/assets/de-D5J3Pm2D.js'), 'utf8');
+    assert.ok(
+      deBundle.includes('Kurz das Wichtigste vorab – dieser Hinweis erscheint nur einmalig beim Start.') &&
+        deBundle.includes('Privates Projekt, keine Gewähr') &&
+        deBundle.includes('Kein medizinischer Rat') &&
+        deBundle.includes('Deine Daten gehören nur dir') &&
+        deBundle.includes('Nur für den privaten Gebrauch') &&
+        deBundle.includes('Alle Details findest du jederzeit unter Einstellungen → Rechtliches.') &&
+        deBundle.includes('Verstanden, los geht’s'),
+      'Deutscher Disclaimer muss alle überarbeiteten Texte exakt enthalten'
+    );
+    assert.ok(
+      indexBundle.includes('Just the essentials upfront — you will only see this notice once.') &&
+        indexBundle.includes('Personal project, no warranty') &&
+        indexBundle.includes('Not medical advice') &&
+        indexBundle.includes('Your data stays on your device') &&
+        indexBundle.includes('Private use only') &&
+        indexBundle.includes('Full legal details are available anytime under Settings → Legal.') &&
+        indexBundle.includes('Got it, let’s go') &&
+        indexBundle.includes('disclaimer-mini-card') &&
+        settingsBundle.includes('disclaimer-mini-card'),
+      'Englischer Disclaimer sowie Mini-Card-UI im Start-Modal und unter Rechtliches müssen vorhanden sein'
+    );
+  });
+
+  it('steuert die vollautomatische Pausen- & Comeback-Erkennung (ohne manuelle Pausen-Buttons, inkl. Streak-Rettung, Deload-Kopplung & Comeback-Banner)', () => {
+    const dayMs = 24 * 60 * 60 * 1000;
+    const oct1 = new Date(2026, 9, 1, 12, 0, 0).getTime();
+    const oct5 = new Date(2026, 9, 5, 12, 0, 0).getTime();
+    const oct12 = new Date(2026, 9, 12, 12, 0, 0).getTime();
+
+    assert.equal(COMEBACK_GAP_MIN_DAYS, 4, 'Automatische Comeback-Erkennung greift ab 4 Tagen ohne Workout (wenn die Streak unterbrochen wäre)');
+
+    // 1. Automatische Comeback-Erkennung bereits ab 4 Tagen ohne Training (bzw. länger nicht geöffneter App)
+    const shortGapInfo = detectUnplannedComebackGap([oct1], DEFAULT_TRAINING_BREAK_CONFIG, oct5, null, oct1);
+    assert.ok(shortGapInfo, 'Bereits ab 4 Kalendertagen ohne Workout greift die automatische Comeback-Abfrage');
+    assert.equal(shortGapInfo.shouldPrompt, true);
+    assert.equal(shortGapInfo.gapDays, 4);
+    assert.equal(shortGapInfo.appClosedDays, 4);
+
+    // 2. Längere Pause (11 Tage zwischen 1. Okt. und 12. Okt.)
+    const gapInfo = detectUnplannedComebackGap([oct1], DEFAULT_TRAINING_BREAK_CONFIG, oct12, null, oct1 + 2 * dayMs);
+    assert.ok(gapInfo, 'Nach 11 Tagen ohne Workout greift die automatische Comeback-Erkennung');
+    assert.equal(gapInfo.shouldPrompt, true);
+    assert.equal(gapInfo.gapDays, 11);
+    assert.equal(gapInfo.appClosedDays, 9);
+    assert.equal(gapInfo.suggestedStartDate, '2026-10-02');
+    assert.equal(gapInfo.suggestedEndDate, '2026-10-12');
+    assert.equal(calculateBreakDays('2026-10-02', '2026-10-11', oct12), 10);
+
+    // Streak ohne bestätigte Pause ist unterbrochen (0), mit bestätigter Pause rückwirkend gerettet (3)
+    const workoutDatesBeforeBreak = [oct1, oct1 - dayMs, oct1 - 2 * dayMs];
+    assert.equal(
+      calculateWorkoutStreak(workoutDatesBeforeBreak, oct12, null, DEFAULT_TRAINING_BREAK_CONFIG),
+      0,
+      'Ohne bestätigte Pause ist die Streak nach > 2 Ruhetagen unterbrochen'
+    );
+
+    // Nachträgliche Bestätigung im automatischen Willkommen-zurück-Dialog ("Ich war krank / im Urlaub")
+    const confirmedSickCfg = confirmRetroactiveComebackBreak(
+      DEFAULT_TRAINING_BREAK_CONFIG,
+      {
+        category: 'sick',
+        startDate: gapInfo.suggestedStartDate,
+        endDate: '2026-10-11',
+        lastWorkoutMs: gapInfo.lastWorkoutMs,
+      },
+      oct12
+    );
+    assert.equal(confirmedSickCfg.history.length, 1);
+    assert.equal(confirmedSickCfg.history[0].category, 'sick');
+    assert.equal(confirmedSickCfg.history[0].autoDetected, true);
+    assert.equal(confirmedSickCfg.comebackBannerRemainingWorkouts, 2);
+
+    const dayOct5 = getBreakForDate(confirmedSickCfg, '2026-10-05', oct12);
+    assert.ok(dayOct5);
+    assert.equal(dayOct5.category, 'sick');
+
+    assert.equal(
+      calculateWorkoutStreak(workoutDatesBeforeBreak, oct12, null, confirmedSickCfg),
+      3,
+      'Automatisch erkannte & bestätigte Pause rettet die Trainings-Streak rückwirkend'
+    );
+    assert.equal(
+      detectUnplannedComebackGap([oct1], confirmedSickCfg, oct12),
+      null,
+      'Nach Bestätigung der Pause erscheint der Willkommen-zurück-Dialog für diese Lücke nicht erneut'
+    );
+
+    // Comeback-Banner Countdown beim Abschließen der nächsten 2 Workouts
+    const afterFirstComebackWorkout = onWorkoutCompletedForBreakConfig(confirmedSickCfg, oct12);
+    assert.equal(
+      afterFirstComebackWorkout.comebackBannerRemainingWorkouts,
+      1,
+      'Nach Abschluss des 1. Comeback-Workouts verbleibt noch 1 weiteres Comeback-Workout mit Hinweis'
+    );
+    const afterSecondWorkout = onWorkoutCompletedForBreakConfig(afterFirstComebackWorkout, oct12 + dayMs);
+    assert.equal(afterSecondWorkout.comebackBannerRemainingWorkouts, 0);
+
+    // Ablehnen ("Einfach normal weitertrainieren") merkt sich das Gap-Ende
+    const dismissedCfg = dismissComebackPromptForGap(
+      DEFAULT_TRAINING_BREAK_CONFIG,
+      gapInfo.lastWorkoutMs,
+      gapInfo.gapDays,
+      oct12
+    );
+    assert.equal(detectUnplannedComebackGap([oct1], dismissedCfg, oct12), null);
+
+    // 3. Kopplung mit der Deload-Logik:
+    // a) Pause >= 7 Tage -> Vollständige Entlastung: Deload-Zähler auf Woche 1 zurücksetzen
+    const firstSessionMs = oct1 - 28 * dayMs;
+    const deloadAfterLongBreak = calculateBreakAdjustedDeloadInfo(
+      [firstSessionMs, oct1 - 21 * dayMs, oct1 - 14 * dayMs, oct1, oct12],
+      undefined,
+      firstSessionMs,
+      confirmedSickCfg,
+      oct12
+    );
+    assert.equal(deloadAfterLongBreak.resetToWeekOne, true);
+    assert.equal(deloadAfterLongBreak.suppressDeloadSuggestion, true);
+    assert.equal(
+      deloadAfterLongBreak.effectiveWeeksElapsed,
+      0,
+      'Nach >= 7 Tagen Pause wird der Deload-/Mesozyklus-Fortschritt auf Woche 1 (0 abgelaufene Wochen) zurückgesetzt'
+    );
+
+    // b) Kurze bestätigte Pause (4 Tage: 5.–8. Okt.) -> Deload-Zähler für die Pausendauer einfrieren
+    const oct4 = new Date(2026, 9, 4, 12, 0, 0).getTime();
+    const oct9 = new Date(2026, 9, 9, 12, 0, 0).getTime();
+    const shortConfirmedCfg = confirmRetroactiveComebackBreak(
+      DEFAULT_TRAINING_BREAK_CONFIG,
+      {
+        category: 'vacation',
+        startDate: '2026-10-05',
+        endDate: '2026-10-08',
+        lastWorkoutMs: oct4,
+      },
+      oct9
+    );
+    assert.equal(countBreakDaysInInterval(oct1, oct12, shortConfirmedCfg, oct12), 4);
+    const deloadAfterShortBreak = calculateBreakAdjustedDeloadInfo(
+      [oct1, oct4, oct9, oct12],
+      undefined,
+      oct1,
+      shortConfirmedCfg,
+      oct12
+    );
+    assert.equal(deloadAfterShortBreak.resetToWeekOne, false);
+    assert.equal(deloadAfterShortBreak.frozenBreakDays, 4);
+
+    // 4. Backup-Validierung für trainingBreaks
+    const sanitizedBreaks = sanitizeTrainingBreakConfig({
+      activeBreak: null,
+      history: [
+        {
+          id: 'brk-0',
+          category: 'sick',
+          startDate: '2026-09-01',
+          endDate: '2026-09-05',
+          active: false,
+          autoDetected: true,
+          createdAt: oct1,
+        },
+      ],
+      comebackBannerRemainingWorkouts: 2,
+      comebackBannerBreakDays: 10,
+      comebackBannerCategory: 'sick',
+    });
+    assert.ok(sanitizedBreaks);
+    assert.equal(sanitizedBreaks.activeBreak, null);
+    assert.equal(sanitizedBreaks.history.length, 1);
+    assert.equal(sanitizedBreaks.comebackBannerRemainingWorkouts, 2);
+
+    // 5. Stelle sicher, dass KEINE sichtbaren manuellen Pausen-Buttons oder Einstellungs-Sektionen existieren
+    const gymBuddyAsset = fs.readFileSync(path.resolve('public/assets/gymBuddy.js'), 'utf8');
+    const settingsBundle = fs.readFileSync(path.resolve('public/assets/SettingsScreen-DEAqAtbV.js'), 'utf8');
+    const dashboardSvg = fs.readFileSync(path.resolve('docs/previews/preview-dashboard-buddy.svg'), 'utf8');
+
+    assert.ok(
+      !gymBuddyAsset.includes('⏸️ Pause') &&
+        !gymBuddyAsset.includes('TrainingBreakSheet') &&
+        !gymBuddyAsset.includes('TrainingBreakSettingsSection') &&
+        !gymBuddyAsset.includes('TrainingBreakQuickCard'),
+      'gymBuddy.js darf keinen sichtbaren manuellen Pausen-Button oder manuelles Pausen-Sheet enthalten'
+    );
+    assert.ok(
+      gymBuddyAsset.includes('ComebackWelcomeModal') &&
+        gymBuddyAsset.includes('detectUnplannedComebackGap') &&
+        gymBuddyAsset.includes('LAST_APP_OPEN_STORAGE_KEY'),
+      'gymBuddy.js muss die automatische Comeback-Erkennung (ComebackWelcomeModal + LAST_APP_OPEN_STORAGE_KEY) enthalten'
+    );
+    assert.ok(
+      !settingsBundle.includes('⏸️ Pause') && !settingsBundle.includes('TrainingBreakSettingsSection'),
+      'SettingsScreen-DEAqAtbV.js darf weder Pausen-Einstellungen noch einen Pausen-Button in der Vorschau enthalten'
+    );
+    assert.ok(
+      !dashboardSvg.includes('⏸️ Pause') && !dashboardSvg.includes('Pause Button'),
+      'docs/previews/preview-dashboard-buddy.svg darf keinen sichtbaren Pause-Button enthalten'
+    );
   });
 });
+
+
+
+
 
