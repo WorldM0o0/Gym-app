@@ -8,17 +8,20 @@ try {
   const distAssetsDir = 'dist/assets';
   const distSwPath = 'dist/sw.js';
   if (fs.existsSync(distAssetsDir) && fs.existsSync(distSwPath)) {
+    let swContent = fs.readFileSync(distSwPath, 'utf8');
     const assetFiles = fs
       .readdirSync(distAssetsDir)
       .filter((f) => f.endsWith('.js') || f.endsWith('.css'))
-      .map((f) => `"/assets/${f}"`);
-    let swContent = fs.readFileSync(distSwPath, 'utf8');
-    swContent = swContent.replace(
-      '"/assets/workbox-window.prod.es5-BBnX5xw4.js"',
-      Array.from(new Set(['"/assets/workbox-window.prod.es5-BBnX5xw4.js"', ...assetFiles])).join(',\n  ')
-    );
-    fs.writeFileSync(distSwPath, swContent, 'utf8');
-    console.log(`✅ Injected ${assetFiles.length} built assets into dist/sw.js precache list.`);
+      .map((f) => `"/assets/${f}"`)
+      .filter((entry) => !swContent.includes(entry));
+    if (assetFiles.length > 0) {
+      swContent = swContent.replace(
+        '"/assets/workbox-window.prod.es5-BBnX5xw4.js"',
+        ['"/assets/workbox-window.prod.es5-BBnX5xw4.js"', ...assetFiles].join(',\n  ')
+      );
+      fs.writeFileSync(distSwPath, swContent, 'utf8');
+    }
+    console.log(`✅ Verified precache list in dist/sw.js (+${assetFiles.length} build assets).`);
   }
 } catch (err) {
   console.warn('Could not inject asset list into dist/sw.js:', err);

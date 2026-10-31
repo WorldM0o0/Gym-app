@@ -11,6 +11,7 @@ import path from 'node:path';
 import {
   PRESET_PETS,
   ACCESSORIES,
+  PET_ACCESSORY_ANCHORS,
   getEvolutionStage,
   calculateWorkoutXpGain,
   calculateWorkoutStreak,
@@ -23,6 +24,8 @@ import {
   hslToHex,
   getMonochromePetHex,
   sanitizeGymBuddyBackupRecord,
+  calculateCyclePhaseForDate,
+  sanitizeCycleTrackingBackupRecord,
 } from '../gymBuddy/gymBuddy';
 
 // ---------------------------------------------------------------------------
@@ -335,6 +338,26 @@ describe('Backup-Schema-Validierung & Bundle-Integrität', () => {
       !appBootCode.includes('import(/* @vite-ignore */'),
       'src/App.tsx darf kein dynamisches import() für das Hauptbundle nutzen, da Vite sonst ?import anhängt und eine zweite React-Instanz erzeugt'
     );
+    assert.ok(
+      appBootCode.includes("const APP_ENTRY_MODULE = '/assets/index-DjUS4W3P.js';"),
+      'src/App.tsx muss den kanonischen Entry-Pfad ohne Query-Parameter verwenden, um doppelte React-Instanzen zu verhindern'
+    );
+    assert.ok(
+      swCode.includes('fetchWithTimeout'),
+      'Service Worker muss Netzwerk-Requests mit fetchWithTimeout gegen Lie-Fi absichern'
+    );
+
+    const gymBuddyAsset = fs.readFileSync(path.resolve('public/assets/gymBuddy.js'), 'utf8');
+    assert.ok(
+      gymBuddyAsset.includes('PARSED_MATRIX_CACHE') &&
+        gymBuddyAsset.includes('PALETTE_CACHE') &&
+        gymBuddyAsset.includes('y.memo(GymBuddySpriteCanvasInner)'),
+      'gymBuddy.js muss Matrix-/Paletten-Caches und React.memo für den Sprite-Renderer enthalten'
+    );
+    assert.ok(
+      !gymBuddyAsset.includes('PREVIEW_STAGES'),
+      'gymBuddy.js darf keine Evolutionsstufen-Vorschau (PREVIEW_STAGES) mehr rendern'
+    );
   });
 
   it('hält APP_VERSION, package.json, sw.js und das zweisprachige Changelog (DE/EN) synchron', () => {
@@ -366,8 +389,8 @@ describe('Backup-Schema-Validierung & Bundle-Integrität', () => {
       );
     }
 
-    // Prüfe 6-Schritte Spotlight-Tour & Zurück-Button in DE und EN
-    assert.ok(indexBundle.includes('id:"restSwap"'), 'Spotlight-Tour muss Schritt 3 (restSwap) enthalten');
+    // Prüfe interaktive 5-Schritte Live-Tab-Tour & Zurück-Button in DE und EN
+    assert.ok(indexBundle.includes('"welcome-setup"') && indexBundle.includes('"history-calendar"'), 'Interaktive 5-Schritte Live-Tab-Tour muss welcome-setup und history-calendar enthalten');
     assert.ok(indexBundle.includes('stepRestSwap:'), 'Englische Tour-Texte müssen stepRestSwap enthalten');
     assert.ok(deBundle.includes('stepRestSwap:'), 'Deutsche Tour-Texte müssen stepRestSwap enthalten');
     assert.ok(deBundle.includes('App-Tour / Tutorial neu starten'), 'Deutscher Tour-Neustart-Button muss vorhanden sein');
@@ -409,6 +432,17 @@ describe('Gym Buddy (Tamagotchi-Logik, Cute/Progress-Stile, Post-Workout, Nachts
     assert.equal(slots.has('head'), true);
     assert.equal(slots.has('body'), true);
     assert.equal(slots.has('hand'), true);
+    assert.ok(ACCESSORIES.some((a) => a.id === 'shield' && a.slot === 'hand'), 'Trainings-Schild muss als Hand-Accessoire registriert sein');
+
+    // Prüfe exakte Ankerpunkte für alle 10 Pets über alle 4 Evolutionsstufen
+    for (const pet of PRESET_PETS) {
+      const stages = PET_ACCESSORY_ANCHORS[pet.id];
+      assert.ok(stages, `PET_ACCESSORY_ANCHORS muss für ${pet.id} definiert sein`);
+      for (const stg of [1, 2, 3, 4] as const) {
+        const anchor = stages[stg];
+        assert.ok(anchor && anchor.head && anchor.body && anchor.hand, `Ankerpunkte für ${pet.id} Stufe ${stg} müssen head, body und hand enthalten`);
+      }
+    }
   });
 
   it('berechnet die 4 Evolutionsstufen und XP-Fortschritt pro Pet korrekt', () => {
@@ -510,6 +544,164 @@ describe('Gym Buddy (Tamagotchi-Logik, Cute/Progress-Stile, Post-Workout, Nachts
     assert.equal(sanitized.petProgress.robot.accessoryColors.head, '#FF0055');
     assert.equal(sanitized.petProgress.robot.accessoryColors.body, null);
   });
-});
 
+  it('berechnet alle 4 Zyklus-Phasen, den Phase-1-Streak-Schutz (4 statt 2 Ruhetage) und den Phase-1-Gym-Buddy-Erholungszustand korrekt', () => {
+    const cfg = sanitizeCycleTrackingBackupRecord({
+      gender: 'female',
+      enabled: true,
+      lastPeriodStart: '2026-10-01',
+      cycleLength: 28,
+      periodDuration: 5,
+    });
+    assert.ok(cfg);
+    assert.equal(cfg.enabled, true);
+    assert.equal(cfg.gender, 'female');
+    assert.equal(cfg.cycleLength, 28);
+    assert.equal(cfg.periodDuration, 5);
+
+    // Phase 1: Menstruation (Tag 1..5)
+    const p1 = calculateCyclePhaseForDate(cfg, new Date(2026, 9, 3, 12, 0, 0).getTime());
+    assert.ok(p1);
+    assert.equal(p1.cycleDay, 3);
+    assert.equal(p1.phaseNumber, 1);
+    assert.equal(p1.phase, 'menstruation');
+    assert.equal(p1.streakRestDaysLimit, 4);
+
+    // Phase 2: Follikelphase (Tag 6..12)
+    const p2 = calculateCyclePhaseForDate(cfg, new Date(2026, 9, 8, 12, 0, 0).getTime());
+    assert.ok(p2);
+    assert.equal(p2.cycleDay, 8);
+    assert.equal(p2.phaseNumber, 2);
+    assert.equal(p2.phase, 'follicular');
+    assert.equal(p2.streakRestDaysLimit, 2);
+
+    // Phase 3: Ovulation (Tag 13..16 bei 28-Tage-Zyklus)
+    const p3Day13 = calculateCyclePhaseForDate(cfg, new Date(2026, 9, 13, 12, 0, 0).getTime());
+    const p3Day16 = calculateCyclePhaseForDate(cfg, new Date(2026, 9, 16, 12, 0, 0).getTime());
+    assert.ok(p3Day13 && p3Day16);
+    assert.equal(p3Day13.cycleDay, 13);
+    assert.equal(p3Day13.phaseNumber, 3);
+    assert.equal(p3Day13.phase, 'ovulation');
+    assert.equal(p3Day16.cycleDay, 16);
+    assert.equal(p3Day16.phaseNumber, 3);
+    assert.equal(p3Day16.phase, 'ovulation');
+
+    // Phase 4: Lutealphase (Tag 17..28)
+    const p4 = calculateCyclePhaseForDate(cfg, new Date(2026, 9, 17, 12, 0, 0).getTime());
+    assert.ok(p4);
+    assert.equal(p4.cycleDay, 17);
+    assert.equal(p4.phaseNumber, 4);
+    assert.equal(p4.phase, 'luteal');
+
+    // Streak-Schutz in Phase 1: 4 volle Pausentage während der Menstruation (z.B. 1.–4. Okt., Trainings am 30. Sept. & 5. Okt.) brechen die Streak nicht!
+    const dayMs = 24 * 60 * 60 * 1000;
+    const nowOct5 = new Date(2026, 9, 5, 12, 0, 0).getTime(); // Tag 5 = Phase 1 (Menstruation)
+    const datesWith4RestDaysInPhase1 = [nowOct5, nowOct5 - 5 * dayMs]; // 5. Okt. und 30. Sept. (4 volle Pausentage dazwischen)
+    assert.equal(
+      calculateWorkoutStreak(datesWith4RestDaysInPhase1, nowOct5, { ...cfg, enabled: false }),
+      1,
+      'Standardmäßig (2 Ruhetage Limit) zählt das Training vor 4 Ruhetagen nicht mehr zur aktuellen Streak'
+    );
+    assert.equal(
+      calculateWorkoutStreak(datesWith4RestDaysInPhase1, nowOct5, cfg),
+      2,
+      'In Phase 1 (Menstruation) schützt das 4-Tage-Rest-Day-Limit die Streak zuverlässig'
+    );
+
+    // Gym Buddy Schnittstelle: An Pausentagen in Phase 1 zeigt der Buddy den entspannten Erholungs-Zustand
+    const daytimeNow = new Date(2026, 9, 3, 14, 0, 0).getTime();
+    const yesterdayWorkout = daytimeNow - 28 * 3600 * 1000;
+    assert.equal(
+      determinePositivePetMood(yesterdayWorkout, daytimeNow, true),
+      'phase1_recovery'
+    );
+    // Hat man heute bereits trainiert, bleibt der stolze/fröhliche Zustand erhalten
+    const todayWorkout = daytimeNow - 4 * 3600 * 1000;
+    assert.equal(
+      determinePositivePetMood(todayWorkout, daytimeNow, true),
+      'happy'
+    );
+
+    // Prüfe iOS WebKit SVG-Regeln, Pfoten-Griff und native Web Share API im Bundle
+    const gymBuddyAsset = fs.readFileSync(path.resolve('public/assets/gymBuddy.js'), 'utf8');
+    assert.ok(
+      gymBuddyAsset.includes('renderEquippedAccessoriesSvg') &&
+        gymBuddyAsset.includes('gb-accessories-layer') &&
+        gymBuddyAsset.includes('gb-eye-wink-arc') &&
+        gymBuddyAsset.includes('@-webkit-keyframes gb-eye-right-wink') &&
+        gymBuddyAsset.includes('transform-box: fill-box;'),
+      'gymBuddy.js muss SVG-Outlines, Pfoten-Griff und -webkit- SVG-Regeln für iOS enthalten'
+    );
+    assert.ok(
+      gymBuddyAsset.includes('cycleState,') &&
+        gymBuddyAsset.includes('data-no-swipe') &&
+        gymBuddyAsset.includes('GymBuddyErrorBoundary'),
+      'gymBuddy.js muss cycleState im Hook bereitstellen, data-no-swipe und GymBuddyErrorBoundary enthalten'
+    );
+    const indexBundle = fs.readFileSync(path.resolve('public/assets/index-DjUS4W3P.js'), 'utf8');
+    assert.ok(
+      indexBundle.includes('navigator.canShare') && indexBundle.includes('navigator.share'),
+      'index-DjUS4W3P.js muss die native iOS Web Share API für Datei-Exporte unterstützen'
+    );
+    assert.ok(
+      indexBundle.includes('"data-no-swipe":"true"'),
+      'index-DjUS4W3P.js muss data-no-swipe auf Sheets setzen, um versehentliche Wisch-Navigation zu verhindern'
+    );
+
+    const settingsBundle = fs.readFileSync(
+      path.resolve('public/assets/SettingsScreen-DEAqAtbV.js'),
+      'utf8'
+    );
+    assert.ok(
+      settingsBundle.includes('GymBuddySpriteCanvas as GymBuddyPreviewCanvas') &&
+        settingsBundle.includes('CycleTrackingSettingsToggle as cycToggle') &&
+        settingsBundle.includes('e.jsx(GymBuddyPreviewCanvas,') &&
+        settingsBundle.includes('e.jsx(cycToggle,{})'),
+      'SettingsScreen-DEAqAtbV.js muss GymBuddyPreviewCanvas und CycleTrackingSettingsToggle importieren und rendern'
+    );
+
+    // Alle Bundles müssen ./gymBuddy.js kanonisch ohne abweichende Query-Strings importieren
+    const historyBundle = fs.readFileSync(
+      path.resolve('public/assets/HistoryHome-BqTmz6us.js'),
+      'utf8'
+    );
+    const backupBundle = fs.readFileSync(
+      path.resolve('public/assets/backupExport-ByV0wFPi.js'),
+      'utf8'
+    );
+    for (const [name, content] of [
+      ['index-DjUS4W3P.js', indexBundle],
+      ['SettingsScreen-DEAqAtbV.js', settingsBundle],
+      ['HistoryHome-BqTmz6us.js', historyBundle],
+      ['backupExport-ByV0wFPi.js', backupBundle],
+    ] as const) {
+      assert.ok(
+        content.includes('./gymBuddy.js"') && !content.includes('./gymBuddy.js?v='),
+        `${name} muss ./gymBuddy.js ohne abweichenden ?v= Query-Parameter importieren`
+      );
+    }
+
+    // Prüfe die 4 hochauflösenden SVG-Mockups unter docs/previews/ und deren Einbindung in README.md
+    const expectedPreviews = [
+      'docs/previews/preview-dashboard-buddy.svg',
+      'docs/previews/preview-cycle-training.svg',
+      'docs/previews/preview-workout-tracker.svg',
+      'docs/previews/preview-customization.svg',
+    ];
+    const readmeContent = fs.readFileSync(path.resolve('README.md'), 'utf8');
+    for (const previewRelPath of expectedPreviews) {
+      const fullPath = path.resolve(previewRelPath);
+      assert.ok(fs.existsSync(fullPath), `SVG-Mockup ${previewRelPath} muss existieren`);
+      const svgContent = fs.readFileSync(fullPath, 'utf8');
+      assert.ok(
+        svgContent.startsWith('<svg') && svgContent.includes('</svg>'),
+        `${previewRelPath} muss valides SVG sein`
+      );
+      assert.ok(
+        readmeContent.includes(previewRelPath),
+        `README.md muss ${previewRelPath} in der Preview-Galerie einbinden`
+      );
+    }
+  });
+});
 

@@ -2,6 +2,184 @@
   "format": 1,
   "entries": [
     {
+      "version": "13.21.0",
+      "title": "GitHub-Repository-Cleanup, iPhone-16-Pro-SVG-Mockups & Zweisprachige Dokumentation",
+      "titleEn": "GitHub Repository Cleanup, iPhone 16 Pro SVG Mockups & Bilingual Documentation",
+      "points": [
+        {
+          "text": "Hochauflösende SVG-App-Previews im iPhone-16-Pro-Rahmen (Dark Mode): Vier neue, gestochen scharfe Vektor-Mockups unter docs/previews/ zeigen das aktuelle Heute-Dashboard mit Gym Buddy 2.0 (Lächeln, Schild, Shaker, XP & Streak), das Cycle-Synced-Training-Widget mit 4 Phasen & Kalender-Punkten, den Live-Workout-Tracker mit Pausentimer sowie das Gym-Buddy-Studio mit freiem HSL-Farbwähler.",
+          "textEn": "High-resolution SVG app previews in an iPhone 16 Pro frame (Dark Mode): Four crisp vector mockups in docs/previews/ showcase the Today dashboard with Gym Buddy 2.0 (smile, shield, shaker, XP & streak), the Cycle-Synced Training widget with 4 phases & calendar dots, the live Workout Tracker with rest timer, and the Gym Buddy Studio with free HSL color picker.",
+          "kind": "feature"
+        },
+        {
+          "text": "Repository-Bereinigung & neue README.md (DE/EN): Veraltete PNG-Screenshots, temporäre Skripte und alte Build-Archive wurden entfernt, die .gitignore erweitert und die README.md komplett neu mit Badges, 4-Spalten-Preview-Galerie, Feature-Übersicht und erledigter vs. geplanter Roadmap aufgebaut.",
+          "textEn": "Repository cleanup & new bilingual README.md (DE/EN): Removed outdated PNG screenshots, temporary scripts, and old build archives, expanded .gitignore, and rebuilt README.md with badges, a 4-column preview gallery, feature overview, and shipped vs. planned roadmap checklist.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.20.0",
+      "title": "Interaktives Live-Tab-Tutorial, UI/UX-Hochglanz-Polish & Preview-Update",
+      "titleEn": "Interactive Live-Tab Guided Tour, High-Gloss UI/UX Polish & Preview Update",
+      "points": [
+        {
+          "text": "Interaktives 5-Schritte-Tutorial mit automatischem Live-Tab-Wechsel: Beim Klicken auf „Weiter“ oder „Zurück“ navigiert die App automatisch live durch Heute-Dashboard, Workout-Ansicht, Verlauf/Kalender (inkl. farbiger Zyklus-Phasen-Punkte) und Einstellungen. Nach Abschluss oder Überspringen kehrt die App auf den Heute-Tab zurück und dein Gym Buddy begrüßt dich.",
+          "textEn": "Interactive 5-Step Guided Tour with automatic live tab switching: Clicking Next or Back automatically navigates live across the Today dashboard, Workout view, History/Calendar (including colored cycle phase dots), and Settings. Upon completion or skip, the app returns to the Today tab with a live Gym Buddy greeting.",
+          "kind": "feature"
+        },
+        {
+          "text": "Elegantes Profil- & Zyklus-Setup mit sanfter Accordion-Animation: Große Touch-Cards (Mann / Frau / Keine Angabe), kompakte Datenschutz-Infobox (🔒 100 % Lokal) und weiches Aufgleiten der optionalen Zyklus-Einstellungen bei Auswahl von „Frau“.",
+          "textEn": "Elegant Profile & Cycle Setup with smooth accordion animation: Large touch cards (Male / Female / Prefer not to say), compact privacy info box (🔒 100% Local), and smooth accordion expansion for optional cycle settings when selecting Female.",
+          "kind": "improvement"
+        },
+        {
+          "text": "UI/UX-Hochglanz-Polish & 100 % iOS-Kompatibilität: Weiche 250ms Cubic-Bezier Slide-/Fade-Übergänge, animierte Pill-Fortschrittspunkte (Step-Dots), stabile Button-Positionierung über der Tab-Leiste sowie aktualisierte Roadmap und App-Previews.",
+          "textEn": "High-gloss UI/UX polish & 100% iOS compatibility: Smooth 250ms cubic-bezier slide/fade transitions, animated pill progress dots, stable button positioning above the tab bar, and updated Roadmap & App Previews.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.19.0",
+      "title": "Einstellungen-Fix, Modul-Konsolidierung & Code-Optimierung",
+      "titleEn": "Settings Fix, Module Consolidation & Code Optimization",
+      "points": [
+        {
+          "text": "Fehler in den Einstellungen behoben (GymBuddyPreviewCanvas): Der fehlende Import für die interaktive Gym-Buddy-Live-Vorschau sowie die Zyklus-Tracking-Einstellungen im Reiter „Einstellungen“ wurden wiederhergestellt, sodass /einstellungen und alle Vorschau-Mockups fehlerfrei laden.",
+          "textEn": "Fixed Settings error (GymBuddyPreviewCanvas): Restored the missing import for the interactive Gym Buddy live preview and Cycle Tracking settings inside the Settings tab so /einstellungen and all preview mockups render cleanly.",
+          "kind": "fix"
+        },
+        {
+          "text": "Einheitliche Modul-Instanz für sofortige Live-Synchronisation: Alle Programmteile (Dashboard, Verlauf, Einstellungen und Backup) nutzen nun dieselbe kanonische gymBuddy.js-Modulinstanz ohne abweichende Versions-Parameter, wodurch Änderungen an Pet, Accessoires oder Zyklus-Daten sofort tab-übergreifend synchronisiert sind.",
+          "textEn": "Unified module instance for instant live sync: Dashboard, History, Settings, and Backup now share a single canonical gymBuddy.js ES module instance without version query drift, ensuring changes to pets, accessories, or cycle settings sync immediately across tabs.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Code-Bereinigung & Duplikat-Entfernung: Doppelte Tutorial-Neustart-Blöcke in den Einstellungen wurden zusammengeführt, 16x16-Accessoire-Ankerpunkte zwischen TypeScript-Quelle und Bundle synchronisiert und temporäre Hilfsskripte entfernt.",
+          "textEn": "Code cleanup & deduplication: Consolidated duplicate tutorial restart blocks in Settings, synchronized 16x16 accessory anchor coordinates between TypeScript source and runtime bundle, and removed temporary helper scripts.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.18.0",
+      "title": "Roadmap-Bereinigung, neue Live-Previews & automatisierte Preview-Pflege",
+      "titleEn": "Roadmap Cleanup, New Live Previews & Automated Preview Maintenance",
+      "points": [
+        {
+          "text": "Roadmap- & Changelog-Synchronisation: Zyklus-Tracking („Cycle-Synced Training“), Gym Buddy 2.0 (Accessoires & Mimik) und die iOS-Optimierungen wurden aus den geplanten Punkten in die Liste der erfolgreich veröffentlichten Features überführt. Die Roadmap führt nun zweisprachig (DE/EN) nur noch tatsächlich geplante Zukunfts-Features (Wearable-Sync, Mesozyklus-Planer, Offline-Barcode-Cache).",
+          "textEn": "Roadmap & changelog synchronization: Cycle tracking ('Cycle-Synced Training'), Gym Buddy 2.0 (accessories & facial animations), and iOS optimizations have been moved from planned to shipped. The roadmap now lists only genuinely open future features (Wearable Sync, Mesocycle Planner, Offline Barcode Cache) in both German and English.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Neue interaktive App-Previews & Mockup-Screenshots: Vollständig aktualisierte Vorschau-Ansichten für Preview 1 (Dashboard & Gym Buddy 2.0 mit neuen Konturen, Griff-Items, Lächeln & Streak-Badge), Preview 2 (Cycle-Synced Training mit Zyklus-Phasenkarte & 4-Phasen-Punkten im Kalender) sowie Preview 3 (Modernes Onboarding & Settings mit Dark-/Light-Mode-Toggle und neuen Toggles) — perfekt proportioniert im iPhone-Mockup mit Dynamic Island.",
+          "textEn": "New interactive app previews & mockup screenshots: Fully updated showcase views for Preview 1 (Dashboard & Gym Buddy 2.0 with crisp outlines, grip items, smile & streak badge), Preview 2 (Cycle-Synced Training with phase card & 4 colored dots in the calendar), and Preview 3 (Modern Onboarding & Settings with Dark/Light mode toggle and new setting switches) — perfectly proportioned in an iPhone mockup with Dynamic Island.",
+          "kind": "feature"
+        },
+        {
+          "text": "Permanente Regel für automatische Roadmap- & Preview-Pflege etabliert: Bei jedem zukünftigen Feature werden Roadmap-Status und visuelle App-Vorschauen automatisch und ohne gesonderte Aufforderung auf den neuesten echten Stand synchronisiert.",
+          "textEn": "Permanent automatic roadmap & preview maintenance rule established: For every upcoming feature, roadmap statuses and visual app previews are now automatically synchronized to the true current state without manual reminders.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.17.0",
+      "title": "Bugfix: Gym Buddy Sheet Öffnen & Gesten-Schutz",
+      "titleEn": "Bugfix: Gym Buddy Sheet Open & Gesture Protection",
+      "points": [
+        {
+          "text": "Fehler beim Antippen des Gym Buddys behoben: Ein interner Referenzierungsfehler (cycleState) beim Öffnen des Gym Buddy Detail-Sheets wurde behoben, sodass der Begleiter stabil geöffnet werden kann und die Ansicht nicht mehr unerwartet verschwindet oder den Reiter wechselt.",
+          "textEn": "Fixed error when tapping Gym Buddy: Resolved an internal reference issue (cycleState) when opening the Gym Buddy detail sheet, ensuring the companion opens reliably without unexpectedly unmounting or switching tabs.",
+          "kind": "fix"
+        },
+        {
+          "text": "Wischgesten-Schutz für Modals & Sheets: Alle Sheets und das Gym-Buddy-Widget sind nun zuverlässig gegen horizontales Wischen geschützt, sodass Interaktionen im Sheet nie mehr ungewollt auf einen Nachbar-Reiter navigieren.",
+          "textEn": "Swipe gesture protection for modals & sheets: All sheets and the Gym Buddy widget are now guarded against horizontal swipes, ensuring interactions inside sheets never unintentionally navigate to adjacent tabs.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.16.0",
+      "title": "Gym Buddy Accessoire-Überarbeitung, Mimik-Feinschliff, Zyklus-Slider & 100 % iPhone-Kompatibilität",
+      "titleEn": "Gym Buddy Accessory Overhaul, Facial Expression Polish, Cycle Sliders & 100% iPhone Compatibility",
+      "points": [
+        {
+          "text": "Komplette Accessoire-Überarbeitung mit klaren SVG-Outlines, präzisem Halt & synchroner Bewegung: Schild, Shaker, Kurzhantel, Kettlebell, Gewichthebergürtel, Hoodie und Kopfbedeckungen besitzen jetzt scharfe Außenkonturen (stroke), feine SVG-Schattierungen (ohne rechenintensive drop-shadow-Filter für flüssigen 30Hz iPhone-Stromsparmodus), exakte Ankerpunkte für alle 10 Pets auf allen 4 Evolutionsstufen sowie ein sichtbares Pfoten-/Hand-Element, das Hand-Items direkt am Griff umschließt und sich zu 100 % synchron mit dem Körper bewegt.",
+          "textEn": "Complete accessory overhaul with crisp SVG outlines, visible grip & synchronized movement: Shield, shaker, dumbbell, kettlebell, lifting belt, hoodie, and headwear now feature sharp outer contours (stroke), subtle SVG shading (zero heavy drop-shadow filters for smooth 30Hz iPhone Low Power Mode), exact anchor coordinates across all 10 pets and 4 evolution stages, plus a visible paw/hand grip holding hand items in total sync with the body.",
+          "kind": "feature"
+        },
+        {
+          "text": "Ausdrucksstärkere Gym Buddy Mimik & Zyklus-Tracker mit komfortablen Slidern: Deutlich sichtbares, sympathisches Lächeln und unverkennbares Zwinkern bei allen Pets, weiterhin 100 % Überraschung beim Level-Up ohne Vorab-Vorschau. Im Onboarding und in den Einstellungen lassen sich Zykluslänge (Slider 21–35 Tage, Standard: 28) und Periodendauer (Slider 3–7 Tage, Standard: 5) samt Schnell-Button „Periode hat heute begonnen“ und 4 Phasen (inkl. Ovulation Tag 13–16) bequem einstellen.",
+          "textEn": "More expressive Gym Buddy facial animations & Cycle Tracker with smooth sliders: Clearer, friendly smile and unmistakable wink across all pets, keeping level-up evolutions a 100% surprise without spoilers. Both Onboarding and Settings now include sliders for cycle length (21–35 days, default: 28) and period duration (3–7 days, default: 5), a 'Period started today' quick button, and 4 training phases (including Ovulation Days 13–16).",
+          "kind": "improvement"
+        },
+        {
+          "text": "100 % iPhone- & iOS-Web-App-Optimierung: Aktiver IndexedDB-Speicherschutz (navigator.storage.persist) mit hilfreichem Hinweis im iOS-Safari-Browser („Teilen → Zum Home-Bildschirm“), direkte Unterstützung des nativen iOS-Teilen-Menüs („In Dateien sichern“) beim JSON-Backup-Export sowie vollständige -webkit- SVG-Animations- und Safe-Area-Unterstützung.",
+          "textEn": "100% iPhone & iOS Web App optimization: Active IndexedDB storage protection (navigator.storage.persist) with a helpful hint in iOS Safari ('Share → Add to Home Screen'), native iOS Share Sheet support ('Save to Files') for JSON backup exports, and full -webkit- SVG animation and safe-area support.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.15.0",
+      "title": "Neu: Zyklus-Synchronisiertes Training, Erweitertes Onboarding & Streak-Schutz",
+      "titleEn": "New: Cycle-Synced Training, Enhanced Onboarding & Streak Protection",
+      "points": [
+        {
+          "text": "Erweiterter Willkommensscreen mit Geschlechtsauswahl (Mann / Frau / Keine Angabe) & transparenter Info-Erklärung („Warum fragen wir das?“): Erklärt den Einfluss des 24h- vs. ~28-Tage-Hormonzyklus auf Kraft, Regeneration und Wassereinlagerungen. Bei Auswahl von „Frau“ aktiviert sich das Zyklus-Tracking automatisch inklusive optionaler Direkteingabe (jederzeit abschaltbar, 100 % lokal auf deinem Gerät).",
+          "textEn": "Enhanced Welcome Screen with gender selection (Male / Female / Prefer not to say) & transparent explanation ('Why do we ask this?'): Explains how the 24h vs. ~28-day hormone cycle affects strength, recovery, and water retention. Selecting 'Female' automatically activates Cycle Tracking with optional direct inputs (can be toggled off anytime, 100% local on your device).",
+          "kind": "feature"
+        },
+        {
+          "text": "4 Trainings-Phasen im Dashboard & farbige Kalender-Punkte: Berechnet deinen aktuellen Zyklustag und zeigt passende Trainings- & Anti-Frust-Hinweise für Phase 1 (Menstruation: Fokus auf Erholung/Technik), Phase 2 (Follikelphase: Aufbau/Volumen), Phase 3 (Ovulation: Maximalkraft-Peak für PRs) und Phase 4 (Lutealphase: 1–2 Wdh. weniger oder höheres Gewicht durch Wassereinlagerung sind hormonell völlig normal) sowie dezente Phasen-Punkte im Trainings-Kalender.",
+          "textEn": "4 training phases on the Dashboard & colored calendar dots: Calculates your current cycle day and shows tailored training & anti-frustration hints for Phase 1 (Menstruation: recovery/technique focus), Phase 2 (Follicular: muscle building/volume), Phase 3 (Ovulation: max-strength peak for PRs), and Phase 4 (Luteal: 1–2 fewer reps or higher scale weight from water retention are hormonally normal), plus subtle phase dots in the workout calendar.",
+          "kind": "feature"
+        },
+        {
+          "text": "Gym Buddy Schnittstelle & Streak-Schutz in Phase 1: Erhöht in Phase 1 (Menstruation) das Rest-Day-Limit für deine Trainings-Streak automatisch von 2 auf 4 Tage und zeigt deinen Gym Buddy an Pausentagen in einem entspannten Erholungs-Zustand. Vollständig synchronisiert mit den Einstellungen und dem JSON-Backup.",
+          "textEn": "Gym Buddy integration & Phase 1 streak protection: Automatically increases the workout streak rest-day limit from 2 to 4 days during Phase 1 (Menstruation) and shows your Gym Buddy in a relaxed recovery state on rest days. Fully synced with Settings and JSON backups.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.14.0",
+      "title": "Gym Buddy Hinweis & Schnell-Deaktivierung: Jederzeit ein- und ausschaltbar",
+      "titleEn": "Gym Buddy Hint & Quick Disable: Toggle On or Off Anytime",
+      "points": [
+        {
+          "text": "Hinweis beim ersten Öffnen des Gym Buddys: Wenn du deinen Gym Buddy zum ersten Mal antippst, erklärt dir ein kurzer Hinweis, dass der Begleiter komplett optional ist — inklusive Direkt-Button zum sofortigen Ausblenden.",
+          "textEn": "First-time hint when opening the Gym Buddy: Tapping your Gym Buddy for the first time now shows a clear note that the companion is completely optional — including a direct button to hide it immediately.",
+          "kind": "feature"
+        },
+        {
+          "text": "Jederzeit im Menü oder in den Einstellungen deaktivierbar: Du kannst das Pet jetzt sowohl direkt unten im Gym-Buddy-Menü („Gym Buddy auf dem Startbildschirm ausblenden“) als auch jederzeit in den Einstellungen unter „Gym Buddy“ aus- und wieder einschalten.",
+          "textEn": "Disable anytime in the menu or Settings: You can now hide the pet directly at the bottom of the Gym Buddy sheet ('Hide Gym Buddy on home screen') or toggle it on and off anytime in Settings under 'Gym Buddy'.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
+      "version": "13.13.0",
+      "title": "Performance- & Stabilitäts-Update: Sofort-Start, 60-FPS-Farbwähler & Lie-Fi-Schutz",
+      "titleEn": "Performance & Stability Update: Instant Boot, 60 FPS Color Picker & Lie-Fi Protection",
+      "points": [
+        {
+          "text": "Sofortiger App-Start & Lie-Fi-Schutz im Gym: Der Service Worker nutzt jetzt ein festes 3,5-Sekunden-Timeout für langsame Mobilfunkverbindungen im Fitnessstudio und liefert bei Funklöchern sofort den lokalen Offline-Cache aus.",
+          "textEn": "Instant app launch & gym Lie-Fi protection: The Service Worker now enforces a strict 3.5-second timeout on slow cellular connections in the gym and immediately falls back to the local offline cache.",
+          "kind": "improvement"
+        },
+        {
+          "text": "Flüssigere Gym-Buddy-Animationen & 60-FPS-Farbwähler: Pixel-Matrizen und Farbpaletten werden im Speicher gecacht, SVG-Sprites per React.memo stabilisiert und IndexedDB-Schreibvorgänge beim Ziehen der Farb-Regler gebündelt.",
+          "textEn": "Smoother Gym Buddy rendering & 60 FPS color picker: Pixel matrices and color palettes are cached in memory, SVG sprites are memoized, and IndexedDB writes are debounced while dragging color sliders.",
+          "kind": "improvement"
+        }
+      ]
+    },
+    {
       "version": "13.12.0",
       "title": "Gym Buddy Feinschliff: Dezenter Pixel-Mund & Überraschungs-Evolution ohne Spoiler",
       "titleEn": "Gym Buddy Polish: Subtle Pixel Mouth & Spoiler-Free Evolution Surprise",

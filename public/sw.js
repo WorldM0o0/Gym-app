@@ -1,15 +1,16 @@
 /**
- * ⚠️ DAUERHAFTE PFLICHT-REGEL FÜR KI-ENTWICKLER (MANDATORY AI DEVELOPER RULE):
+ * ⚠️ DAUERHAFTE PFLICHT-REGELN FÜR KI-ENTWICKLER (MANDATORY AI DEVELOPER RULES):
  * Bei JEDER Code-Änderung an der App muss `CACHE_NAME` (sowie ICON/SHELL/RUNTIME_CACHE)
- * synchron mit `APP_VERSION` (`13.9.0`) hochgezählt werden, damit Netlify-Deploys
- * bei bestehenden Nutzern automatisch das Update-Banner & "Was ist neu?" auslösen!
+ * synchron mit `APP_VERSION` hochgezählt werden!
+ * Zusätzlich müssen Roadmap & Previews stets automatisch synchron zum Implementierungsstand gepflegt werden!
  */
-const APP_VERSION = "13.12.0";
-const CACHE_NAME = "gym-app-offline-v13-12-0";
-const ICON_CACHE = "gym-app-icons-v13-12-0";
-const SHELL_CACHE = "gym-app-shell-v13-12-0";
-const RUNTIME_CACHE = "gym-app-runtime-v13-12-0";
+const APP_VERSION = "13.21.0";
+const CACHE_NAME = "gym-app-offline-v13-21-0";
+const ICON_CACHE = "gym-app-icons-v13-21-0";
+const SHELL_CACHE = "gym-app-shell-v13-21-0";
+const RUNTIME_CACHE = "gym-app-runtime-v13-21-0";
 const OFFLINE_URL = "/index.html";
+const NETWORK_TIMEOUT_MS = 3500;
 
 const ICON_PATHS = [
   "/icons/icon-192.png",
@@ -84,6 +85,19 @@ function isValidAssetResponse(pathname, response) {
   return !ct.includes("text/html");
 }
 
+async function fetchWithTimeout(resource, options = {}, timeoutMs = NETWORK_TIMEOUT_MS) {
+  if (typeof AbortController === "undefined") {
+    return fetch(resource, options);
+  }
+  const controller = new AbortController();
+  const timerId = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(resource, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timerId);
+  }
+}
+
 self.addEventListener("install", (event) => {
   self.skipWaiting();
   event.waitUntil(
@@ -91,7 +105,11 @@ self.addEventListener("install", (event) => {
       await Promise.all(
         PRECACHE_ASSETS.map(async (url) => {
           try {
-            const response = await fetch(url, { credentials: "same-origin", cache: "reload" });
+            const response = await fetchWithTimeout(
+              url,
+              { credentials: "same-origin", cache: "reload" },
+              6000
+            );
             if (response && response.ok) {
               await cache.put(url, response.clone());
             }
@@ -158,7 +176,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // 2. Navigation / HTML requests: Network-first with full offline cache fallback
+  // 2. Navigation / HTML requests: Network-first with bounded timeout & full offline cache fallback
   if (
     event.request.mode === "navigate" ||
     url.pathname === "/" ||
@@ -169,35 +187,41 @@ self.addEventListener("fetch", (event) => {
       (async () => {
         try {
           const preloadResponse = await event.preloadResponse;
-          if (preloadResponse) {
-            const cache = await caches.open(CACHE_NAME);
-            cache.put(url.pathname, preloadResponse.clone()).catch(() => {});
+          if (preloadResponse && preloadResponse.ok) {
+            const preloadClone = preloadResponse.clone();
+            caches
+              .open(CACHE_NAME)
+              .then((cache) => cache.put(url.pathname, preloadClone))
+              .catch(() => {});
             return preloadResponse;
           }
-          const networkResponse = await fetch(event.request);
+          const networkResponse = await fetchWithTimeout(event.request, {}, NETWORK_TIMEOUT_MS);
           if (networkResponse && networkResponse.ok) {
-            const cache = await caches.open(CACHE_NAME);
-            cache.put(url.pathname, networkResponse.clone()).catch(() => {});
+            const netClone = networkResponse.clone();
+            caches
+              .open(CACHE_NAME)
+              .then((cache) => cache.put(url.pathname, netClone))
+              .catch(() => {});
+            return networkResponse;
           }
-          return networkResponse;
-        } catch {
-          const cachedResponse =
-            (await caches.match(url.pathname)) ||
-            (await caches.match(event.request)) ||
-            (await caches.match(url.pathname === "/app.html" ? "/app.html" : OFFLINE_URL)) ||
-            (await caches.match("/"));
-          if (cachedResponse) return cachedResponse;
-          return new Response("Offline", {
-            status: 200,
-            headers: { "Content-Type": "text/html; charset=utf-8" }
-          });
-        }
+        } catch {}
+
+        const cachedResponse =
+          (await caches.match(url.pathname)) ||
+          (await caches.match(event.request)) ||
+          (await caches.match(url.pathname === "/app.html" ? "/app.html" : OFFLINE_URL)) ||
+          (await caches.match("/"));
+        if (cachedResponse) return cachedResponse;
+        return new Response("Offline", {
+          status: 200,
+          headers: { "Content-Type": "text/html; charset=utf-8" }
+        });
       })()
     );
     return;
   }
 
-  // 3. Static JS/CSS/font assets: Network-first for JS/CSS (so updates apply immediately), Cache-first for fonts
+  // 3. Static JS/CSS/font assets: Cache-first for immutable fonts, Network-first (bounded timeout) for JS/CSS
   const isFontAsset = url.pathname.startsWith("/fonts/") || url.pathname.endsWith(".woff2");
   const isCodeOrFontAsset =
     isFontAsset ||
@@ -219,10 +243,14 @@ self.addEventListener("fetch", (event) => {
         }
 
         try {
-          const networkResponse = await fetch(url.pathname, {
-            credentials: "same-origin",
-            cache: isFontAsset ? "default" : "no-cache"
-          });
+          const networkResponse = await fetchWithTimeout(
+            url.pathname,
+            {
+              credentials: "same-origin",
+              cache: isFontAsset ? "default" : "no-cache"
+            },
+            NETWORK_TIMEOUT_MS
+          );
           if (isValidAssetResponse(url.pathname, networkResponse)) {
             const clone = networkResponse.clone();
             caches
@@ -255,7 +283,7 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     (async () => {
       try {
-        const networkResponse = await fetch(event.request);
+        const networkResponse = await fetchWithTimeout(event.request, {}, NETWORK_TIMEOUT_MS);
         if (networkResponse && networkResponse.ok) {
           const clone = networkResponse.clone();
           caches

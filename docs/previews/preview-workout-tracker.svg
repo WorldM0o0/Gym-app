@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 920" width="440" height="920" fill="none">
+  <defs>
+    <linearGradient id="titaniumFrame3" x1="0" y1="0" x2="440" y2="920" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3A3F4B"/>
+      <stop offset="50%" stop-color="#22262E"/>
+      <stop offset="100%" stop-color="#171A20"/>
+    </linearGradient>
+    <linearGradient id="confirmSetGrad" x1="52" y1="454" x2="388" y2="494" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2D8B8B"/>
+      <stop offset="100%" stop-color="#237070"/>
+    </linearGradient>
+    <linearGradient id="timerBarGrad" x1="34" y1="806" x2="406" y2="872" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1D2B2E"/>
+      <stop offset="100%" stop-color="#172026"/>
+    </linearGradient>
+  </defs>
+
+  <!-- iPhone 16 Pro Side Hardware Buttons -->
+  <rect x="6" y="168" width="4" height="34" rx="2" fill="#2E333D"/>
+  <rect x="6" y="222" width="4" height="62" rx="2" fill="#2E333D"/>
+  <rect x="6" y="298" width="4" height="62" rx="2" fill="#2E333D"/>
+  <rect x="430" y="250" width="4" height="86" rx="2" fill="#2E333D"/>
+
+  <!-- Outer Titanium Bezel -->
+  <rect x="10" y="8" width="420" height="904" rx="58" fill="url(#titaniumFrame3)" stroke="#4B5262" stroke-width="2"/>
+  <rect x="16" y="14" width="408" height="892" rx="52" fill="#090A0C"/>
+  <rect x="22" y="20" width="396" height="880" rx="46" fill="#111214"/>
+
+  <!-- iOS Status Bar & Dynamic Island -->
+  <text x="52" y="50" fill="#F2F4F3" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, monospace" font-size="14" font-weight="600">09:41</text>
+  <rect x="158" y="30" width="124" height="32" rx="16" fill="#000000"/>
+  <circle cx="264" cy="46" r="5.5" fill="#101524" stroke="#1E2638" stroke-width="1"/>
+  <circle cx="262" cy="44" r="1.5" fill="#3B82F6" opacity="0.8"/>
+  <rect x="334" y="43" width="3" height="5" rx="1" fill="#F2F4F3"/>
+  <rect x="339" y="41" width="3" height="7" rx="1" fill="#F2F4F3"/>
+  <rect x="344" y="38" width="3" height="10" rx="1" fill="#F2F4F3"/>
+  <rect x="349" y="35" width="3" height="13" rx="1" fill="#F2F4F3"/>
+  <path d="M360 40 C364 36, 370 36, 374 40 M362.5 43 C365 40.5, 369 40.5, 371.5 43 M366 46.5 L368 46.5" stroke="#F2F4F3" stroke-width="1.6" stroke-linecap="round"/>
+  <rect x="380" y="36" width="24" height="12" rx="3.5" stroke="#F2F4F3" stroke-width="1.3" opacity="0.85"/>
+  <rect x="382" y="38" width="18" height="8" rx="2" fill="#A8DAB5"/>
+  <rect x="405.5" y="39.5" width="2" height="5" rx="1" fill="#F2F4F3" opacity="0.7"/>
+
+  <!-- Active Workout Top Bar -->
+  <circle cx="44" cy="84" r="4.5" fill="#10B981"/>
+  <text x="56" y="88" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="600">LAUFENDES TRAINING · 34:18 MIN</text>
+  <rect x="322" y="72" width="82" height="28" rx="8" fill="#2D8B8B"/>
+  <text x="338" y="90" fill="#FFFFFF" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="12" font-weight="700">Fertig ✓</text>
+
+  <text x="38" y="118" fill="#F2F4F3" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="23" font-weight="700">Oberkörper A (Push / Pull)</text>
+
+  <!-- Overall Session Progress Card -->
+  <rect x="36" y="132" width="368" height="54" rx="14" fill="#181B22" stroke="#262B36" stroke-width="1"/>
+  <text x="52" y="153" fill="#D1D5DB" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="12" font-weight="600">Fortschritt: <tspan fill="#A8DAB5" font-family="'JetBrains Mono', monospace">8 / 12 Arbeitssätze</tspan></text>
+  <text x="278" y="153" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="11.5">4 860 kg Vol.</text>
+  <rect x="52" y="164" width="336" height="8" rx="4" fill="#242934"/>
+  <rect x="52" y="164" width="224" height="8" rx="4" fill="#A8DAB5"/>
+
+  <!-- Active Exercise Card 1: Bankdrücken -->
+  <rect x="36" y="198" width="368" height="314" rx="20" fill="#171A21" stroke="#2D8B8B" stroke-width="1.3"/>
+
+  <!-- Exercise Card Header -->
+  <rect x="52" y="216" width="10" height="10" rx="3" fill="#F59E0B"/>
+  <text x="70" y="226" fill="#F2F4F3" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="16" font-weight="700">Bankdrücken (Langhantel)</text>
+  <rect x="292" y="210" width="54" height="22" rx="6" fill="#232833"/>
+  <text x="300" y="225" fill="#A8DAB5" font-family="'Instrument Sans', sans-serif" font-size="10.5" font-weight="600">⇄ Swap</text>
+  <text x="356" y="225" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">2/3</text>
+
+  <!-- Exercise Progress Bar & Target Hint -->
+  <rect x="52" y="236" width="336" height="4" rx="2" fill="#242934"/>
+  <rect x="52" y="236" width="224" height="4" rx="2" fill="#F59E0B"/>
+  <text x="52" y="256" fill="#9CA3AF" font-family="'Instrument Sans', sans-serif" font-size="11">Brust, Trizeps · Ziel: 3 × 8–10 Wdh. @ RIR 2 · <tspan fill="#A8DAB5">Autoregulation +2,5 kg</tspan></text>
+
+  <!-- Set Table Headers -->
+  <g transform="translate(52, 276)" fill="#7D8597" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">
+    <text x="4" y="0">SATZ</text>
+    <text x="58" y="0">GEWICHT</text>
+    <text x="150" y="0">WDH</text>
+    <text x="210" y="0">RIR</text>
+    <text x="274" y="0">STATUS</text>
+  </g>
+
+  <!-- Warmup Row -->
+  <g transform="translate(52, 286)">
+    <rect x="0" y="0" width="336" height="34" rx="8" fill="#1D212A"/>
+    <rect x="8" y="7" width="22" height="20" rx="5" fill="#2A303D"/>
+    <text x="15" y="21" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">W</text>
+    <text x="58" y="22" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="12">50,0 kg</text>
+    <text x="152" y="22" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="12">10</text>
+    <text x="212" y="22" fill="#6B7280" font-family="'JetBrains Mono', monospace" font-size="11">–</text>
+    <text x="284" y="22" fill="#6B7280" font-family="'JetBrains Mono', monospace" font-size="11">Warmup ✓</text>
+  </g>
+
+  <!-- Working Set 1 (Completed) -->
+  <g transform="translate(52, 326)">
+    <rect x="0" y="0" width="336" height="36" rx="8" fill="#1E2628"/>
+    <rect x="8" y="8" width="22" height="20" rx="5" fill="#2D8B8B" fill-opacity="0.3"/>
+    <text x="15" y="22" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">1</text>
+    <text x="58" y="23" fill="#F2F4F3" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600">82,5 kg</text>
+    <text x="152" y="23" fill="#F2F4F3" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600">9</text>
+    <text x="212" y="23" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="12">2</text>
+    <text x="288" y="23" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">✓ Done</text>
+  </g>
+
+  <!-- Working Set 2 (Completed + PR Badge) -->
+  <g transform="translate(52, 368)">
+    <rect x="0" y="0" width="336" height="36" rx="8" fill="#1E2628"/>
+    <rect x="8" y="8" width="22" height="20" rx="5" fill="#2D8B8B" fill-opacity="0.3"/>
+    <text x="15" y="22" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">2</text>
+    <text x="58" y="23" fill="#F2F4F3" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600">85,0 kg</text>
+    <text x="152" y="23" fill="#F2F4F3" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600">8</text>
+    <text x="212" y="23" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="12">1.5</text>
+    <rect x="266" y="8" width="60" height="20" rx="6" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="274" y="22" fill="#FCD34D" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700">🏆 PR ✓</text>
+  </g>
+
+  <!-- Working Set 3 (Active Input Row) -->
+  <g transform="translate(52, 410)">
+    <rect x="0" y="0" width="336" height="38" rx="9" fill="#222834" stroke="#A8DAB5" stroke-width="1"/>
+    <rect x="8" y="9" width="22" height="20" rx="5" fill="#A8DAB5"/>
+    <text x="15" y="23" fill="#111214" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">3</text>
+
+    <rect x="46" y="6" width="78" height="26" rx="6" fill="#15181F" stroke="#374151" stroke-width="1"/>
+    <text x="58" y="23" fill="#FFFFFF" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">85,0 kg</text>
+
+    <rect x="134" y="6" width="56" height="26" rx="6" fill="#15181F" stroke="#374151" stroke-width="1"/>
+    <text x="150" y="23" fill="#FFFFFF" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">8</text>
+
+    <rect x="198" y="6" width="52" height="26" rx="6" fill="#15181F" stroke="#374151" stroke-width="1"/>
+    <text x="212" y="23" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">RIR 2</text>
+
+    <text x="262" y="23" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="10.5">e1RM 107.7</text>
+  </g>
+
+  <!-- Confirm Set Button -->
+  <rect x="52" y="458" width="336" height="40" rx="10" fill="url(#confirmSetGrad)"/>
+  <text x="148" y="483" fill="#FFFFFF" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="14" font-weight="700">✓ Satz 3 bestätigen</text>
+
+  <!-- Exercise Card 2: Klimmzüge (Anchored below) -->
+  <rect x="36" y="524" width="368" height="134" rx="20" fill="#171A21" stroke="#262B36" stroke-width="1"/>
+  <rect x="52" y="542" width="10" height="10" rx="3" fill="#6B7280"/>
+  <text x="70" y="552" fill="#F2F4F3" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="15.5" font-weight="700">Klimmzüge (Zusatzgewicht)</text>
+  <text x="356" y="552" fill="#9CA3AF" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">0/3</text>
+  <rect x="52" y="562" width="336" height="4" rx="2" fill="#242934"/>
+  <text x="52" y="582" fill="#9CA3AF" font-family="'Instrument Sans', sans-serif" font-size="11">Rücken, Bizeps (Synergist 0,5×) · Letztes Mal: +15,0 kg × 8 Wdh.</text>
+  <rect x="52" y="596" width="336" height="46" rx="10" fill="#1E222B"/>
+  <text x="68" y="624" fill="#D1D5DB" font-family="'JetBrains Mono', monospace" font-size="12">Nächster Satz: <tspan fill="#A8DAB5" font-weight="700">+15,0 kg × 8 Wdh.</tspan> @ RIR 2</text>
+
+  <!-- Exercise Card 3: Completed Exercise at Bottom -->
+  <rect x="36" y="670" width="368" height="114" rx="20" fill="#15181E" stroke="#222731" stroke-width="1"/>
+  <rect x="52" y="688" width="10" height="10" rx="3" fill="#A8DAB5"/>
+  <text x="70" y="698" fill="#9CA3AF" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="15" font-weight="600">Schulterdrücken (Kurzhantel)</text>
+  <text x="352" y="698" fill="#A8DAB5" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">3/3 ✓</text>
+  <rect x="52" y="708" width="336" height="4" rx="2" fill="#A8DAB5"/>
+  <text x="52" y="732" fill="#7D8597" font-family="'JetBrains Mono', monospace" font-size="11.5">Abgeschlossen · 3 × 26,0 kg × 10 Wdh. · 1 560 kg Volumen</text>
+  <text x="52" y="756" fill="#A8DAB5" font-family="'Instrument Sans', sans-serif" font-size="11" font-weight="600">✓ Alle Zielsätze erreicht – automatisch unten einsortiert</text>
+
+  <!-- Minimized Floating Rest Timer Bar -->
+  <rect x="34" y="798" width="372" height="74" rx="18" fill="url(#timerBarGrad)" stroke="#A8DAB5" stroke-width="1.4"/>
+  <!-- Timer Circular Ring -->
+  <circle cx="72" cy="835" r="22" stroke="#253538" stroke-width="4" fill="none"/>
+  <path d="M72 813 A22 22 0 1 1 51 842" stroke="#A8DAB5" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <text x="55" y="839" fill="#FFFFFF" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="700">01:15</text>
+
+  <text x="106" y="828" fill="#A8DAB5" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="0.6">PAUSENTIMER AKTIV</text>
+  <text x="106" y="846" fill="#F2F4F3" font-family="'Instrument Sans', -apple-system, sans-serif" font-size="12.5" font-weight="600">Danach: Bankdrücken · Satz 3</text>
+
+  <!-- Timer Controls (-15s, +15s, Skip) -->
+  <rect x="282" y="820" width="34" height="30" rx="8" fill="#253439"/>
+  <text x="287" y="839" fill="#D1D5DB" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="600">-15s</text>
+
+  <rect x="320" y="820" width="34" height="30" rx="8" fill="#253439"/>
+  <text x="324" y="839" fill="#D1D5DB" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="600">+15s</text>
+
+  <rect x="358" y="820" width="36" height="30" rx="8" fill="#2D8B8B"/>
+  <text x="365" y="839" fill="#FFFFFF" font-family="'Instrument Sans', sans-serif" font-size="10.5" font-weight="700">Skip</text>
+
+  <!-- iOS Home Indicator -->
+  <rect x="154" y="884" width="132" height="5" rx="2.5" fill="#6B7280" opacity="0.65"/>
+</svg>

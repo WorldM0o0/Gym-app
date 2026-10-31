@@ -156,14 +156,6 @@
           "sizes": "192x192",
           "type": "image/png"
         }
-      ],
-      "screenshots": [
-        {
-          "src": "/screenshots/01-training.png",
-          "sizes": "540x1080",
-          "type": "image/png",
-          "label": "Wochenplan und Routinen im Training-Tab"
-        }
       ]
     }
   ],
@@ -185,78 +177,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshots/01-training.png",
-      "sizes": "540x1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Wochenplan und Routinen im Training-Tab"
-    },
-    {
-      "src": "/screenshots/02-ernaehrung.png",
-      "sizes": "540x1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Tagesplan mit Kalorien- und Makro-Übersicht"
-    },
-    {
-      "src": "/screenshots/03-verlauf-muskeln.png",
-      "sizes": "540x1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Muskel-Balance als Netzdiagramm mit Satz-Korridoren"
-    },
-    {
-      "src": "/screenshots/04-verlauf-trainings.png",
-      "sizes": "540x1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Zeitraum-Vergleich und Trainingsverlauf"
-    },
-    {
-      "src": "/screenshots/05-plan-generator.png",
-      "sizes": "540x1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Trainingsplan nach Zielen und Fokus generieren"
-    },
-    {
-      "src": "/screenshots/06-ernaehrung-verlauf.png",
-      "sizes": "540x1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Kalorienverlauf und Makros im Wochenschnitt"
-    },
-    {
-      "src": "/screenshots/07-gewicht.png",
-      "sizes": "540x1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Gewichtstagebuch mit Trendkurve und Zielrechner"
-    },
-    {
-      "src": "/screenshots/08-rezepte.png",
-      "sizes": "540x1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Rezept-Vorschläge zum Übernehmen in den Wochenplan"
-    },
-    {
-      "src": "/screenshots/09-einstellungen.png",
-      "sizes": "540x1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Einstellungen mit Export, Import und Archivierung"
-    },
-    {
-      "src": "/screenshots/10-wide-overview.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Gym App – Training, Ernährung und Verlauf im Breitbild-Überblick"
     }
   ]
 }

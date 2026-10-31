@@ -1,11 +1,101 @@
 {
   "format": 1,
   "items": [
-    { "id": "cycle-tracking", "status": "planned", "title": "Zyklus-Tracking", "description": "Manuelle Eingabe von Zyklusphase/-länge, mit angepassten Satz-/RIR-Empfehlungen je Phase." },
-    { "id": "accessibility-filter", "status": "shipped", "title": "Filter für dauerhafte Einschränkungen", "description": "Betroffene Muskelgruppen/Übungen im Profil hinterlegen — sie zählen dann in der Fortschritts-Ansicht nicht mehr als \"unterversorgt\"." },
-    { "id": "reminder-expansion", "status": "shipped", "title": "Erweiterte Erinnerungen", "description": "Eigene Kategorien für Nährstoffe/Supplements, Wasserzufuhr, Mahlzeiten und Medikamente." },
-    { "id": "feedback-roadmap", "status": "shipped", "title": "Feedback geben & Roadmap ansehen", "description": "In-App-Formular für Bugs/Wünsche sowie diese Übersicht." },
-    { "id": "guided-tutorial", "status": "shipped", "title": "Geführte Tour durch die App", "description": "Kurze Einführung beim ersten Start, jederzeit über die Einstellungen erneut startbar." },
-    { "id": "onboarding", "status": "shipped", "title": "Persönliches Onboarding", "description": "Kurze Abfrage von Erfahrung, Ziel und Trainingsfrequenz beim allerersten Start." }
+    {
+      "id": "wearable-sync",
+      "status": "planned",
+      "title": "Smart Wearable Sync (Apple Health & Health Connect)",
+      "titleEn": "Smart Wearable Sync (Apple Health & Health Connect)",
+      "description": "Optionaler, rein lokaler Import von täglichen Schritten, Aktivitätskalorien und Ruhepuls — 100 % datenschutzkonform direkt auf deinem Gerät ohne Cloud-Konto.",
+      "descriptionEn": "Optional, strictly local import of daily steps, active calories, and resting heart rate — 100% private directly on your device without cloud accounts."
+    },
+    {
+      "id": "periodization-analytics",
+      "status": "planned",
+      "title": "Mesozyklus-Planer & Periodisierungs-Kurven",
+      "titleEn": "Mesocycle Planner & Periodization Curves",
+      "description": "Visuelle Darstellung von Satz- und Intensitäts-Akkumulation über 4–8 Wochen zur gezielten Deload- und Peak-Steuerung.",
+      "descriptionEn": "Visual charts for volume and intensity accumulation across 4–8 weeks for targeted deload and peak scheduling."
+    },
+    {
+      "id": "offline-barcode-cache",
+      "status": "planned",
+      "title": "Offline Barcode-Schnellkatalog",
+      "titleEn": "Offline Barcode Fast-Catalog",
+      "description": "Lokaler Vorab-Cache für deine am häufigsten genutzten Lebensmittel-Barcodes für verzögerungsfreies Scannen im Gym-Funkloch.",
+      "descriptionEn": "Local pre-cache for your most frequently scanned food barcodes for instant scanning without gym basement connection drops."
+    },
+    {
+      "id": "interactive-live-tab-tour-polish",
+      "status": "shipped",
+      "title": "Interaktive 5-Schritte-Tour mit Live-Tab-Wechsel & UI/UX-Polish",
+      "titleEn": "Interactive 5-Step Guided Tour with Live Tab Switching & UI/UX Polish",
+      "description": "Geführte Live-Tour mit automatischem Tab-Wechsel (Heute, Training, Kalender/Verlauf, Einstellungen), sanfter Zyklus-Accordion-Animation, Pill-Fortschrittspunkten und Gym-Buddy-Begrüßung.",
+      "descriptionEn": "Guided live tour with automatic tab switching (Today, Workout, Calendar/History, Settings), smooth cycle accordion animation, pill progress dots, and Gym Buddy greeting."
+    },
+    {
+      "id": "cycle-tracking",
+      "status": "shipped",
+      "title": "Zyklus-Synchronisiertes Training (Cycle-Synced)",
+      "titleEn": "Cycle-Synced Training",
+      "description": "4-Phasen-Tracker (inkl. Ovulation & Lutealphase) im Dashboard, farbige Kalender-Punkte, Streak-Schutz und regenerative Buddy-Zustände.",
+      "descriptionEn": "4-phase cycle tracking on the dashboard, colored calendar dots, streak protection during menstruation, and companion rest states."
+    },
+    {
+      "id": "gym-buddy-2",
+      "status": "shipped",
+      "title": "Gym Buddy 2.0: Accessoires & Mimik-Update",
+      "titleEn": "Gym Buddy 2.0: Accessories & Facial Polish",
+      "description": "Scharfe SVG-Outlines, synchroner Pfoten-/Handgriff für Hand-Items, lebendiges Lächeln, Zwinkern und automatische Schlaf-/Post-Workout-Phasen.",
+      "descriptionEn": "Crisp SVG outlines, synchronized paw grip for hand items, animated smile, winking, and automatic sleep & post-workout modes."
+    },
+    {
+      "id": "ios-optimizations",
+      "status": "shipped",
+      "title": "100 % iPhone & iOS Web-App-Optimierung",
+      "titleEn": "100% iPhone & iOS Web App Optimization",
+      "description": "Safari-Speicherschutz (navigator.storage.persist), Home-Screen-Guide, natives iOS-Teilen für Backups und Dynamic-Island/Safe-Area-Optimierung.",
+      "descriptionEn": "Safari storage protection (navigator.storage.persist), Home Screen prompt, native iOS Share Sheet for JSON backups, and full safe-area polish."
+    },
+    {
+      "id": "accessibility-filter",
+      "status": "shipped",
+      "title": "Filter für dauerhafte Einschränkungen",
+      "titleEn": "Injury & Limitation Filter",
+      "description": "Betroffene Muskelgruppen/Übungen im Profil hinterlegen — sie zählen dann in der Fortschritts-Ansicht nicht mehr als \"unterversorgt\".",
+      "descriptionEn": "Store affected muscle groups in profile to exclude them from under-target warnings in progress charts."
+    },
+    {
+      "id": "reminder-expansion",
+      "status": "shipped",
+      "title": "Erweiterte Erinnerungen & Kalender (.ics)",
+      "titleEn": "Advanced Reminders & Calendar (.ics)",
+      "description": "Eigene Kategorien für Nährstoffe/Supplements, Wasserzufuhr, Mahlzeiten und Medikamente mit direktem Kalender-Export.",
+      "descriptionEn": "Custom categories for nutrition/supplements, water, meals, and medication with direct calendar export."
+    },
+    {
+      "id": "feedback-roadmap",
+      "status": "shipped",
+      "title": "Feedback geben & Roadmap ansehen",
+      "titleEn": "Give Feedback & View Roadmap",
+      "description": "In-App-Formular für Bugs/Wünsche sowie transparente Entwicklungsschritte.",
+      "descriptionEn": "In-app form for bug reports and feature requests, plus transparent development roadmap."
+    },
+    {
+      "id": "guided-tutorial",
+      "status": "shipped",
+      "title": "Geführte Tour durch die App",
+      "titleEn": "Guided App Tour",
+      "description": "Kurze Einführung beim ersten Start, jederzeit über die Einstellungen erneut startbar.",
+      "descriptionEn": "Quick introduction on first launch, can be restarted anytime via Settings."
+    },
+    {
+      "id": "onboarding",
+      "status": "shipped",
+      "title": "Persönliches Onboarding mit Biologie-Check",
+      "titleEn": "Personal Onboarding with Biology Check",
+      "description": "Erweiterte Willkommensstrecke mit Geschlecht (Mann / Frau / Keine Angabe), transparenter Zyklus-Erklärung und Zielabfrage.",
+      "descriptionEn": "Personal onboarding with gender selection, transparent cycle education, and goal configuration."
+    }
   ]
 }
